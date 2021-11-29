@@ -26,11 +26,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " switch from RU -> EN automatically
 Plug 'lyokha/vim-xkbswitch'
-
-" use normal easymotion when in vim mode
-Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
-" use vscode easymotion when in vscode mode
-Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
+Plug 'phaazon/hop.nvim'
 
 """"" Programming """""
 Plug 'sheerun/vim-polyglot'
@@ -123,22 +119,15 @@ if exists('g:vscode')
 endif
 
 
-"""""""""" Easy motion """""""""" 
+" """""""""" Hop motion """""""""" 
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+lua require'hop'.setup { keys = 'etovxqpdygfblzhckisuran', jump_on_sole_occurrence = true }
 
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
+map s <cmd>HopChar2<CR>
 
-" map <Bslash> <Plug>(easymotion-prefix)
-nmap s <Plug>(easymotion-bd-f2)
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-
-
+" JK: Line motions
+map <Leader>j <cmd>HopLineStartAC<CR>
+map <Leader>k <cmd>HopLineStartBC<CR>
 
 """""""""""""" nnn """"""""""""""
 lua << EOF
@@ -223,8 +212,6 @@ require'lualine'.setup {
   extensions = {}
 }
 END
-
-
 
 
 
