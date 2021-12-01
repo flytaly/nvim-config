@@ -46,6 +46,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
 "debug
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-telescope/telescope-dap.nvim'
@@ -62,7 +63,6 @@ lua require'gitsigns'.setup()
 """"""""""""""" automatic keyboard layout switch """"""""""""""" 
 let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'
 let g:XkbSwitchEnabled = 1
-let g:XkbSwitchSkipGhKeys = ['gh', 'gH'] " restore gh to use in vscode
 
 
 """""""""" LEADER KEY """""""""""
