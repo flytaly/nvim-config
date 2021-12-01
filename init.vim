@@ -20,6 +20,7 @@ Plug 'szw/vim-maximizer', Cond(!exists('g:vscode'))
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
+Plug 'sindrets/diffview.nvim'
 
 " themes and styles
 Plug 'kyazdani42/nvim-web-devicons'
@@ -228,28 +229,28 @@ END
 
 
 """"" setting optons
-set cmdheight=1
-set diffopt+=vertical
+" set relativenumber
+set completeopt=menu,menuone,noselect " better autocomplete options
+set cmdheight=1 " only one line for commands
+set diffopt+=vertical " starts diff mode in vertical split
 set encoding=UTF-8
-set hidden
+set hidden "allow hidden buffers
 set ignorecase "case insensitive search. Use \C to enable case sensitive.
+set inccommand=nosplit
 set incsearch
 set mouse=a
-set nobackup
+set nobackup " don't create backup files
 set noshowmode
-set nowritebackup
-" set relativenumber
-set shortmess+=c
+set nowritebackup " don't create backup files
+set shortmess+=c " don't need to press enter so often
 set signcolumn=yes
+set splitright " splits to the right
+set splitbelow " splits below
 set updatetime=300
-set splitright
-set inccommand=nosplit
+set undofile " persists undo tree
 
 
 """""""" nvim-cmp
-
-set completeopt=menu,menuone,noselect
-
 lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
@@ -383,6 +384,15 @@ let g:vsnip_filetypes.typescriptreact = ['typescript']
 let g:vsnip_filetypes.svelte = ['typescript', 'javascript']
 
 
+lua << EOF
+
+-- sindrets/diffview.nvim
+require('diffview').setup {
+  file_panel = {
+    position = "left",            -- One of 'left', 'right', 'top', 'bottom'
+  }
+}
+EOF
 
 """"""""""""'" mfussenegger/nvim-dap
 lua << EOF
