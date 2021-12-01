@@ -14,9 +14,9 @@ return require('packer').startup(function(use)
   use 'phaazon/hop.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
-  use 'unblevable/quick-scope'
   use 'sindrets/diffview.nvim'
   use 'lyokha/vim-xkbswitch' --- switch from RU -> EN automatically
+  use 'luukvbaal/nnn.nvim'
 
   -- consistent navigation between vim and terminal splits
   use {'knubie/vim-kitty-navigator', run = 'cp ./*.py ~/.config/kitty/' }
