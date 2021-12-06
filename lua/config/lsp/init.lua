@@ -1,120 +1,71 @@
------ Setup lspconfig
-local nvim_lsp = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp')
-capabilities = capabilities.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
+
+local nvim_lsp = require("lspconfig")
+local remaps = require("config.lsp.remaps")
+local presentCmpNvimLsp, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")
+local presentLspStatus, lspStatus = pcall(require, "lsp-status")
+local presentAerial, aerial = pcall(require, "aerial")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+	remaps.set_default_keymaps(client, bufnr)
 
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+	if presentLspStatus then
+		lspStatus.on_attach(client, bufnr)
+	end
 
-    -- Mappings.
-    local opts = {noremap = true, silent = true}
-
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-                   opts)
-    buf_set_keymap('n', '<space>wa',
-                   '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wr',
-                   '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wl',
-                   '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-                   opts)
-    buf_set_keymap('n', '<space>D',
-                   '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', '<space>ca', '<cmd>CodeActionMenu<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<space>e',
-                   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-                   opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',
-                   opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
-                   opts)
-    buf_set_keymap('n', '<space>q',
-                   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>',
-                   opts)
-
+	if presentAerial then
+		aerial.on_attach(client, bufnr)
+	end
 end
+
+local capabilities = {}
+
+if presentCmpNvimLsp then
+	capabilities = vim.tbl_deep_extend(
+		"keep",
+		capabilities,
+		cmpNvimLsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	)
+end
+
+local default_lsp_config = {
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
 
 local servers = {
-    'rust_analyzer', 'tsserver', 'svelte', 'tailwindcss', 'sumneko_lua'
-}
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = {debounce_text_changes = 150}
-    }
-end
-
-local system_name
-if vim.fn.has("mac") == 1 then
-    system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-    system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-    system_name = "Windows"
-else
-    print("Unsupported system for sumneko")
-end
-
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = os.getenv('HOME') .. '/Apps/lua-language-server'
-local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name ..
-                           "/lua-language-server"
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = runtime_path
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true)
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {enable = false}
-        }
-    }
-}
-
-
-require'lspconfig'.stylelint_lsp.setup{
-    filetypes = { "css", "less", "scss", "sugarss", "vue", "wxss", "javascriptreact", "typescriptreact", "svelte" },
+	cssls = require("config.lsp.servers.cssls")(),
+	dockerls = {},
+	graphql = {},
+	jsonls = {},
+	rust_analyzer = {},
+	sumneko_lua = require("config.lsp.servers.sumneko_lua")(),
+	tsserver = require("config.lsp.servers.tsserver")(on_attach),
+	svelte = {},
+	html = {},
+	tailwindcss = {},
+	yamlls = {},
+	emmet_ls = {},
+	stylelint_lsp = {
     root_dir = nvim_lsp.util.root_pattern('.stylelintrc','stylelint.config.js', 'package.json')
+	},
+	eslint = {
+     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte" }
+	}
 }
 
-require'lspconfig'.eslint.setup{
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte" }
-}
+for serverName, config in pairs(servers) do
+	local ok, server = lsp_installer_servers.get_server(serverName)
+	if ok then
+	if not server:is_installed() then
+			print("installing " .. serverName)
+			server:install()
+		end
+	end
+	server:setup(vim.tbl_deep_extend("force", default_lsp_config, config))
+	vim.cmd([[ do User LspAttachBuffers ]])
+end
 
+require("config.lsp.servers.null_ls").setup(on_attach)
