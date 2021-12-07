@@ -22,7 +22,7 @@ local sources = {
 	b.formatting.shfmt,
 
 	b.diagnostics.write_good,
-	b.diagnostics.markdownlint,
+	-- b.diagnostics.markdownlint,
 	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 	b.diagnostics.tsc,
 	b.code_actions.gitsigns,

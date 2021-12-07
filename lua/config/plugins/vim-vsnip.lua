@@ -25,4 +25,3 @@ vim.cmd([[
   let g:vsnip_filetypes.typescriptreact = ['typescript']
   let g:vsnip_filetypes.svelte = ['typescript', 'javascript']
 ]])
-

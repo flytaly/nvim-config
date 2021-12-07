@@ -1,1 +1,1 @@
-map('n', '<leader>m', ':MaximizerToggle!<CR>')
+map("n", "<leader>m", ":MaximizerToggle!<CR>")

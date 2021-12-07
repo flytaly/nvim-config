@@ -49,17 +49,30 @@ local servers = {
 	yamlls = {},
 	emmet_ls = {},
 	stylelint_lsp = {
-    root_dir = nvim_lsp.util.root_pattern('.stylelintrc','stylelint.config.js', 'package.json')
+		root_dir = nvim_lsp.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
+		on_attach = function(client)
+			client.resolved_capabilities.document_formatting = false
+			client.resolved_capabilities.document_range_formatting = false
+		end,
 	},
 	eslint = {
-     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte" }
-	}
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+			"vue",
+			"svelte",
+		},
+	},
 }
 
 for serverName, config in pairs(servers) do
 	local ok, server = lsp_installer_servers.get_server(serverName)
 	if ok then
-	if not server:is_installed() then
+		if not server:is_installed() then
 			print("installing " .. serverName)
 			server:install()
 		end
