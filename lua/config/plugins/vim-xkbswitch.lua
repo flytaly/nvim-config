@@ -2,3 +2,4 @@
 -- lyokha/vim-xkbswitch
 vim.g.XkbSwitchLib = "/usr/local/lib/libxkbswitch.so"
 vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchSkipGhKeys = { "gh", "gH" }

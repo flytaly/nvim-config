@@ -2,13 +2,27 @@
 vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup(function(use)
-	use("kana/vim-textobj-user") -- create your own text objects
-	use("kana/vim-textobj-entire") -- select entire buffer
+	use({
+		"kana/vim-textobj-entire",
+		requires = { { "kana/vim-textobj-user" } }, -- create your own text objects
+	}) -- select entire buffer
 	use("nvim-lua/plenary.nvim") -- useful lua functions
 	use("unblevable/quick-scope") -- highlight unique chars
 	use("nvim-lua/popup.nvim")
 	use("tpope/vim-fugitive")
-	use("tpope/vim-surround")
+	use("machakann/vim-sandwich") -- vim surround alternative
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("config.plugins.which-key")
+		end,
+	})
+	use({
+		"luukvbaal/stabilize.nvim",
+		config = function()
+			require("stabilize").setup()
+		end,
+	})
 
 	use({
 		"sindrets/diffview.nvim",
@@ -85,6 +99,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("config.plugins.zen-mode")
+		end,
+	})
+
 	-------------------------
 	------- Programming utils
 	use("sheerun/vim-polyglot")
@@ -95,7 +116,12 @@ return require("packer").startup(function(use)
 			vim.g.vim_svelte_plugin_use_typescript = 1
 		end,
 	})
-	use("tpope/vim-commentary")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 	use("mhartington/formatter.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -116,6 +142,14 @@ return require("packer").startup(function(use)
 		"stevearc/aerial.nvim",
 		config = function()
 			require("config.plugins.aerial-nvim")
+		end,
+	})
+
+	use({
+		"vuki656/package-info.nvim",
+		requires = "MunifTanjim/nui.nvim",
+		config = function()
+			require("config.plugins.package-info")
 		end,
 	})
 
@@ -164,6 +198,13 @@ return require("packer").startup(function(use)
 		config = function()
 			require("config.plugins.jester")
 		end,
+	})
+
+	use({
+		"vim-test/vim-test",
+		-- config = function()
+		-- 	require("config.plugins.jester")
+		-- end,
 	})
 
 	-- markdown

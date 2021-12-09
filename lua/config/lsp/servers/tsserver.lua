@@ -17,7 +17,7 @@ return function(on_attach)
 
 			local opts = { silent = true }
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "gO", ":TSLspOrganize<CR>", opts)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "gR", ":TSLspRenameFile<CR>", opts)
+			vim.api.nvim_buf_set_keymap(bufnr, "n", "gFR", ":TSLspRenameFile<CR>", opts)
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspImportAll<CR>", opts)
 
 			on_attach(client, bufnr)
