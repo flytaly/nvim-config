@@ -192,7 +192,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- tests
 	use({
 		"david-kunz/jester",
 		config = function()
@@ -200,11 +199,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	--
 	use({
 		"vim-test/vim-test",
-		-- config = function()
-		-- 	require("config.plugins.jester")
-		-- end,
+		config = function()
+			require("config.plugins.vim-test")
+		end,
 	})
 
 	-- markdown
