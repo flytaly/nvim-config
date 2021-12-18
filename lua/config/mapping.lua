@@ -15,4 +15,6 @@ map("v", "<leader>d", '"+d')
 
 map("n", "<C-e>", "<C-w>") -- remap <C-w> to split windows
 map("n", "<C-w>", ":x<CR>") -- save and close
+map("n", "<C-s>", ":w<CR>") -- save
+map("i", "<C-s>", "<Esc>:w<CR>a") -- save
 map("n", "<A-q>", ":q!<CR>") -- close w/o saving

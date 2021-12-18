@@ -18,6 +18,10 @@ local on_attach = function(client, bufnr)
 	if presentAerial then
 		aerial.on_attach(client, bufnr)
 	end
+
+	-- if client.resolved_capabilities.document_formatting then
+	-- 	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+	-- end
 end
 
 local capabilities = {}
@@ -50,6 +54,15 @@ local servers = {
 	emmet_ls = {},
 	stylelint_lsp = {
 		root_dir = nvim_lsp.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
+		filetypes = {
+			"css",
+			-- "javascriptreact",
+			-- "javascript.jsx",
+			-- "typescriptreact",
+			-- "typescript.tsx",
+			-- "vue",
+			-- "svelte",
+		},
 		on_attach = function(client)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false

@@ -16,6 +16,7 @@ local function set_default_keymaps(_, bufnr)
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	keymap("n", "ga", "<cmd>CodeActionMenu<CR>", opts)
 	keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap("n", "<C-t>gd", ":tab split<CR>:lua vim.lsp.buf.definition()<CR>", opts)
 	keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
