@@ -163,14 +163,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use({
-		"weilbith/nvim-code-action-menu",
-		config = function()
-			-- Disable diff until the issue isn't resolved
-			-- https://github.com/weilbith/nvim-code-action-menu/issues/32
-			vim.g.code_action_menu_show_diff = false
-		end,
-	})
+	use({ "weilbith/nvim-code-action-menu" })
 
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
