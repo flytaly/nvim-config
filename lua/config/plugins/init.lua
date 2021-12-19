@@ -155,6 +155,14 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("config.plugins.trouble")
+		end,
+	})
+
+	use({
 		"vuki656/package-info.nvim",
 		requires = "MunifTanjim/nui.nvim",
 		config = function()
