@@ -6,6 +6,7 @@ return require("packer").startup(function(use)
 		"kana/vim-textobj-entire",
 		requires = { { "kana/vim-textobj-user" } }, -- create your own text objects
 	}) -- select entire buffer
+	use("vim-scripts/restore_view.vim")
 	use("nvim-lua/plenary.nvim") -- useful lua functions
 	use("unblevable/quick-scope") -- highlight unique chars
 	use("nvim-lua/popup.nvim")

@@ -1,6 +1,20 @@
 ----- Telescope
+local telescope_actions = require("telescope.actions.set")
 local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
+
+-- https://github.com/nvim-telescope/telescope.nvim/issues/559
+local fixfolds = {
+	hidden = true,
+	attach_mappings = function(_)
+		telescope_actions.select:enhance({
+			post = function()
+				vim.cmd(":normal! zx")
+			end,
+		})
+		return true
+	end,
+}
 
 telescope.setup({
 	defaults = {
@@ -9,7 +23,20 @@ telescope.setup({
 			n = { ["<c-a>"] = trouble.open_with_trouble },
 		},
 	},
+	pickers = {
+		buffers = fixfolds,
+		file_browser = fixfolds,
+		find_files = fixfolds,
+		git_files = fixfolds,
+		grep_string = fixfolds,
+		live_grep = fixfolds,
+		oldfiles = fixfolds,
+	},
 })
+
+
+telescope.load_extension('aerial')
+
 
 map("n", "<leader><space>", ":Telescope git_files<CR>")
 map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>")
@@ -19,3 +46,4 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>")
 map("n", "<leader>fG", ":Telescope grep_string<CR>")
 map("n", "<leader>fo", ":Telescope file_browser<CR>")
 map("n", "<leader>ft", ":Telescope builtin<CR>")
+map("n", "<leader>fa", ":Telescope aerial<CR>")

@@ -11,7 +11,7 @@ local eslint_opts = {
 
 local sources = {
 	b.formatting.prettier.with({
-		disabled_filetypes = { "typescript", "typescriptreact" },
+		-- disabled_filetypes = { "typescript", "typescriptreact" },
 	}),
 	-- b.diagnostics.eslint_d.with(eslint_opts),
 	-- b.formatting.eslint_d.with(eslint_opts),
@@ -34,7 +34,7 @@ local M = {}
 M.setup = function(on_attach)
 	require("null-ls").setup({
 		on_attach = on_attach,
-		debug = false,
+		debug = true,
 		sources = sources,
 	})
 end
