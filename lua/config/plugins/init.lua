@@ -122,16 +122,21 @@ return require("packer").startup(function(use)
 	-- use 'evanleck/vim-svelte'
 	use({
 		"leafOfTree/vim-svelte-plugin",
+		requires = "leafgarland/typescript-vim",
 		config = function()
 			vim.g.vim_svelte_plugin_use_typescript = 1
 		end,
 	})
+
+	-- Comments
+	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
-			require("Comment").setup()
+			require("config.plugins.comment")
 		end,
 	})
+
 	use("mhartington/formatter.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -171,7 +176,14 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function()
+			require("config.plugins.treesitter")
+		end,
+	})
+
 	use({ "weilbith/nvim-code-action-menu" })
 
 	use("hrsh7th/cmp-nvim-lsp")
