@@ -204,6 +204,8 @@ return require("packer").startup(function(use)
 			require("config.plugins.nvim-cmp")
 		end,
 	})
+	use("fivethree-team/vscode-svelte-snippets")
+	use("rafamadriz/friendly-snippets")
 
 	-- debug
 	use("mfussenegger/nvim-dap")
