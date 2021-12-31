@@ -4,7 +4,7 @@ vim.g.tokyonight_colors = {
 	gitSigns = { add = "#6f9b31", change = "#24a7db", delete = "#c82d35" },
 }
 
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme kanagawa]])
 
 ------------------------------------------------------
 -- QuickScope

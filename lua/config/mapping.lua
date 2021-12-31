@@ -18,3 +18,8 @@ map("n", "<C-w>", ":x<CR>") -- save and close
 map("n", "<C-s>", ":w<CR>") -- save
 map("i", "<C-s>", "<Esc>:w<CR>a") -- save
 map("n", "<A-q>", ":q!<CR>") -- close w/o saving
+
+map("n", "<C-t>n", ":tabnew<CR>")
+
+map("n", "]<space>", ":call append(line('.'), '')<CR>")
+map("n", "[<space>", ":call append(line('.')-1, '')<CR>")
