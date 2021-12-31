@@ -63,6 +63,8 @@ return require("packer").startup(function(use)
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
+
 	use({
 		"phaazon/hop.nvim", -- easy-motion alternative
 		config = function()
@@ -91,6 +93,7 @@ return require("packer").startup(function(use)
 	-- use 'shaunsingh/nord.nvim'
 	use("kyazdani42/nvim-web-devicons")
 	use("folke/tokyonight.nvim")
+	use("rebelot/kanagawa.nvim")
 
 	use({
 		"norcalli/nvim-colorizer.lua",
@@ -206,6 +209,7 @@ return require("packer").startup(function(use)
 	})
 	use("fivethree-team/vscode-svelte-snippets")
 	use("rafamadriz/friendly-snippets")
+	use("andys8/vscode-jest-snippets")
 
 	-- debug
 	use("mfussenegger/nvim-dap")

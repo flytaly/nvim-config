@@ -1,5 +1,27 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "typescript", "javascript", "svelte", "css", "cpp", "lua", "vim" },
+	ensure_installed = {
+		"c",
+		"comment",
+		"cpp",
+		"css",
+		"go",
+		"html",
+		"java",
+		"javascript",
+		"jsdoc",
+		"json",
+		"jsonc",
+		"markdown",
+		"lua",
+		"python",
+		"query",
+		"rst",
+		"rust",
+		"svelte",
+		"tsx",
+		"typescript",
+		"vim",
+	},
 	-- JoosepAlviste/nvim-ts-context-commentstring
 	context_commentstring = {
 		enable = true,

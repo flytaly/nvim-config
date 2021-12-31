@@ -17,6 +17,11 @@ local fixfolds = {
 }
 
 telescope.setup({
+	extensions = {
+		file_browser = {
+			theme = "ivy",
+		},
+	},
 	defaults = {
 		mappings = {
 			i = { ["<c-a>"] = trouble.open_with_trouble },
@@ -34,9 +39,8 @@ telescope.setup({
 	},
 })
 
-
-telescope.load_extension('aerial')
-
+telescope.load_extension("aerial")
+telescope.load_extension("file_browser")
 
 map("n", "<leader><space>", ":Telescope git_files<CR>")
 map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>")
@@ -44,6 +48,6 @@ map("n", "<leader>fB", ":Telescope buffers<CR>")
 map("n", "<leader>ff", ":Telescope find_files<CR>")
 map("n", "<leader>fg", ":Telescope live_grep<CR>")
 map("n", "<leader>fG", ":Telescope grep_string<CR>")
-map("n", "<leader>fo", ":Telescope file_browser<CR>")
+map("n", "<leader>fo", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>")
 map("n", "<leader>ft", ":Telescope builtin<CR>")
 map("n", "<leader>fa", ":Telescope aerial<CR>")
