@@ -9,3 +9,4 @@ require("config.lsp")
 require("config.debug")
 
 vim.cmd([[au BufRead,BufNewFile *.pcss setfiletype css]])
+vim.cmd([[au BufRead,BufNewFile *.tsx setfiletype typescriptreact]])

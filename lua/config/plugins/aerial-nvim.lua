@@ -4,7 +4,8 @@ if not present then
 	return
 end
 
-vim.g.aerial = {
+aerial.setup({
+
 	-- Priority list of preferred backends for aerial
 	backends = { "lsp", "treesitter", "markdown" },
 
@@ -16,15 +17,15 @@ vim.g.aerial = {
 	-- options will open the window in the other direction *if* there is a
 	-- different buffer in the way of the preferred direction
 	default_direction = "prefer_left",
-}
 
-aerial.register_attach_cb(function(bufnr)
-	-- Toggle the aerial window with <leader>a
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>xa", "<cmd>AerialToggle<CR>", {})
-	-- Jump forwards/backwards 
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '[a', '<cmd>AerialPrev<CR>', {})
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', ']a', '<cmd>AerialNext<CR>', {})
-	-- Jump up the tree
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
-end)
+	on_attach = function(bufnr)
+		-- Toggle the aerial window with <leader>a
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>xa", "<cmd>AerialToggle<CR>", {})
+		-- Jump forwards/backwards
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "[a", "<cmd>AerialPrev<CR>", {})
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "]a", "<cmd>AerialNext<CR>", {})
+		-- Jump up the tree
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "[[", "<cmd>AerialPrevUp<CR>", {})
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "]]", "<cmd>AerialNextUp<CR>", {})
+	end,
+})

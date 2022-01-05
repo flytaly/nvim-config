@@ -17,6 +17,9 @@ local on_attach = function(client, bufnr)
 
 	if presentAerial then
 		aerial.on_attach(client, bufnr)
+		-- nvim_lsp.vimls.setup({
+		-- 	on_attach = aerial.on_attach,
+		-- })
 	end
 
 	-- if client.resolved_capabilities.document_formatting then
