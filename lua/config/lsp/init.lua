@@ -3,7 +3,6 @@ if not present then
 	return
 end
 
-
 local present_lsp_installer, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
 if not present_lsp_installer then
 	return
@@ -76,18 +75,10 @@ local servers = {
 	html = {},
 	tailwindcss = {},
 	yamlls = {},
-	-- emmet_ls = {},
+	-- emmet_ls = {}, -- doesn't work in JSX so use fork instead
 	stylelint_lsp = {
 		root_dir = nvim_lsp.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
-		filetypes = {
-			"css",
-			-- "javascriptreact",
-			-- "javascript.jsx",
-			-- "typescriptreact",
-			-- "typescript.tsx",
-			-- "vue",
-			-- "svelte",
-		},
+		filetypes = { "css" },
 		on_attach = function(client)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false
@@ -120,3 +111,4 @@ for serverName, config in pairs(servers) do
 end
 
 require("config.lsp.servers.null_ls").setup(on_attach)
+require("config.lsp.servers.ls_emmet").setup(capabilities)
