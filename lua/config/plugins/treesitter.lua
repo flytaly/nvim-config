@@ -37,4 +37,32 @@ require("nvim-treesitter.configs").setup({
 	matchup = {
 		enable = true,
 	},
+
+	-- RRethy/nvim-treesitter-textsubjects
+	textsubjects = {
+		enable = true,
+		prev_selection = ",", -- (Optional) keymap to select the previous selection
+		keymaps = {
+			["."] = "textsubjects-smart",
+			[";"] = "textsubjects-container-outer",
+		},
+	},
+
+	-- nvim-treesitter/nvim-treesitter-textobjects
+	textobjects = {
+		select = {
+			enable = true,
+
+			-- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = true,
+
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			},
+		},
+	},
 })

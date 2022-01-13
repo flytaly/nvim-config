@@ -191,7 +191,6 @@ return require("packer").startup(function(use)
 
 	use({ "weilbith/nvim-code-action-menu" })
 
-
 	---- Completion and Snippets
 	use("onsails/lspkind-nvim")
 	use({
@@ -265,6 +264,17 @@ return require("packer").startup(function(use)
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
 
 	use({ "nanotee/sqls.nvim", ft = "sql" })
+
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup({})
+			require("pretty-fold.preview").setup_keybinding()
+		end,
+	})
+
+	use({ "RRethy/nvim-treesitter-textsubjects" })
+	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
