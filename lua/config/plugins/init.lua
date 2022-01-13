@@ -6,7 +6,7 @@ return require("packer").startup(function(use)
 		"kana/vim-textobj-entire",
 		requires = { { "kana/vim-textobj-user" } }, -- create your own text objects
 	}) -- select entire buffer
-	use("vim-scripts/restore_view.vim")
+	-- use("vim-scripts/restore_view.vim")
 	use("nvim-lua/plenary.nvim") -- useful lua functions
 	use("unblevable/quick-scope") -- highlight unique chars
 	use("nvim-lua/popup.nvim")
@@ -154,7 +154,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
+	-- use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
 
 	use({ -- a code outline window for skimming and quick navigation
 		"stevearc/aerial.nvim",
@@ -181,7 +181,9 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		run = function()
+			vim.cmd([[TSUpdate]])
+		end,
 		config = function()
 			require("config.plugins.treesitter")
 		end,
@@ -189,27 +191,43 @@ return require("packer").startup(function(use)
 
 	use({ "weilbith/nvim-code-action-menu" })
 
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use({
-		"hrsh7th/vim-vsnip",
-		config = function()
-			require("config.plugins.vim-vsnip")
-		end,
-	})
-	use("hrsh7th/vim-vsnip-integ")
-	use("hrsh7th/cmp-vsnip")
+
+	---- Completion and Snippets
+	use("onsails/lspkind-nvim")
 	use({
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("config.plugins.nvim-cmp")
 		end,
 	})
-	use("fivethree-team/vscode-svelte-snippets")
-	use("rafamadriz/friendly-snippets")
-	use("andys8/vscode-jest-snippets")
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-cmdline" })
+	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	use({
+		"L3MON4D3/LuaSnip",
+		requires = {
+			"rafamadriz/friendly-snippets",
+			"fivethree-team/vscode-svelte-snippets",
+			{
+				"dsznajder/vscode-es7-javascript-react-snippets",
+				run = "yarn install --frozen-lockfile && yarn compile",
+			},
+		},
+		config = function()
+			require("config.plugins.snippets")
+		end,
+	})
+
+	use({
+		"windwp/nvim-autopairs",
+		after = "nvim-cmp",
+		config = function()
+			require("nvim-autopairs").setup()
+		end,
+	})
 
 	-- debug
 	use("mfussenegger/nvim-dap")
@@ -245,6 +263,8 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
+
+	use({ "nanotee/sqls.nvim", ft = "sql" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

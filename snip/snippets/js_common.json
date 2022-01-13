@@ -1,0 +1,7 @@
+{
+  "snippet": {
+    "prefix": ["lg"],
+    "body": ["console.log($1$TM_SELECTED_TEXT)"],
+    "description": "A console.log statement"
+  }
+}

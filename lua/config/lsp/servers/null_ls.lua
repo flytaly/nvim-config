@@ -25,8 +25,8 @@ local sources = {
 	-- b.diagnostics.markdownlint,
 	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 	b.diagnostics.tsc,
-	b.code_actions.gitsigns,
-	b.code_actions.gitrebase,
+	b.code_actions.gitsigns.with({ disabled_filetypes = { "sql" } }),
+	b.code_actions.gitrebase.with({ disabled_filetypes = { "sql" } }),
 	b.hover.dictionary,
 }
 

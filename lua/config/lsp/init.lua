@@ -1,6 +1,14 @@
-local lsp_installer_servers = require("nvim-lsp-installer.servers")
+local present, nvim_lsp = pcall(require, "lspconfig")
+if not present then
+	return
+end
 
-local nvim_lsp = require("lspconfig")
+
+local present_lsp_installer, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
+if not present_lsp_installer then
+	return
+end
+
 local remaps = require("config.lsp.remaps")
 local presentCmpNvimLsp, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")
 local presentLspStatus, lspStatus = pcall(require, "lsp-status")
@@ -47,6 +55,20 @@ local servers = {
 	dockerls = {},
 	graphql = {},
 	jsonls = {},
+	bashls = {},
+	diagnosticls = {},
+	sqls = {
+		on_attach = function(client, bufnr)
+			local ok, sqls = pcall(require, "sqls")
+			if ok then
+				client.resolved_capabilities.execute_command = true
+				client.commands = sqls.commands
+				sqls.setup({ picker = "telescope" })
+			end
+			on_attach = on_attach(client, bufnr)
+		end,
+	},
+	-- sqlls = {},
 	rust_analyzer = {},
 	sumneko_lua = require("config.lsp.servers.sumneko_lua")(),
 	tsserver = require("config.lsp.servers.tsserver")(on_attach),
@@ -54,7 +76,7 @@ local servers = {
 	html = {},
 	tailwindcss = {},
 	yamlls = {},
-	emmet_ls = {},
+	-- emmet_ls = {},
 	stylelint_lsp = {
 		root_dir = nvim_lsp.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
 		filetypes = {

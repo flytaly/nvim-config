@@ -17,6 +17,6 @@ opt.splitright = true -- splits to the right
 opt.splitbelow = true -- splits below
 opt.updatetime = 300
 opt.undofile = true -- persists undo tree
-opt.foldmethod = "syntax"
-opt.foldlevel = 5
-
+opt.foldlevel = 10
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"

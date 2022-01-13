@@ -4,6 +4,8 @@ require("nvim-treesitter.configs").setup({
 		"comment",
 		"cpp",
 		"css",
+		"fish",
+		"glsl",
 		"go",
 		"html",
 		"java",
@@ -11,8 +13,9 @@ require("nvim-treesitter.configs").setup({
 		"jsdoc",
 		"json",
 		"jsonc",
-		"markdown",
 		"lua",
+		"markdown",
+		"prisma",
 		"python",
 		"query",
 		"rst",
@@ -22,9 +25,16 @@ require("nvim-treesitter.configs").setup({
 		"typescript",
 		"vim",
 	},
+
 	-- JoosepAlviste/nvim-ts-context-commentstring
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
+	},
+	highlight = {
+		enable = true,
+	},
+	matchup = {
+		enable = true,
 	},
 })
