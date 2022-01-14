@@ -94,6 +94,7 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
+	use("JoosepAlviste/palenightfall.nvim")
 
 	use({
 		"norcalli/nvim-colorizer.lua",
