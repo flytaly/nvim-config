@@ -42,6 +42,8 @@ if presentCmpNvimLsp then
 		capabilities,
 		cmpNvimLsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	)
+
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
 end
 
 local default_lsp_config = {
@@ -53,7 +55,7 @@ local servers = {
 	cssls = require("config.lsp.servers.cssls")(),
 	dockerls = {},
 	graphql = {},
-	jsonls = {},
+	jsonls = require("config.lsp.servers.jsonls")(),
 	bashls = {},
 	diagnosticls = {},
 	sqls = {

@@ -12,6 +12,6 @@ luasnip.config.set_config({
 require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snip" })
 require("luasnip.loaders.from_vscode").lazy_load()
 
-luasnip.filetype_extend("javascriptreact", { "html" })
-luasnip.filetype_extend("typescriptreact", { "html" })
+-- luasnip.filetype_extend("javascriptreact", { "html" })
+-- luasnip.filetype_extend("typescriptreact", { "html" })
 luasnip.filetype_extend("all", { "_" })
