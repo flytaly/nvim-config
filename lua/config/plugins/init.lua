@@ -86,6 +86,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("config.plugins.toggleterm")
+		end,
+	})
+
 	-- consistent navigation between vim and terminal splits
 	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" })
 

@@ -20,3 +20,4 @@ opt.undofile = true -- persists undo tree
 opt.foldlevel = 10
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.shell = "fish"
