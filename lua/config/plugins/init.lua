@@ -26,6 +26,13 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"sidebar-nvim/sidebar.nvim",
+		config = function()
+			require("config.plugins.sidebar")
+		end,
+	})
+
+	use({
 		"sindrets/diffview.nvim",
 		config = function()
 			require("config.plugins.diffview")
