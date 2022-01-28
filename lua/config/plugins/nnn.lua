@@ -16,6 +16,6 @@ require("nnn").setup({
 
 -- " Set custom mappings
 -- " nnoremap <silent> <leader>nn :NnnPicker<CR>
-map("n", "<leader>ne", ":NnnExplorer<CR>", { silent = true })
+map("n", "<leader>ne", ":NnnExplorer %:p:h<CR>", { silent = true })
 -- -- " Start n³ in the current file's directory
 map("n", "<leader>nn", ":NnnPicker %:p:h<CR>")
