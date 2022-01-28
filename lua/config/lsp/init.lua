@@ -76,6 +76,7 @@ local servers = {
 	svelte = {},
 	html = {},
 	tailwindcss = {},
+	prismals = {},
 	yamlls = {},
 	-- emmet_ls = {}, -- doesn't work in JSX so use fork instead
 	stylelint_lsp = {

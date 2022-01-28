@@ -10,6 +10,7 @@ g.did_load_filetypes = 0
 
 -- vim.cmd([[set termguicolors]])
 vim.cmd([[au BufRead,BufNewFile *.pcss setfiletype css]])
+vim.cmd([[au BufRead,BufNewFile *.prisma setfiletype prisma]])
 
 require("config.utils")
 require("config.mapping")
