@@ -21,6 +21,9 @@ telescope.setup({
 		file_browser = {
 			theme = "ivy",
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown(),
+		},
 	},
 	defaults = {
 		mappings = {
@@ -41,6 +44,7 @@ telescope.setup({
 
 telescope.load_extension("aerial")
 telescope.load_extension("file_browser")
+telescope.load_extension("ui-select")
 
 map("n", "<leader><space>", ":Telescope git_files<CR>")
 map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>")

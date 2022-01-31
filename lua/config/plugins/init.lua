@@ -68,6 +68,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
+
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
