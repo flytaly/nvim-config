@@ -5,7 +5,7 @@ if not present then
 	return
 end
 if presentLspKind then
-	lspKind.init()
+	lspKind.init({})
 end
 
 local has_words_before = function()
