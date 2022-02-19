@@ -7,7 +7,6 @@ g.mapleader = " "
 g.do_filetype_lua = 1
 g.did_load_filetypes = 0
 
-
 -- vim.cmd([[set termguicolors]])
 vim.cmd([[au BufRead,BufNewFile *.pcss setfiletype css]])
 vim.cmd([[au BufRead,BufNewFile *.prisma setfiletype prisma]])

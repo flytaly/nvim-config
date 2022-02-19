@@ -12,6 +12,19 @@
           "svelte"
         ],
         "path": "./snippets/js_common.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./snippets/typescriptreact.json"
+      },
+      {
+        "language": [
+          "javascriptreact",
+          "typescriptreact"
+        ],
+        "path": "./snippets/javascriptreact.json"
       }
     ]
   }
