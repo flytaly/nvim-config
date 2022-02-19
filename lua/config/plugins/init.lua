@@ -138,7 +138,12 @@ return require("packer").startup(function(use)
 
 	-------------------------
 	------- Programming utils
-	use("sheerun/vim-polyglot")
+	use({
+		"sheerun/vim-polyglot",
+		-- Disable updating due to the issue
+		-- https://github.com/sheerun/vim-polyglot/issues/779
+		commit = "2c5af8f89d3e61e04e761c07a1f043b0f35203c6",
+	})
 	-- use 'evanleck/vim-svelte'
 	use({
 		"leafOfTree/vim-svelte-plugin",
