@@ -11,6 +11,14 @@ g.did_load_filetypes = 0
 vim.cmd([[au BufRead,BufNewFile *.pcss setfiletype css]])
 vim.cmd([[au BufRead,BufNewFile *.prisma setfiletype prisma]])
 
+vim.cmd([[
+  " highlights yanked text
+  augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+  augroup END
+]])
+
 require("config.utils")
 require("config.mapping")
 require("config.options")
