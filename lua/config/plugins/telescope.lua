@@ -3,6 +3,29 @@ local telescope_actions = require("telescope.actions.set")
 local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
 
+-- https://www.reddit.com/r/neovim/comments/t5qizd/awesome_telescope_nvimtree_mapping/
+local open_in_nvim_tree = function(prompt_bufnr)
+	local action_state = require("telescope.actions.state")
+	local Path = require("plenary.path")
+	local actions = require("telescope.actions")
+
+	local entry = action_state.get_selected_entry()[1]
+	local entry_path = Path:new(entry):parent():absolute()
+	actions._close(prompt_bufnr, true)
+	entry_path = Path:new(entry):parent():absolute()
+	entry_path = entry_path:gsub("\\", "\\\\")
+
+	vim.cmd("NvimTreeClose")
+	vim.cmd("NvimTreeOpen " .. entry_path)
+
+	file_name = nil
+	for s in string.gmatch(entry, "[^/]+") do
+		file_name = s
+	end
+
+	vim.cmd("/" .. file_name)
+end
+
 -- https://github.com/nvim-telescope/telescope.nvim/issues/559
 local fixfolds = {
 	hidden = true,
@@ -27,8 +50,14 @@ telescope.setup({
 	},
 	defaults = {
 		mappings = {
-			i = { ["<c-a>"] = trouble.open_with_trouble },
-			n = { ["<c-a>"] = trouble.open_with_trouble },
+			i = {
+				["<c-a>"] = trouble.open_with_trouble,
+				["<c-s>"] = open_in_nvim_tree,
+			},
+			n = {
+				["<c-a>"] = trouble.open_with_trouble,
+				["<c-s>"] = open_in_nvim_tree,
+			},
 		},
 	},
 	pickers = {
