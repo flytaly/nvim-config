@@ -1,7 +1,95 @@
 {
-  "snippet": {
+  "console.log": {
     "prefix": ["lg"],
     "body": ["console.log($1$TM_SELECTED_TEXT)"],
     "description": "A console.log statement"
+  },
+  "afterAll": {
+    "body": "afterAll(() => {\n\t$0\n});",
+    "description": "afterAll function is called once after all specs",
+    "prefix": "afterAll"
+  },
+  "afterEach": {
+    "body": "afterEach(() => {\n\t$0\n});",
+    "description": "afterEach function is called once after each spec",
+    "prefix": "afterEach"
+  },
+  "beforeAll": {
+    "body": "beforeAll(() => {\n\t$0\n});",
+    "description": "beforeAll function is called once before all specs",
+    "prefix": "beforeAll"
+  },
+  "beforeEach": {
+    "body": "beforeEach(() => {\n\t$0\n});",
+    "description": "beforeEach function is called once before each spec",
+    "prefix": "beforeEach"
+  },
+  "describe": {
+    "body": "describe('${1:Name of the group}', () => {\n\t$0\n});",
+    "description": "creates a describe block",
+    "prefix": "desc"
+  },
+  "describe.each": {
+    "body": [
+      "describe.each([${1:[1, 2], [2, 4]}])(",
+      "\t'${2:double(%d)}',",
+      "\t(${3:input, expected}) => {",
+      "\t\ttest(`returns \\${expected}`, () => {",
+      "\t\t\t${4:expect(double(input)).toBe(expected);}",
+      "\t\t});",
+      "\t}",
+      ");"
+    ],
+    "description": "creates a describe block with different test data sets",
+    "prefix": "desce"
+  },
+  "expect": {
+    "body": "expect($0)",
+    "description": "expect actual value",
+    "prefix": "exp"
+  },
+  "it": {
+    "body": "it('${1:should }', () => {\n\t$0\n});",
+    "description": "creates an it block",
+    "prefix": "it"
+  },
+  "it.each": {
+    "body": [
+      "it.each([${1:[1, 2], [2, 4]}])(",
+      "\t'${2:double(%d)}',",
+      "\t(${3:input, expected}) => {",
+      "\t\t${0:expect(double(input)).toBe(expected);}",
+      "\t}",
+      ");"
+    ],
+    "description": "creates an it block with different test data sets",
+    "prefix": "ite"
+  },
+  "it:async": {
+    "body": "it('${1:should }', async () => {\n\t$0\n});",
+    "description": "creates an it block with async callback function",
+    "prefix": "ita"
+  },
+  "test": {
+    "body": "test('${1:should }', () => {\n\t$0\n});",
+    "description": "creates a test block",
+    "prefix": "test"
+  },
+  "test.each": {
+    "body": [
+      "test.each([${1:[1, 2], [2, 4]}])(",
+      "\t'${2:double(%d)}',",
+      "\t(${3:input, expected}) => {",
+      "\t\t${0:expect(double(input)).toBe(expected);}",
+      "\t}",
+      ");"
+    ],
+    "description": "creates an test block with different test data sets",
+    "prefix": "teste"
+  },
+  "test:async": {
+    "body": "test('${1:should }', async () => {\n\t$0\n});",
+    "description": "creates an test block with async callback function",
+    "prefix": "testa"
   }
 }
