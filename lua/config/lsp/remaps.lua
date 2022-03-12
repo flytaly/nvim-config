@@ -22,9 +22,9 @@ local function set_default_keymaps(_, bufnr)
 	keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	-- use Trouble for references
 	-- keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap("n", "g[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	keymap("n", "g]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-	keymap("n", "gD", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+	keymap("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	keymap("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	keymap("n", "<leader>gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
