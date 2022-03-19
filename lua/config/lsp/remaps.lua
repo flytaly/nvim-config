@@ -29,7 +29,7 @@ local function set_default_keymaps(_, bufnr)
 	keymap("n", "<leader>gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	keymap("n", "<leader>K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 	keymap("n", "<leader>fls", "<cmd>Telescope lsp_workspace_symbols<CR>", opts)
 end
