@@ -145,6 +145,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"stevearc/dressing.nvim",
+		config = function()
+			require("config.plugins.nvim-dressing")
+		end,
+	})
+
 	-------------------------
 	------- Programming utils
 	use({ "sheerun/vim-polyglot" })
