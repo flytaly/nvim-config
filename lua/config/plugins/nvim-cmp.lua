@@ -1,11 +1,18 @@
-local present, cmp = pcall(require, "cmp")
+local presentCmp, cmp = pcall(require, "cmp")
 local presentLspKind, lspKind = pcall(require, "lspkind")
+local presentLuaSnip, ls = pcall(require, "luasnip")
+local presentCmpNpm, npm = pcall(require, "cmp-npm")
 
-if not present then
+if not presentCmp or not presentLuaSnip then
 	return
 end
+
 if presentLspKind then
 	lspKind.init({})
+end
+
+if presentCmpNpm then
+	npm.setup({})
 end
 
 local has_words_before = function()
@@ -16,22 +23,23 @@ end
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			ls.lsp_expand(args.body)
 		end,
 	},
 	mapping = {
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
 		}),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		["<C-n>"] = function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif require("luasnip").expand_or_jumpable() then
+			elseif ls.expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
 			else
 				fallback()
@@ -40,19 +48,24 @@ cmp.setup({
 		["<C-p>"] = function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif require("luasnip").jumpable(-1) then
+			elseif ls.jumpable(-1) then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
 			else
 				fallback()
 			end
 		end,
 		["<C-j>"] = cmp.mapping(function(fallback)
-			if require("luasnip").expand_or_jumpable() then
-				require("luasnip").expand_or_jump()
+			if ls.expand_or_jumpable() then
+				ls.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
 			else
 				fallback()
+			end
+		end, { "i", "s" }),
+		["<C-k>"] = cmp.mapping(function(fallback)
+			if ls.jumpable(-1) then
+				ls.jump(-1)
 			end
 		end, { "i", "s" }),
 	},
@@ -75,11 +88,16 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp", max_item_count = 20 },
+		{ name = "fish" },
+		{ name = "npm", keyword_length = 4 },
 		{ name = "luasnip", max_item_count = 10 },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-		{ name = "buffer", keyword_length = 3, max_item_count = 10 },
+		{ name = "buffer", keyword_length = 4, max_item_count = 10 },
 	},
+	experimental = {
+		ghost_text = true
+	}
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

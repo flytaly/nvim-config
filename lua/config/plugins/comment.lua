@@ -1,7 +1,13 @@
 -- Setup numToStr/Comment.nvim to work with treesitter and "nvim-ts-context-commentstring"
 -- to support svelte files that contain multiple languages.
 
-require("Comment").setup({
+local ok, Comment = pcall(require, "Comment")
+
+if not ok then
+	return
+end
+
+Comment.setup({
 	pre_hook = function(ctx)
 		local U = require("Comment.utils")
 

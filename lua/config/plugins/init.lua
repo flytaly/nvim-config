@@ -240,6 +240,8 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-cmdline" })
 	use({ "hrsh7th/cmp-nvim-lua" })
 	use({ "saadparwaiz1/cmp_luasnip" })
+	use({ "David-Kunz/cmp-npm", requires = { "nvim-lua/plenary.nvim" } })
+	use({ "mtoohey31/cmp-fish", ft = "fish" })
 	use({
 		"L3MON4D3/LuaSnip",
 		requires = {
