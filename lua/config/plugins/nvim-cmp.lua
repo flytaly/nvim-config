@@ -36,15 +36,17 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		["<C-n>"] = function(fallback)
+		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif ls.expand_or_jumpable() then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+			elseif ls.expand_or_locally_jumpable() then
+				ls.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
 			else
 				fallback()
 			end
-		end,
+		end, { "i", "s" }),
 		["<C-p>"] = function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -63,11 +65,16 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-k>"] = cmp.mapping(function(fallback)
+		["<C-k>"] = cmp.mapping(function()
 			if ls.jumpable(-1) then
 				ls.jump(-1)
 			end
-		end, { "i", "s" }),
+		end, { "i" }),
+		["<C-l>"] = cmp.mapping(function()
+			if ls.choice_active() then
+				ls.change_choice(1)
+			end
+		end, { "i" }),
 	},
 	formatting = {
 		format = function(entry, vim_item)
@@ -96,8 +103,8 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 4, max_item_count = 10 },
 	},
 	experimental = {
-		ghost_text = true
-	}
+		ghost_text = true,
+	},
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

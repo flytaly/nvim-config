@@ -152,6 +152,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"rcarriga/nvim-notify",
+		config = function()
+			vim.notify = require("notify")
+		end,
+	})
+
 	-------------------------
 	------- Programming utils
 	use({ "sheerun/vim-polyglot" })
