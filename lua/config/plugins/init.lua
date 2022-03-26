@@ -1,7 +1,13 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd([[packadd packer.nvim]])
 
-return require("packer").startup(function(use)
+local packer_present, packer = pcall(require, "packer")
+if not packer_present then
+	print("packer isn't installed")
+	return
+end
+
+return packer.startup(function(use)
 	use({
 		"kana/vim-textobj-entire",
 		requires = { { "kana/vim-textobj-user" } }, -- create your own text objects
@@ -55,9 +61,9 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"nvim-lualine/lualine.nvim",
+		"feline-nvim/feline.nvim",
 		config = function()
-			require("config.plugins.lualine")
+			require("config.plugins.feline-nvim")
 		end,
 	})
 
