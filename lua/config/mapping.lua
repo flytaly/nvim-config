@@ -21,5 +21,15 @@ map("n", "<A-q>", ":q!<CR>") -- close w/o saving
 
 map("n", "<C-t>n", ":tabnew<CR>")
 
+-- Move text up and down
+map("v", "<A-j>", ":m '>+1<CR>gv=gv")
+map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+
+-- Stay in indent mode
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+map("v", "p", '"_dP"') -- don't yank replaced text
+
 map("n", "]<space>", ":call append(line('.'), '')<CR>")
 map("n", "[<space>", ":call append(line('.')-1, '')<CR>")
