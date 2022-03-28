@@ -151,6 +151,14 @@ components.active[1] = {
 
 components.active[2] = {
 	{
+		provider = function()
+			if #vim.lsp.buf_get_clients() > 0 then
+				return require("lsp-status").status()
+			end
+			return ""
+		end,
+	},
+	{
 		provider = "diagnostic_errors",
 		hl = { fg = "red", bg = "bg" },
 	},

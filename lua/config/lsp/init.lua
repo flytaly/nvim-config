@@ -9,24 +9,28 @@ if not present_lsp_installer then
 end
 
 local remaps = require("config.lsp.remaps")
-local presentCmpNvimLsp, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")
-local presentLspStatus, lspStatus = pcall(require, "lsp-status")
-local presentAerial, aerial = pcall(require, "aerial")
+local present_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local present_lsp_status, lsp_status = pcall(require, "lsp-status")
+local present_aerial, aerial = pcall(require, "aerial")
+
+if present_lsp_status then
+	lsp_status.register_progress()
+	lsp_status.config({
+		diagnostics = false,
+	})
+end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
 	remaps.set_default_keymaps(client, bufnr)
 
-	if presentLspStatus then
-		lspStatus.on_attach(client, bufnr)
+	if present_lsp_status then
+		lsp_status.on_attach(client, bufnr)
 	end
 
-	if presentAerial then
+	if present_aerial then
 		aerial.on_attach(client, bufnr)
-		-- nvim_lsp.vimls.setup({
-		-- 	on_attach = aerial.on_attach,
-		-- })
 	end
 
 	-- if client.resolved_capabilities.document_formatting then
@@ -36,14 +40,22 @@ end
 
 local capabilities = {}
 
-if presentCmpNvimLsp then
+if present_cmp_nvim_lsp then
 	capabilities = vim.tbl_deep_extend(
 		"keep",
 		capabilities,
-		cmpNvimLsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+		cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	)
-
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
+end
+
+
+if present_lsp_status then
+	capabilities = vim.tbl_deep_extend(
+		"keep",
+		capabilities,
+		lsp_status.capabilities
+	)
 end
 
 local default_lsp_config = {

@@ -200,7 +200,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
+	use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
 
 	use({ -- a code outline window for skimming and quick navigation
 		"stevearc/aerial.nvim",
