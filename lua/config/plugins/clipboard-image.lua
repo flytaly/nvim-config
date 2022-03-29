@@ -1,4 +1,10 @@
 -- https://github.com/ekickx/clipboard-image.nvim
+--
+
+local ok, clipboard_image = pcall(require, "clipboard-image")
+if not ok then
+	return
+end
 
 local function getDirName()
 	local fname = vim.fn.expand("%")
@@ -13,7 +19,7 @@ local function getDirName()
 	end
 end
 
-require("clipboard-image").setup({
+clipboard_image.setup({
 	default = {
 		-- img_dir = "img",
 		img_dir = getDirName,

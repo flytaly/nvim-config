@@ -45,8 +45,8 @@ return function(on_attach)
 
 			ts_utils.setup({
 				eslint_bin = "eslint_d",
-				eslint_enable_diagnostics = false,
-				eslint_enable_code_actions = false,
+				eslint_enable_diagnostics = true,
+				eslint_enable_code_actions = true,
 				enable_formatting = true,
 				formatter = "prettier",
 			})

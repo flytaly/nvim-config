@@ -1,7 +1,15 @@
 ----- Telescope
+local ok, telescope = pcall(require, "telescope")
+if not ok then
+	return
+end
+
+local trouble_present, trouble = pcall(require, "trouble.providers.telescope")
+if not trouble_present then
+	return
+end
+
 local telescope_actions = require("telescope.actions.set")
-local trouble = require("trouble.providers.telescope")
-local telescope = require("telescope")
 
 -- https://www.reddit.com/r/neovim/comments/t5qizd/awesome_telescope_nvimtree_mapping/
 local open_in_nvim_tree = function(prompt_bufnr)
