@@ -257,8 +257,11 @@ return packer.startup(function(use)
 			require("config.plugins.treesitter")
 		end,
 	})
+	use("nvim-treesitter/playground")
 	use({ "RRethy/nvim-treesitter-textsubjects" })
 	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
+
+	use({ "p00f/nvim-ts-rainbow" })
 
 	use({ "weilbith/nvim-code-action-menu" })
 
