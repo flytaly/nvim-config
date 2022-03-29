@@ -63,7 +63,7 @@ return packer.startup(function(use)
 	use({
 		"feline-nvim/feline.nvim",
 		config = function()
-			require("config.plugins.feline-nvim")
+			require("config.plugins.statusline.feline")
 		end,
 	})
 

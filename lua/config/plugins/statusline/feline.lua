@@ -1,73 +1,15 @@
-local vi_mode_utils = require("feline.providers.vi_mode")
-
-local function fromhl(hl)
-	local result = {}
-	local list = vim.api.nvim_get_hl_by_name(hl, true)
-	for k, v in pairs(list) do
-		local name = k == "background" and "bg" or "fg"
-		result[name] = string.format("#%06x", v)
-	end
-	return result
+local present, feline = pcall(require, "feline")
+if not present then
+	return
 end
 
-local theme_colors = {
-	bg = fromhl("StatusLine").bg or "#16161D",
-	alt = fromhl("CursorLine").bg or "#363646",
-	fg = fromhl("StatusLine").fg or "#C8C093",
-	hint = fromhl("DiagnosticHint").bg or "#6A9589",
-	info = fromhl("DiagnosticInfo").bg or "#658594",
-	warn = fromhl("DiagnosticWarn").bg or "#FF9E3B",
-	err = fromhl("DiagnosticError").bg or "#E82424",
-	black = "#223249",
-	red = "#FF5D62",
-	green = "#98BB6C",
-	yellow = "#DCA561",
-	blue = "#7FB4CA",
-	magenta = "#B48EAD",
-	cyan = "#7AA89F",
-	white = "#DCD7BA",
-	violet = "#957FB8",
-	orange = "#DCA561",
-}
+local vi_mode_utils = require("feline.providers.vi_mode")
+local colors = require("config.plugins.statusline.feline-colors")
 
-local colors = theme_colors
-
-local vi_mode_colors = {
-	NORMAL = colors.green,
-	INSERT = colors.blue,
-	VISUAL = colors.violet,
-	OP = colors.green,
-	BLOCK = colors.blue,
-	REPLACE = colors.red,
-	["V-REPLACE"] = colors.red,
-	ENTER = colors.cyan,
-	MORE = colors.cyan,
-	SELECT = colors.orange,
-	COMMAND = colors.magenta,
-	SHELL = colors.green,
-	TERM = colors.blue,
-	NONE = colors.yellow,
-}
-
-local vi_mode_text = {
-	n = "NORMAL",
-	i = "INSERT",
-	v = "VISUAL",
-	[""] = "V-BLOCK",
-	V = "V-LINE",
-	c = "COMMAND",
-	no = "UNKNOWN",
-	s = "UNKNOWN",
-	S = "UNKNOWN",
-	ic = "UNKNOWN",
-	R = "REPLACE",
-	Rv = "UNKNOWN",
-	cv = "UNKWON",
-	ce = "UNKNOWN",
-	r = "REPLACE",
-	rm = "UNKNOWN",
-	t = "INSERT",
-}
+local function diagnostics(severity)
+	local count = vim.tbl_count(vim.diagnostic.get(0, { severity = severity }))
+	return count ~= 0 and tostring(count) or ""
+end
 
 local components = {
 	active = {},
@@ -77,7 +19,7 @@ local components = {
 components.active[1] = {
 	{
 		provider = function()
-			local current_text = " " .. vi_mode_text[vim.fn.mode()] .. " "
+			local current_text = " " .. vi_mode_utils.get_vim_mode() .. " "
 			return current_text
 		end,
 		hl = function()
@@ -89,7 +31,6 @@ components.active[1] = {
 			}
 		end,
 		right_sep = {
-			-- "slant_right",
 			str = "",
 			hl = function()
 				return {
@@ -159,27 +100,67 @@ components.active[2] = {
 		end,
 	},
 	{
-		provider = "diagnostic_errors",
-		hl = { fg = "red", bg = "bg" },
+		provider = function()
+			return diagnostics(vim.diagnostic.severity.ERROR)
+		end,
+		hl = { fg = "black", bg = "red" },
+		left_sep = {
+			str = "",
+			hl = {
+				fg = "red",
+				bg = "bg",
+			},
+			always_visible = true,
+		},
 	},
 	{
-		provider = "diagnostic_warnings",
-		hl = { fg = "yellow", bg = "bg" },
+		provider = function()
+			return diagnostics(vim.diagnostic.severity.WARN)
+		end,
+		hl = { fg = "black", bg = "yellow" },
+		left_sep = {
+			str = "",
+			hl = {
+				fg = "yellow",
+				bg = "red",
+			},
+			always_visible = true,
+		},
 	},
 	{
-		provider = "diagnostic_hints",
-		hl = { fg = "cyan", bg = "bg" },
+		provider = function()
+			return diagnostics(vim.diagnostic.severity.HINT)
+		end,
+		hl = { fg = "black", bg = "cyan" },
+		left_sep = {
+			str = "",
+			hl = {
+				fg = "cyan",
+				bg = "yellow",
+			},
+			always_visible = true,
+		},
 	},
 	{
-		provider = "diagnostic_info",
-		hl = { fg = "skyblue", bg = "bg" },
+		provider = function()
+			return diagnostics(vim.diagnostic.severity.INFO)
+		end,
+		hl = { fg = "black", bg = "skyblue" },
+		left_sep = {
+			str = "",
+			hl = {
+				fg = "skyblue",
+				bg = "cyan",
+			},
+			always_visible = true,
+		},
 	},
 	{
 		left_sep = {
-			str = "",
+			str = "",
 			hl = {
 				fg = "alt",
-				bg = "bg",
+				bg = "skyblue",
 			},
 			always_visible = true,
 		},
@@ -192,9 +173,23 @@ components.active[2] = {
 			style = "bold",
 		},
 		right_sep = {
-			str = " ",
+			str = "",
 			hl = {
 				fg = "NONE",
+				bg = "alt",
+			},
+		},
+	},
+	{
+		provider = "file_encoding",
+		hl = {
+			fg = "fg",
+			bg = "black",
+		},
+		left_sep = {
+			str = "",
+			hl = {
+				fg = "black",
 				bg = "alt",
 			},
 		},
@@ -254,8 +249,8 @@ components.inactive[1] = {
 	{},
 }
 
-require("feline").setup({
+feline.setup({
 	components = components,
-	vi_mode_colors = vi_mode_colors,
-	theme = theme_colors,
+	vi_mode_colors = colors.vi_mode_colors,
+	theme = colors.theme,
 })
