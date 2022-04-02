@@ -1,5 +1,8 @@
 --- MY REMAPING
 
+-- Leader
+vim.g.mapleader = " "
+
 --- CLIPBOARD
 -- copy to OS clipboard
 map("n", "<leader>y", '"+y')
@@ -21,6 +24,14 @@ map("n", "<A-q>", ":q!<CR>") -- close w/o saving
 
 map("n", "<C-t>n", ":tabnew<CR>")
 
+-- Naviagate buffers
+map("n", "<C-Right>", ":bnext<CR>")
+map("n", "<C-Left>", ":bprevious<CR>")
+
+
+map("n", "<S-l>", ":tabnext<CR>")
+map("n", "<S-h>", ":tabprevious<CR>")
+
 -- Move text up and down
 map("v", "<A-j>", ":m '>+1<CR>gv=gv")
 map("v", "<A-k>", ":m '<-2<CR>gv=gv")
@@ -33,3 +44,9 @@ map("v", "p", '"_dP"') -- don't yank replaced text
 
 map("n", "]<space>", ":call append(line('.'), '')<CR>")
 map("n", "[<space>", ":call append(line('.')-1, '')<CR>")
+
+
+map("n", "<leader>q", ":Bdelete<CR>")
+
+
+map("n", "<F3>", ":set list!<CR>")

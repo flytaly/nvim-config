@@ -11,9 +11,9 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 
 vim.cmd([[
   nnoremap <leader>dh :lua require'dap'.toggle_breakpoint()<CR>
-  nnoremap <S-k> :lua require'dap'.step_out()<CR>
-  nnoremap <S-l> :lua require'dap'.step_into()<CR>
-  nnoremap <S-j> :lua require'dap'.step_over()<CR>
+  " nnoremap <S-k> :lua require'dap'.step_out()<CR>
+  " nnoremap <S-l> :lua require'dap'.step_into()<CR>
+  " nnoremap <S-j> :lua require'dap'.step_over()<CR>
   nnoremap <leader>ds :lua require'dap'.stop()<CR>
   nnoremap <leader>dn :lua require'dap'.continue()<CR>
   nnoremap <leader>dk :lua require'dap'.up()<CR>

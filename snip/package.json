@@ -9,7 +9,8 @@
           "typescript",
           "typescriptreact",
           "vue",
-          "svelte"
+          "svelte",
+          "html"
         ],
         "path": "./snippets/js_common.json"
       },

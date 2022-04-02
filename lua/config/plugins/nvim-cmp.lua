@@ -1,17 +1,17 @@
 local presentCmp, cmp = pcall(require, "cmp")
-local presentLspKind, lspKind = pcall(require, "lspkind")
-local presentLuaSnip, ls = pcall(require, "luasnip")
-local presentCmpNpm, npm = pcall(require, "cmp-npm")
+local present_lsp_kind, lsp_kind = pcall(require, "lspkind")
+local present_lua_snip, ls = pcall(require, "luasnip")
+local present_cmp_npm, npm = pcall(require, "cmp-npm")
 
-if not presentCmp or not presentLuaSnip then
+if not presentCmp or not present_lua_snip then
 	return
 end
 
-if presentLspKind then
-	lspKind.init({})
+if present_lsp_kind then
+	lsp_kind.init({})
 end
 
-if presentCmpNpm then
+if present_cmp_npm then
 	npm.setup({})
 end
 
@@ -79,7 +79,7 @@ cmp.setup({
 	formatting = {
 		format = function(entry, vim_item)
 			-- fancy icons and a name of kind
-			vim_item.kind = lspKind.presets.default[vim_item.kind] .. " " .. vim_item.kind
+			vim_item.kind = lsp_kind.presets.default[vim_item.kind] .. " " .. vim_item.kind
 
 			-- set a name for each source
 			vim_item.menu = ({
@@ -115,8 +115,8 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 })
 
-local presentAutopairs, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-if not presentAutopairs then
+local present_autopairs, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not present_autopairs then
 	return
 end
 

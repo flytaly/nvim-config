@@ -41,6 +41,8 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("tpope/vim-fugitive")
 	use("machakann/vim-sandwich") -- vim surround alternative
+
+	use({ "mg979/vim-visual-multi"})
 	use({
 		"folke/which-key.nvim",
 		config = function()
@@ -74,6 +76,8 @@ return packer.startup(function(use)
 			require("config.plugins.vim-maximizer")
 		end,
 	})
+
+	use({ "https://github.com/moll/vim-bbye" })
 
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -300,7 +304,9 @@ return packer.startup(function(use)
 		"windwp/nvim-autopairs",
 		after = "nvim-cmp",
 		config = function()
-			require("nvim-autopairs").setup()
+			require("nvim-autopairs").setup({
+				fast_wrap = {},
+			})
 		end,
 	})
 
@@ -329,16 +335,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- markdown
-	use({
-		"ekickx/clipboard-image.nvim",
-		config = function()
-			require("config.plugins.clipboard-image")
-		end,
-	})
-
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
-
 	use({ "nanotee/sqls.nvim", ft = "sql" })
 
 	use({
@@ -354,6 +350,29 @@ return packer.startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			require("todo-comments").setup()
+		end,
+	})
+
+	-- markdown
+	use({
+		"ekickx/clipboard-image.nvim",
+		config = function()
+			require("config.plugins.clipboard-image")
+		end,
+	})
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && yarn install",
+		config = function()
+			require("config.plugins.markdown-preview")
+		end,
+	})
+
+	use({
+		"mickael-menu/zk-nvim",
+		config = function()
+			require("config.plugins.zk")
 		end,
 	})
 
