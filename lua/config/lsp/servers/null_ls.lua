@@ -20,14 +20,19 @@ local sources = {
 	b.formatting.stylua,
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,
-
+	b.completion.spell.with({ filetypes = { "markdown", "text" } }),
+	b.diagnostics.codespell,
+	-- b.diagnostics.cspell.with({ filetypes = { "markdown", "text" } }),
+	b.diagnostics.cspell.with({
+		disabled_filetypes = { "nvimtree", "lua" },
+	}),
 	b.diagnostics.write_good,
 	-- b.diagnostics.markdownlint,
 	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 	b.diagnostics.tsc,
 	b.code_actions.gitsigns.with({ disabled_filetypes = { "sql" } }),
 	b.code_actions.gitrebase.with({ disabled_filetypes = { "sql" } }),
-	b.hover.dictionary,
+	-- b.hover.dictionary,
 }
 
 local M = {}

@@ -42,7 +42,8 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("machakann/vim-sandwich") -- vim surround alternative
 
-	use({ "mg979/vim-visual-multi"})
+	use({ "mg979/vim-visual-multi" })
+
 	use({
 		"folke/which-key.nvim",
 		config = function()
@@ -203,6 +204,8 @@ return packer.startup(function(use)
 			vim.g.vim_svelte_plugin_use_typescript = 1
 		end,
 	})
+
+	use({ "fatih/vim-go" })
 
 	-- Comments
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })

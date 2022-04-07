@@ -21,3 +21,4 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.shell = "fish"
 opt.termguicolors = true
+opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"

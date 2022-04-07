@@ -22,7 +22,7 @@ wk.register({
 			u = "Update package on line",
 			d = "Delete package on line",
 			r = "Reinstall",
-			p = "Install a different package version"
+			p = "Install a different package version",
 		},
 	},
 	g = {
@@ -38,7 +38,7 @@ wk.register({
 		name = "LSP and TS",
 		a = "Code Action",
 		d = "Symbol Definition",
-		D = "Show Line Diagostic",
+		D = "Show Line Diagnostic",
 		r = "Symbol References",
 		R = "Rename Symbol",
 		["]"] = "Next Diagnostic",
@@ -89,8 +89,8 @@ wk.setup({
 	window = {
 		border = "none",
 		position = "bottom",
-		margin = { 0, 0, 0, 0 }, -- TRBL
-		padding = { 4, 2, 4, 2 }, -- TRBL
+		margin = { 0, 0, 0, 0 },
+		padding = { 4, 2, 4, 2 },
 	},
 	layout = {
 		height = {

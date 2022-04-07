@@ -27,6 +27,10 @@ return function()
 						fileMatch = { "now.json", "vercel.json" },
 						url = "https://json.schemastore.org/now.json",
 					},
+					{
+						fileMatch = { "cspell.json", ".cspell.json" },
+						url = "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-types/cspell.schema.json",
+					},
 				},
 			},
 		},

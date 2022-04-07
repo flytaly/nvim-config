@@ -28,7 +28,6 @@ map("n", "<C-t>n", ":tabnew<CR>")
 map("n", "<C-Right>", ":bnext<CR>")
 map("n", "<C-Left>", ":bprevious<CR>")
 
-
 map("n", "<S-l>", ":tabnext<CR>")
 map("n", "<S-h>", ":tabprevious<CR>")
 
@@ -45,8 +44,7 @@ map("v", "p", '"_dP"') -- don't yank replaced text
 map("n", "]<space>", ":call append(line('.'), '')<CR>")
 map("n", "[<space>", ":call append(line('.')-1, '')<CR>")
 
-
 map("n", "<leader>q", ":Bdelete<CR>")
 
-
-map("n", "<F3>", ":set list!<CR>")
+map("n", "<F7>", ":set list!<CR>")
+map("n", "<F8>", ':lua require("null-ls").toggle("cspell")<CR>')
