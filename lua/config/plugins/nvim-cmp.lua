@@ -20,6 +20,32 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local function select_next()
+	return function(fallback)
+		if cmp.visible() then
+			cmp.select_next_item()
+		elseif ls.expand_or_locally_jumpable() then
+			ls.expand_or_jump()
+		elseif has_words_before() then
+			cmp.complete()
+		else
+			fallback()
+		end
+	end
+end
+
+local function select_prev()
+	return function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif ls.jumpable(-1) then
+			vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+		else
+			fallback()
+		end
+	end
+end
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -36,26 +62,10 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		["<C-n>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif ls.expand_or_locally_jumpable() then
-				ls.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<C-p>"] = function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif ls.jumpable(-1) then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-			else
-				fallback()
-			end
-		end,
+		["<C-n>"] = cmp.mapping(select_next()),
+		["<Down>"] = cmp.mapping(select_next()),
+		["<C-p>"] = cmp.mapping(select_prev()),
+		["<Up>"] = cmp.mapping(select_prev()),
 		["<C-j>"] = cmp.mapping(function(fallback)
 			if ls.expand_or_jumpable() then
 				ls.expand_or_jump()
@@ -65,14 +75,18 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-k>"] = cmp.mapping(function()
+		["<C-k>"] = cmp.mapping(function(fallback)
 			if ls.jumpable(-1) then
 				ls.jump(-1)
+			else
+				fallback()
 			end
 		end, { "i" }),
-		["<C-l>"] = cmp.mapping(function()
+		["<C-l>"] = cmp.mapping(function(fallback)
 			if ls.choice_active() then
 				ls.change_choice(1)
+			else
+				fallback()
 			end
 		end, { "i" }),
 	},
