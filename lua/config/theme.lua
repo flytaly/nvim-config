@@ -6,7 +6,7 @@ vim.cmd([[hi QuickScopeSecondary guifg=#74CFD3 gui=underline ctermfg=81 cterm=un
 -- colorscheme
 vim.cmd("colorscheme default")
 
-local colorscheme = "kanagawa"
+local colorscheme = "tokyonight"
 
 local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not ok then

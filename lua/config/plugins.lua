@@ -154,6 +154,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("JoosepAlviste/palenightfall.nvim")
+	use("sainnhe/everforest")
 
 	use({
 		"norcalli/nvim-colorizer.lua",
@@ -168,7 +169,7 @@ return packer.startup(function(use)
 				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
 				css_fn = true,
 			}
-			require("colorizer").setup({ "svelte", "html", "css" }, conf)
+			require("colorizer").setup({ "svelte", "html", "css", "conf" }, conf)
 		end,
 	})
 
@@ -315,6 +316,14 @@ return packer.startup(function(use)
 
 	-- debug
 	use("mfussenegger/nvim-dap")
+	use("leoluz/nvim-dap-go")
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+		config = function()
+			require("dapui").setup()
+		end,
+	})
 	use("nvim-telescope/telescope-dap.nvim")
 	use({
 		"theHamsta/nvim-dap-virtual-text",
