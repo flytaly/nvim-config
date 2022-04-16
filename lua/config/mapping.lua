@@ -1,50 +1,50 @@
---- MY REMAPING
-
--- Leader
 vim.g.mapleader = " "
 
 --- CLIPBOARD
 -- copy to OS clipboard
-map("n", "<leader>y", '"+y')
-map("v", "<leader>y", '"+y')
-map("n", "<leader>y", '"+yy')
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>y", '"+yy')
 -- paste from OS clipboard
-map("n", "<leader>p", '"+p')
-map("n", "<leader>P", '"+P')
-map("v", "<leader>p", '"+p')
-map("v", "<leader>P", '"+P"`"`"')
+vim.keymap.set("n", "<leader>p", '"+p')
+vim.keymap.set("n", "<leader>P", '"+P')
+vim.keymap.set("v", "<leader>p", '"+p')
+vim.keymap.set("v", "<leader>P", '"+P"`"`"')
 -- delete to OS clipboard
-map("v", "<leader>d", '"+d')
+vim.keymap.set("v", "<leader>d", '"+d')
 
-map("n", "<C-e>", "<C-w>") -- remap <C-w> to split windows
-map("n", "<C-w>", ":x<CR>") -- save and close
-map("n", "<C-s>", ":w<CR>") -- save
-map("i", "<C-s>", "<Esc>:w<CR>a") -- save
-map("n", "<A-q>", ":q!<CR>") -- close w/o saving
+vim.keymap.set("v", "p", '"_dP"') -- don't yank replaced text
 
-map("n", "<C-t>n", ":tabnew<CR>")
+-- vim.keymap.set("n", "<C-e>", "<C-w>") -- remap <C-w> to split windows
+vim.keymap.set("n", "<C-x>", ":x<CR>") -- save and close
+vim.keymap.set("n", "<C-s>", ":w<CR>") -- save
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a") -- save
+vim.keymap.set("n", "<A-q>", ":q!<CR>") -- close w/o saving
 
--- Naviagate buffers
-map("n", "<C-Right>", ":bnext<CR>")
-map("n", "<C-Left>", ":bprevious<CR>")
+-- Navigate buffers
+vim.keymap.set("n", "<C-Right>", ":bnext<CR>")
+vim.keymap.set("n", "<C-Left>", ":bprevious<CR>")
 
-map("n", "<S-l>", ":tabnext<CR>")
-map("n", "<S-h>", ":tabprevious<CR>")
+-- Tabs
+vim.keymap.set("n", "<S-l>", ":tabnext<CR>")
+vim.keymap.set("n", "<S-h>", ":tabprevious<CR>")
+vim.keymap.set("n", "<C-t>n", ":tabnew<CR>")
 
 -- Move text up and down
-map("v", "<A-j>", ":m '>+1<CR>gv=gv")
-map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Stay in indent mode
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
-map("v", "p", '"_dP"') -- don't yank replaced text
+vim.keymap.set("n", "]<space>", ":call append(line('.'), '')<CR>")
+vim.keymap.set("n", "[<space>", ":call append(line('.')-1, '')<CR>")
 
-map("n", "]<space>", ":call append(line('.'), '')<CR>")
-map("n", "[<space>", ":call append(line('.')-1, '')<CR>")
+vim.keymap.set("n", "<leader>q", ":Bdelete<CR>")
 
-map("n", "<leader>q", ":Bdelete<CR>")
+vim.keymap.set("n", "<F7>", ":set list!<CR>")
 
-map("n", "<F7>", ":set list!<CR>")
-map("n", "<F8>", ':lua require("null-ls").toggle("cspell")<CR>')
+vim.keymap.set("n", "<F8>", function()
+	require("null-ls").toggle("cspell")
+end)

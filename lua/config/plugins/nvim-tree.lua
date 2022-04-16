@@ -5,5 +5,5 @@ end
 
 nvim_tree.setup({})
 
-map("n", "<leader>no", ":NvimTreeToggle<CR>")
-map("n", "<leader>nf", ":NvimTreeFindFile<CR>")
+vim.keymap.set("n", "<leader>no", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>")

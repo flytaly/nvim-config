@@ -1,5 +1,4 @@
 if not vim.g.vscode then
-	require("config.utils")
 	require("config.mapping")
 	require("config.filetype")
 	require("config.options")

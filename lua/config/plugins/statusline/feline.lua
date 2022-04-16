@@ -41,7 +41,7 @@ components.active[1] = {
 		},
 	},
 	{
-		provider = "file_info",
+		provider = { name = "file_info", opts = { type = "unique" } },
 		hl = {
 			fg = "white",
 			bg = "black",
@@ -166,7 +166,12 @@ components.active[2] = {
 		},
 	},
 	{
-		provider = "file_type",
+		provider = {
+			name = "file_type",
+			opts = {
+				case = "lowercase",
+			},
+		},
 		hl = {
 			fg = "fg",
 			bg = "alt",

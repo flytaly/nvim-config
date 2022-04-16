@@ -30,7 +30,7 @@ M.theme = {
 	white = "#DCD7BA",
 	violet = "#957FB8",
 	orange = "#DCA561",
-	skyblue = "#658594"
+	skyblue = "#658594",
 }
 
 local colors = M.theme

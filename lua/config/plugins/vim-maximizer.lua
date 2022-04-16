@@ -1,1 +1,1 @@
-map("n", "<leader>mm", ":MaximizerToggle!<CR>")
+vim.keymap.set("n", "<leader>mm", ":MaximizerToggle!<CR>")

@@ -24,6 +24,7 @@ local sources = {
 	b.diagnostics.codespell,
 	-- b.diagnostics.cspell.with({ filetypes = { "markdown", "text" } }),
 	b.diagnostics.cspell.with({
+		filetypes = {"markdown", "text"},
 		disabled_filetypes = { "nvimtree", "lua" },
 	}),
 	b.diagnostics.write_good,

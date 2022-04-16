@@ -2,4 +2,4 @@ require("sidebar-nvim").setup({
 	sections = { "git", "diagnostics", "symbols", "todos" },
 })
 
-map("n", "<leader>xs", ":SidebarNvimToggle<CR>")
+vim.keymap.set("n", "<leader>xs", ":SidebarNvimToggle<CR>")
