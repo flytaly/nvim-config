@@ -317,13 +317,7 @@ return packer.startup(function(use)
 	-- debug
 	use("mfussenegger/nvim-dap")
 	use("leoluz/nvim-dap-go")
-	use({
-		"rcarriga/nvim-dap-ui",
-		requires = { "mfussenegger/nvim-dap" },
-		config = function()
-			require("dapui").setup()
-		end,
-	})
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("nvim-telescope/telescope-dap.nvim")
 	use({
 		"theHamsta/nvim-dap-virtual-text",

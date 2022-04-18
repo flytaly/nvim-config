@@ -1,6 +1,5 @@
 --- David-Kunz/jester
-vim.cmd([[
-  nnoremap <leader>dd :lua require"jester".debug()<cr>
-  nnoremap <leader>d_ :lua require"jester".debug_last()<cr>
-  nnoremap <leader>dF :lua require"jester".debug_file()<cr>
-]])
+
+vim.keymap.set("n", "<leader>dd", function() require("jester").debug() end)
+vim.keymap.set("n", "<leader>d_", function() require("jester").debug_last() end)
+vim.keymap.set("n", "<leader>dF", function() require("jester").debug_file() end)

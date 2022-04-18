@@ -1,11 +1,15 @@
-local wk = require("which-key")
+local ok, wk = pcall(require, "which-key")
+
+if not ok then
+	return
+end
 
 wk.register({
 	f = {
 		name = "+Telescope",
 		["<space>"] = "Telescope git_files",
-		b = "Telescope current_buffer_fuzzy_find",
-		B = "Telescope list open buffers",
+		["/"] = "Telescope current_buffer_fuzzy_find",
+		b = "Telescope list open buffers",
 		f = "Telescope find files",
 		g = "Telescope live grep",
 		G = "Telescope grep string",
@@ -25,9 +29,43 @@ wk.register({
 			p = "Install a different package version",
 		},
 	},
+	c = {
+		a = "Code Actions",
+	},
 	g = {
 		name = "+LSP",
 		f = "Format Document",
+	},
+	x = {
+		name = "bars",
+		a = "Aerial toggle",
+		s = "Sidebar toggle",
+		x = "Trouble toggle",
+		w = "Trouble: workspace diagnostics",
+		d = "Trouble: document diagnostics",
+		q = "Trouble: quickfix",
+		l = "Trouble: loclist",
+	},
+	d = {
+		name = "debug",
+		n = "dap.continue()",
+		h = "dap.toggle_breakpoint()",
+		s = "dap.terminate()",
+		k = "dap.up()",
+		j = "dap.down()",
+		r = "dap: open REPL",
+		e = "dap.set_exception_breakpoints",
+		a = "dap: attach",
+		A = "dap: attach to remote",
+		i = "dap.ui.widgets: hover",
+		d = "jester.debug",
+		_ = "jester.debug_last",
+		F = "jester.debug_file",
+		t = "dap-go.debug_test",
+		["?"] = "dap.ui.widgets: scopes",
+		f = "Telescope dap frames",
+		c = "Telescope dap commands",
+		b = "Telescope dap list_breakpoints",
 	},
 }, {
 	prefix = "<leader>",
@@ -39,8 +77,8 @@ wk.register({
 		a = "Code Action",
 		d = "Symbol Definition",
 		D = "Show Line Diagnostic",
-		r = "Symbol References",
-		R = "Rename Symbol",
+		R = "Symbol References",
+		r = "Rename Symbol",
 		["]"] = "Next Diagnostic",
 		["["] = "Prev Diagnostic",
 		O = "TS: Organize Imports",
@@ -50,7 +88,7 @@ wk.register({
 })
 
 wk.register({
-	gc = "Comment linewise",
+	gc = "Comment",
 	gcc = "Comment line",
 	gb = "Comment blockwise",
 
@@ -62,6 +100,11 @@ wk.register({
 	sa = "Add Surrounding Character",
 	sd = "Remove Surrounding Character",
 	sr = "Replace Surrounding Character",
+
+	--
+	["<A-k>"] = "dap.step_out()",
+	["<A-l>"] = "dap.step_into()",
+	["<A-j>"] = "dap.step_over()",
 })
 
 wk.setup({
