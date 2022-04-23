@@ -224,6 +224,17 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer")
 
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = function()
+			require("refactoring").setup({})
+		end,
+	})
+
 	use({ -- show function signature when you type
 		"ray-x/lsp_signature.nvim",
 		config = function()

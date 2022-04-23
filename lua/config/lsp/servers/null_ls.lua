@@ -33,6 +33,8 @@ local sources = {
 	b.diagnostics.tsc,
 	b.code_actions.gitsigns.with({ disabled_filetypes = { "sql" } }),
 	b.code_actions.gitrebase.with({ disabled_filetypes = { "sql" } }),
+	b.code_actions.refactoring,
+	b.code_actions.eslint_d,
 	-- b.hover.dictionary,
 }
 
