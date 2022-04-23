@@ -3,6 +3,8 @@ if not ok then
 	return
 end
 
+vim.keymap.set("n", "<leader>mz", ":ZenMode<CR>")
+
 zen_mode.setup({
 	window = {
 		backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
@@ -15,9 +17,9 @@ zen_mode.setup({
 		-- by default, no options are changed for the Zen window
 		-- uncomment any of the options below, or add other vim.wo options you want to apply
 		options = {
-			-- signcolumn = "no", -- disable signcolumn
-			-- number = false, -- disable number column
-			-- relativenumber = false, -- disable relative numbers
+			signcolumn = "yes", -- disable signcolumn
+			number = true, -- disable number column
+			relativenumber = true, -- disable relative numbers
 			-- cursorline = false, -- disable cursorline
 			-- cursorcolumn = false, -- disable cursor column
 			-- foldcolumn = "0", -- disable fold column
@@ -41,7 +43,7 @@ zen_mode.setup({
 		-- - listen_on unix:/tmp/kitty
 		kitty = {
 			enabled = true,
-			font = "+0.5", -- font size increment
+			font = "+1", -- font size increment
 		},
 	},
 	-- callback where you can add custom code when the Zen window opens
