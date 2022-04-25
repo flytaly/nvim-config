@@ -173,6 +173,8 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use("lukas-reineke/indent-blankline.nvim")
+
 	use({
 		"folke/zen-mode.nvim",
 		config = function()

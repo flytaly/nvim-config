@@ -22,3 +22,11 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.shell = "fish"
 opt.termguicolors = true
 opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"
+opt.laststatus = 3
+
+-- Highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		require("vim.highlight").on_yank()
+	end,
+})

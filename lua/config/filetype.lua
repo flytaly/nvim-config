@@ -2,6 +2,15 @@
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
-vim.cmd([[au BufRead,BufNewFile *.pcss setfiletype css]])
-vim.cmd([[au BufRead,BufNewFile *.prisma setfiletype prisma]])
-vim.cmd([[au BufRead,BufNewFile *.txt setfiletype text]])
+local function setfiletype(pattern, filetype)
+	vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
+		pattern = pattern,
+		callback = function()
+			vim.bo.filetype = filetype
+		end,
+	})
+end
+
+setfiletype("*.pcss", "css")
+setfiletype("*.prisma", "prisma")
+
