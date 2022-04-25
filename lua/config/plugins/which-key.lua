@@ -35,6 +35,7 @@ wk.register({
 	g = {
 		name = "+LSP",
 		f = "Format Document",
+		s = "Toggle format on save"
 	},
 	x = {
 		name = "bars",
