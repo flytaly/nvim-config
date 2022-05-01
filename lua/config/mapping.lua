@@ -15,8 +15,7 @@ vim.keymap.set("v", "<leader>d", '"+d')
 
 vim.keymap.set("v", "p", '"_dP"') -- don't yank replaced text
 
--- vim.keymap.set("n", "<C-e>", "<C-w>") -- remap <C-w> to split windows
-vim.keymap.set("n", "<C-x>", ":x<CR>") -- save and close
+vim.keymap.set("n", "<C-e>", ":x<CR>") -- save and close
 vim.keymap.set("n", "<C-s>", ":w<CR>") -- save
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a") -- save
 vim.keymap.set("n", "<A-q>", ":q!<CR>") -- close w/o saving
