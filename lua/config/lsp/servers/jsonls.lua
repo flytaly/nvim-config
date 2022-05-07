@@ -34,5 +34,8 @@ return function()
 				},
 			},
 		},
+		init_options = {
+			provideFormatter = false,
+		},
 	}
 end

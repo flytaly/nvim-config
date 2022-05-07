@@ -26,7 +26,11 @@ local get_servers = function(on_attach)
 		sumneko_lua = require("config.lsp.servers.sumneko_lua")(),
 		tsserver = require("config.lsp.servers.tsserver")(on_attach),
 		svelte = {},
-		html = {},
+		html = {
+			init_options = {
+				provideFormatter = false,
+			},
+		},
 		tailwindcss = {},
 		prismals = {},
 		yamlls = {},

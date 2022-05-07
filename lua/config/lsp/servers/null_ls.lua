@@ -20,8 +20,8 @@ local sources = {
 	b.formatting.stylua,
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,
-	b.completion.spell.with({ filetypes = { "markdown", "text" } }),
-	b.diagnostics.codespell,
+	-- b.completion.spell.with({ filetypes = { "markdown", "text" } }),
+	-- b.diagnostics.codespell,
 	-- b.diagnostics.cspell.with({ filetypes = { "markdown", "text" } }),
 	b.diagnostics.cspell.with({
 		filetypes = { "markdown", "text" },
