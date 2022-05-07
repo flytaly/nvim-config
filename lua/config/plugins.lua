@@ -237,13 +237,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({ -- show function signature when you type
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("config.plugins.lsp_signature")
-		end,
-	})
-
 	use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
 
 	use({ -- a code outline window for skimming and quick navigation
@@ -287,20 +280,23 @@ return packer.startup(function(use)
 	use({ "weilbith/nvim-code-action-menu" })
 
 	---- Completion and Snippets
-	use("onsails/lspkind-nvim")
 	use({
 		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-document-symbol",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"saadparwaiz1/cmp_luasnip",
+			"David-Kunz/cmp-npm",
+		},
 		config = function()
 			require("config.plugins.nvim-cmp")
 		end,
 	})
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-buffer" })
-	use({ "hrsh7th/cmp-path" })
-	use({ "hrsh7th/cmp-cmdline" })
-	use({ "hrsh7th/cmp-nvim-lua" })
-	use({ "saadparwaiz1/cmp_luasnip" })
-	use({ "David-Kunz/cmp-npm", requires = { "nvim-lua/plenary.nvim" } })
 	use({ "mtoohey31/cmp-fish", ft = "fish" })
 	use({
 		"L3MON4D3/LuaSnip",
@@ -358,9 +354,10 @@ return packer.startup(function(use)
 
 	use({
 		"anuvyklack/pretty-fold.nvim",
+		-- requires = "anuvyklack/nvim-keymap-amend", -- only for preview
 		config = function()
-			require("pretty-fold").setup({})
-			require("pretty-fold.preview").setup_keybinding()
+			require("pretty-fold").setup()
+			-- require("pretty-fold.preview").setup()
 		end,
 	})
 

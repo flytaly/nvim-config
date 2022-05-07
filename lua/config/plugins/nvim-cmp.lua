@@ -1,14 +1,37 @@
 local presentCmp, cmp = pcall(require, "cmp")
-local present_lsp_kind, lsp_kind = pcall(require, "lspkind")
 local present_lua_snip, ls = pcall(require, "luasnip")
 local present_cmp_npm, npm = pcall(require, "cmp-npm")
 
+local icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "⌘",
+	Field = "ﰠ",
+	Variable = "",
+	Class = "ﴯ",
+	Interface = "",
+	Module = "",
+	Property = "ﰠ",
+	Unit = "塞",
+	Value = "",
+	Enum = "",
+	Keyword = "廓",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "פּ",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
+
 if not presentCmp or not present_lua_snip then
 	return
-end
-
-if present_lsp_kind then
-	lsp_kind.init({})
 end
 
 if present_cmp_npm then
@@ -90,10 +113,12 @@ cmp.setup({
 			end
 		end, { "i" }),
 	},
+
 	formatting = {
+		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			-- fancy icons and a name of kind
-			vim_item.kind = lsp_kind.presets.default[vim_item.kind] .. " " .. vim_item.kind
+			vim_item.menu = vim_item.kind
+			vim_item.kind = icons[vim_item.kind]
 
 			-- set a name for each source
 			vim_item.menu = ({
@@ -115,17 +140,23 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", keyword_length = 4, max_item_count = 10 },
+		{ name = "nvim_lsp_signature_help" },
 	},
 	experimental = {
 		ghost_text = true,
+		native_menu = false,
 	},
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline("/", { sources = { { name = "buffer" } } })
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = { { name = "buffer" } },
+})
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 })
 
