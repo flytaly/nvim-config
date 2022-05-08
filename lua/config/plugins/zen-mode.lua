@@ -43,7 +43,7 @@ zen_mode.setup({
 		-- - listen_on unix:/tmp/kitty
 		kitty = {
 			enabled = true,
-			font = "+1", -- font size increment
+			font = "+0.5", -- font size increment
 		},
 	},
 	-- callback where you can add custom code when the Zen window opens
