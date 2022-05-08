@@ -152,6 +152,8 @@ return packer.startup(function(use)
 	-- use 'shaunsingh/nord.nvim'
 	use("kyazdani42/nvim-web-devicons")
 	use("folke/tokyonight.nvim")
+
+	use("rmehri01/onenord.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("JoosepAlviste/palenightfall.nvim")
 	use("sainnhe/everforest")
