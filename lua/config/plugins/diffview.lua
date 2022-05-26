@@ -6,6 +6,8 @@ end
 
 diffview.setup({
 	file_panel = {
-		position = "left",
+		win_config = {
+			position = "left",
+		},
 	},
 })
