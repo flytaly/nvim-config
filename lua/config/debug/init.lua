@@ -38,6 +38,15 @@ set("n", "<leader>d?", function()
   widgets.centered_float(widgets.scopes)
 end)
 
+-- Close float windows with q and Esc.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "dap-float",
+  callback = function()
+    set("n", "q", "<cmd>close!<CR>", { silent = true, buffer = true })
+    set("n", "<Esc>", "<cmd>close!<CR>", { silent = true, buffer = true })
+  end,
+})
+
 
 ------------------------------------------------------
 ----- Dap Go
