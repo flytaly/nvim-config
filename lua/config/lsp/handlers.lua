@@ -45,21 +45,23 @@ M.setup = function()
 	})
 end
 
-local present_lsp_status, lsp_status = pcall(require, "lsp-status")
-
-if present_lsp_status then
-	lsp_status.register_progress()
-	lsp_status.config({
-		diagnostics = false,
-	})
-end
+-- local present_lsp_status, lsp_status = pcall(require, "lsp-status")
+--
+-- if present_lsp_status then
+-- 	lsp_status.register_progress()
+-- 	lsp_status.config({
+-- 		diagnostics = false,
+-- 	})
+-- end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 M.on_attach = function(client, bufnr)
-	if present_lsp_status then
-		lsp_status.on_attach(client, bufnr)
-	end
+	-- TODO: uncomment after pull request is merged
+	-- TODO: https://github.com/nvim-lua/lsp-status.nvim/pull/78
+	-- if present_lsp_status then
+	-- 	lsp_status.on_attach(client, bufnr)
+	-- end
 
 	if present_aerial then
 		aerial.on_attach(client, bufnr)
@@ -85,9 +87,9 @@ if present_cmp_nvim_lsp then
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 end
 
-if present_lsp_status then
-	capabilities = vim.tbl_deep_extend("keep", capabilities, lsp_status.capabilities)
-end
+-- if present_lsp_status then
+-- 	capabilities = vim.tbl_deep_extend("keep", capabilities, lsp_status.capabilities)
+-- end
 
 M.capabilities = capabilities
 
