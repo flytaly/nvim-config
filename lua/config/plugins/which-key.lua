@@ -35,7 +35,7 @@ wk.register({
 	g = {
 		name = "+LSP",
 		f = "Format Document",
-		s = "Toggle format on save"
+		s = "Toggle format on save",
 	},
 	x = {
 		name = "bars",
@@ -49,13 +49,14 @@ wk.register({
 	},
 	d = {
 		name = "debug",
-		n = "dap.continue()",
-		h = "dap.toggle_breakpoint()",
-		s = "dap.terminate()",
-		k = "dap.up()",
-		j = "dap.down()",
+		n = "dap: continue",
+		b = "dap: toggle breakpoint",
+		B = "dap: set conditional breakpoint",
+		s = "dap: terminate",
+		k = "dap: up",
+		j = "dap: down",
 		r = "dap: open REPL",
-		e = "dap.set_exception_breakpoints",
+		e = "dap: set_exception_breakpoints",
 		a = "dap: attach",
 		A = "dap: attach to remote",
 		i = "dap.ui.widgets: hover",
@@ -64,9 +65,9 @@ wk.register({
 		F = "jester.debug_file",
 		t = "dap-go.debug_test",
 		["?"] = "dap.ui.widgets: scopes",
-		f = "Telescope dap frames",
-		c = "Telescope dap commands",
-		b = "Telescope dap list_breakpoints",
+		f = "Telescope: dap frames",
+		c = "Telescope: dap commands",
+		l = "Telescope: dap list_breakpoints",
 	},
 }, {
 	prefix = "<leader>",

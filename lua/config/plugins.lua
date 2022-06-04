@@ -44,6 +44,8 @@ return packer.startup(function(use)
 
 	use({ "mg979/vim-visual-multi" })
 
+	use({ "lambdalisue/suda.vim" })
+
 	use({
 		"folke/which-key.nvim",
 		config = function()
@@ -147,6 +149,8 @@ return packer.startup(function(use)
 
 	-- consistent navigation between vim and terminal splits
 	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" })
+
+	use("fladson/vim-kitty")
 
 	------- Themes and styles
 	-- use 'shaunsingh/nord.nvim'

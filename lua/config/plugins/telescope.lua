@@ -85,6 +85,7 @@ telescope.load_extension("ui-select")
 
 vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>")
 vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>")
+vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")

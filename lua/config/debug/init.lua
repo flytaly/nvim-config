@@ -22,7 +22,8 @@ set("n", "<A-k>", function() dap.step_out() end)
 set("n", "<A-l>", function() dap.step_into() end)
 set("n", "<A-j>", function() dap.step_over() end)
 
-set("n", "<leader>dh", function() dap.toggle_breakpoint() end)
+set("n", "<leader>db", function() dap.toggle_breakpoint() end)
+set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
 set("n", "<leader>ds", function() dap.terminate() end)
 set("n", "<leader>dn", function() dap.continue() end)
 set("n", "<leader>dk", function() dap.up() end)
@@ -87,5 +88,5 @@ if present_telescope then
   telescope.load_extension("dap")
   set("n", "<leader>df", ":Telescope dap frames<CR>")
   set("n", "<leader>dc", ":Telescope dap commands<CR>")
-  set("n", "<leader>db", ":Telescope dap list_breakpoints<CR>")
+  set("n", "<leader>dl", ":Telescope dap list_breakpoints<CR>")
 end
