@@ -14,7 +14,7 @@ local get_servers = function(on_attach)
 			on_attach = function(client, bufnr)
 				local ok, sqls = pcall(require, "sqls")
 				if ok then
-					client.resolved_capabilities.execute_command = true
+					-- client.resolved_capabilities.execute_command = true
 					client.commands = sqls.commands
 					sqls.setup({ picker = "telescope" })
 				end
@@ -39,8 +39,8 @@ local get_servers = function(on_attach)
 			root_dir = nvim_lsp.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
 			filetypes = { "css" },
 			on_attach = function(client)
-				client.resolved_capabilities.document_formatting = false
-				client.resolved_capabilities.document_range_formatting = false
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
 			end,
 		},
 		eslint = {

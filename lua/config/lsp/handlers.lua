@@ -68,12 +68,12 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps.set_default_keymaps(client, bufnr)
 
 	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
 	end
 
 	formatOnSave.isEnabled = true
-	formatOnSave.createAutocmd(client)
+	formatOnSave.createAutocmd(client, bufnr)
 end
 
 local present_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

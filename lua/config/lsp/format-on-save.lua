@@ -6,19 +6,31 @@ end)
 
 M.isEnabled = true
 
-M.createAutocmd = function(client)
-	if client.resolved_capabilities.document_formatting then
-		local lsp_format_augroup = "lsp_format_augroup"
-		vim.api.nvim_create_augroup(lsp_format_augroup, { clear = true })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = lsp_format_augroup,
-			callback = function()
-				if M.isEnabled then
-					vim.lsp.buf.formatting_sync(nil, 1000)
-				end
-			end,
-		})
+local is08Version = vim.fn.has("nvim-0.8") == 1
+
+M.createAutocmd = function(client, bufnr)
+	if not client.server_capabilities.documentFormattingProvider then
+		return nil
 	end
+
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup,
+		buffer = bufnr,
+		callback = function()
+			if not M.isEnabled then
+				return nil
+			end
+
+			if is08Version then
+				vim.lsp.buf.format({ bufnr = bufnr })
+			else
+				vim.lsp.buf.formatting_sync()
+			end
+		end,
+	})
+	-- end
 end
 
 return M
