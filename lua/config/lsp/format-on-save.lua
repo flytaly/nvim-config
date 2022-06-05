@@ -9,7 +9,7 @@ M.isEnabled = true
 local is08Version = vim.fn.has("nvim-0.8") == 1
 
 M.createAutocmd = function(client, bufnr)
-	if not client.server_capabilities.documentFormattingProvider then
+	if not client.supports_method("textDocument/formatting") then
 		return nil
 	end
 
