@@ -28,6 +28,6 @@ opt.cmdheight = 0
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		require("vim.highlight").on_yank()
+		vim.highlight.on_yank({ timeout = 200 })
 	end,
 })
