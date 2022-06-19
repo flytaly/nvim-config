@@ -23,7 +23,6 @@ opt.shell = "fish"
 opt.termguicolors = true
 opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"
 opt.laststatus = 3
-opt.cmdheight = 0
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
