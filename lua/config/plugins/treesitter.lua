@@ -23,6 +23,7 @@ treesitter_config.setup({
 		"jsonc",
 		"lua",
 		"markdown",
+		"markdown_inline",
 		"prisma",
 		"python",
 		"query",
