@@ -159,7 +159,7 @@ return packer.startup(function(use)
 
 	use("rmehri01/onenord.nvim")
 	use("rebelot/kanagawa.nvim")
-	use("JoosepAlviste/palenightfall.nvim")
+	-- use("JoosepAlviste/palenightfall.nvim")
 	use("sainnhe/everforest")
 
 	use({
@@ -395,6 +395,14 @@ return packer.startup(function(use)
 		"mickael-menu/zk-nvim",
 		config = function()
 			require("config.plugins.zk")
+		end,
+	})
+
+	use({
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.startify").config)
 		end,
 	})
 
