@@ -159,7 +159,6 @@ return packer.startup(function(use)
 
 	use("rmehri01/onenord.nvim")
 	use("rebelot/kanagawa.nvim")
-	-- use("JoosepAlviste/palenightfall.nvim")
 	use("sainnhe/everforest")
 
 	use({
@@ -232,14 +231,20 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer")
 
+	use("AndrewRadev/splitjoin.vim")
+
 	use({
 		"ThePrimeagen/refactoring.nvim",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
+		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-treesitter/nvim-treesitter" } },
 		config = function()
 			require("refactoring").setup({})
+		end,
+	})
+
+	use({
+		"nanozuki/tabby.nvim",
+		config = function()
+			require("tabby").setup()
 		end,
 	})
 
