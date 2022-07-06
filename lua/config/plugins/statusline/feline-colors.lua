@@ -5,7 +5,9 @@ function M.fromhl(hl)
 	local list = vim.api.nvim_get_hl_by_name(hl, true)
 	for k, v in pairs(list) do
 		local name = k == "background" and "bg" or "fg"
-		result[name] = string.format("#%06x", v)
+		if type(v) == "number" then
+			result[name] = string.format("#%06x", v)
+		end
 	end
 	return result
 end
