@@ -6,9 +6,7 @@ vim.cmd([[hi QuickScopeSecondary guifg=#74CFD3 gui=underline ctermfg=81 cterm=un
 vim.cmd("colorscheme default")
 
 -- local colorscheme = "tokyonight"
-local colorscheme = "everforest"
-
-vim.g.everforest_background = "medium"
-
+local colorscheme = "catppuccin"
+--
 require("config.theme.theme").setup(colorscheme)
 require("config.theme.cmp").setup()

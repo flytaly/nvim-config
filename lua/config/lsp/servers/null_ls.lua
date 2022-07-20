@@ -28,7 +28,7 @@ local sources = {
 		filetypes = { "markdown", "text" },
 		disabled_filetypes = { "nvimtree", "lua" },
 	}),
-	b.diagnostics.write_good,
+	-- b.diagnostics.write_good,
 	-- b.diagnostics.markdownlint,
 	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 	b.diagnostics.tsc,
