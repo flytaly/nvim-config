@@ -41,6 +41,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("tpope/vim-fugitive")
 	use("machakann/vim-sandwich") -- vim surround alternative
+	use("tpope/vim-unimpaired")
 
 	use({ "mg979/vim-visual-multi" })
 

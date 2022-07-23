@@ -29,20 +29,11 @@ vim.keymap.set("n", "<S-l>", ":tabnext<CR>")
 vim.keymap.set("n", "<S-h>", ":tabprevious<CR>")
 vim.keymap.set("n", "<C-t>n", ":tabnew<CR>")
 
--- Move text up and down
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
-
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("n", "]<space>", ":call append(line('.'), '')<CR>")
-vim.keymap.set("n", "[<space>", ":call append(line('.')-1, '')<CR>")
-
 vim.keymap.set("n", "<leader>q", ":Bdelete<CR>")
-
-vim.keymap.set("n", "<F7>", ":set list!<CR>")
 
 vim.keymap.set("n", "<F8>", function()
 	require("null-ls").toggle("cspell")
