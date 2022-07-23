@@ -70,3 +70,5 @@ catppuccin.setup({
 		mini = false,
 	},
 })
+
+vim.cmd([[Catppuccin frappe]])
