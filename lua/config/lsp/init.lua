@@ -1,10 +1,5 @@
-local present, _ = pcall(require, "lspconfig")
+local present, lspconfig = pcall(require, "lspconfig")
 if not present then
-	return
-end
-
-local present_lsp_installer, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
-if not present_lsp_installer then
 	return
 end
 
@@ -20,22 +15,30 @@ local default_lsp_config = {
 	on_attach = on_attach,
 }
 
-local servers = require("config.lsp.servers").get_servers(on_attach)
-
-for serverName, config in pairs(servers) do
-	local server_available, server = lsp_installer_servers.get_server(serverName)
-	if server_available then
-		server:on_ready(function()
-			local opts = vim.tbl_deep_extend("force", default_lsp_config, config)
-			server:setup(opts)
-		end)
-
-		if not server:is_installed() then
-			print("installing " .. serverName)
-			server:install()
-		end
-	end
-end
-
 require("config.lsp.servers.null_ls").setup(on_attach)
 require("config.lsp.servers.ls_emmet").setup(capabilities)
+
+local presentMason, mason = pcall(require, "mason")
+if not presentMason then
+	return
+end
+
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
+
+local presentMasonLsp, masonLsp = pcall(require, "mason-lspconfig")
+if presentMasonLsp then
+	masonLsp.setup({
+		ensure_installed = { "delve", "node-debug2-adapter" },
+		automatic_installation = true,
+	})
+end
+
+require("config.lsp.servers").setup(on_attach, default_lsp_config)

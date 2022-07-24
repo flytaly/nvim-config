@@ -211,11 +211,18 @@ return packer.startup(function(use)
 	})
 
 	use("mhartington/formatter.nvim")
+
+	-- use("neovim/nvim-lspconfig")
+	-- use("williamboman/nvim-lsp-installer")
+
+	use {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+	}
+
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("jose-elias-alvarez/null-ls.nvim")
-
-	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
 
 	use("AndrewRadev/splitjoin.vim")
 

@@ -1,7 +1,7 @@
-local nvim_lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 
-local get_servers = function(on_attach)
-	return {
+local setup = function(on_attach, default_lsp_config)
+	local configs = {
 		cssls = require("config.lsp.servers.cssls")(),
 		dockerls = {},
 		graphql = {},
@@ -36,7 +36,7 @@ local get_servers = function(on_attach)
 		yamlls = {},
 		-- emmet_ls = {}, -- doesn't work in JSX so use fork instead
 		stylelint_lsp = {
-			root_dir = nvim_lsp.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
+			root_dir = lspconfig.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
 			filetypes = { "css" },
 			on_attach = function(client)
 				client.server_capabilities.documentFormattingProvider = false
@@ -56,6 +56,11 @@ local get_servers = function(on_attach)
 			},
 		},
 	}
+
+	for serverName, config in pairs(configs) do
+		local opts = vim.tbl_deep_extend("force", default_lsp_config, config)
+		lspconfig[serverName].setup(opts)
+	end
 end
 
-return { get_servers = get_servers }
+return { setup = setup }
