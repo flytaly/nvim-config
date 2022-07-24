@@ -15,9 +15,6 @@ local default_lsp_config = {
 	on_attach = on_attach,
 }
 
-require("config.lsp.servers.null_ls").setup(on_attach)
-require("config.lsp.servers.ls_emmet").setup(capabilities)
-
 local presentMason, mason = pcall(require, "mason")
 if not presentMason then
 	return
@@ -36,9 +33,12 @@ mason.setup({
 local presentMasonLsp, masonLsp = pcall(require, "mason-lspconfig")
 if presentMasonLsp then
 	masonLsp.setup({
-		ensure_installed = { "delve", "node-debug2-adapter" },
+		ensure_installed = { "delve", "node-debug2-adapter", "typescript-language-server" },
 		automatic_installation = true,
 	})
 end
 
 require("config.lsp.servers").setup(on_attach, default_lsp_config)
+require("config.lsp.servers.tsserver").setup()
+require("config.lsp.servers.null_ls").setup(on_attach)
+require("config.lsp.servers.ls_emmet").setup(capabilities)

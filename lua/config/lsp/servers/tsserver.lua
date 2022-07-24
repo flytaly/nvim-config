@@ -1,4 +1,4 @@
-local ts_utils = require("nvim-lsp-ts-utils")
+local M = {}
 
 local function filter(arr, fn)
 	if type(arr) ~= "table" then
@@ -33,32 +33,21 @@ local handlers = {
 	end,
 }
 
-return function(on_attach)
-	return {
-		init_options = require("nvim-lsp-ts-utils").init_options,
+M.setup = function()
+	--jose-elias-alvarez/typescript.nvim
+	local presentTS, TS = pcall(require, "typescript")
+	if presentTS then
+		TS.setup({
+			server = {
+				handlers = handlers,
+				flags = { debounce_text_changes = 200 },
+			},
+		})
 
-		handlers = handlers,
-
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = false
-			client.server_capabilities.documentRangeFormattingProvider = false
-
-			ts_utils.setup({
-				eslint_bin = "eslint_d",
-				eslint_enable_diagnostics = true,
-				eslint_enable_code_actions = true,
-				enable_formatting = true,
-				formatter = "prettier",
-			})
-			ts_utils.setup_client(client)
-
-			local opts = { silent = true }
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "gO", ":TSLspOrganize<CR>", opts)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "gFR", ":TSLspRenameFile<CR>", opts)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspImportAll<CR>", opts)
-
-			on_attach(client, bufnr)
-		end,
-		flags = { debounce_text_changes = 200 },
-	}
+		vim.keymap.set("n", "gO", ":TypescriptOrganizeImports<CR>")
+		vim.keymap.set("n", "gFR", ":TypescriptRenameFile<CR>")
+		vim.keymap.set("n", "gI", ":TypescriptAddMissingImport<CR>")
+	end
 end
+
+return M

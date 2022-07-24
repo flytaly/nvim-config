@@ -24,13 +24,8 @@ local setup = function(on_attach, default_lsp_config)
 		-- sqlls = {},
 		rust_analyzer = {},
 		sumneko_lua = require("config.lsp.servers.sumneko_lua")(),
-		tsserver = require("config.lsp.servers.tsserver")(on_attach),
 		svelte = {},
-		html = {
-			init_options = {
-				provideFormatter = false,
-			},
-		},
+		html = { init_options = { provideFormatter = false } },
 		tailwindcss = {},
 		prismals = {},
 		yamlls = {},
