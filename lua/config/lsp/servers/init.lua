@@ -1,15 +1,10 @@
 local lspconfig = require("lspconfig")
+local M = {}
 
-local setup = function(on_attach, default_lsp_config)
+M.setup = function(on_attach, capabilities)
 	local configs = {
-		cssls = require("config.lsp.servers.cssls")(),
-		dockerls = {},
-		graphql = {},
-		gopls = {},
-		golangci_lint_ls = {},
-		jsonls = require("config.lsp.servers.jsonls")(),
-		bashls = {},
-		diagnosticls = {},
+		cssls = require("config.lsp.servers.cssls"),
+		jsonls = require("config.lsp.servers.jsonls"),
 		sqls = {
 			on_attach = function(client, bufnr)
 				local ok, sqls = pcall(require, "sqls")
@@ -21,15 +16,8 @@ local setup = function(on_attach, default_lsp_config)
 				on_attach(client, bufnr)
 			end,
 		},
-		-- sqlls = {},
-		rust_analyzer = {},
-		sumneko_lua = require("config.lsp.servers.sumneko_lua")(),
-		svelte = {},
+		sumneko_lua = require("config.lsp.servers.sumneko_lua")(on_attach),
 		html = { init_options = { provideFormatter = false } },
-		tailwindcss = {},
-		prismals = {},
-		yamlls = {},
-		-- emmet_ls = {}, -- doesn't work in JSX so use fork instead
 		stylelint_lsp = {
 			root_dir = lspconfig.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
 			filetypes = { "css" },
@@ -38,24 +26,22 @@ local setup = function(on_attach, default_lsp_config)
 				client.server_capabilities.documentRangeFormattingProvider = false
 			end,
 		},
-		eslint = {
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"vue",
-				"svelte",
-			},
-		},
 	}
 
-	for serverName, config in pairs(configs) do
-		local opts = vim.tbl_deep_extend("force", default_lsp_config, config)
-		lspconfig[serverName].setup(opts)
+	local presentMasonLsp, masonLsp = pcall(require, "mason-lspconfig")
+	if not presentMasonLsp then
+		return
 	end
+
+	local default = { on_attach = on_attach, capabilities = capabilities }
+
+	masonLsp.setup_handlers({
+		function(server_name)
+			local opts = configs[server_name] or {}
+			opts = vim.tbl_deep_extend("force", default, opts)
+			lspconfig[server_name].setup(opts)
+		end,
+	})
 end
 
-return { setup = setup }
+return M

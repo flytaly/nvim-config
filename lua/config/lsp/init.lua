@@ -3,42 +3,64 @@ if not present then
 	return
 end
 
-local handlers = require("config.lsp.handlers")
-
-handlers.setup()
-
-local on_attach = handlers.on_attach
-local capabilities = handlers.capabilities
-
-local default_lsp_config = {
-	capabilities = capabilities,
-	on_attach = on_attach,
-}
-
 local presentMason, mason = pcall(require, "mason")
 if not presentMason then
 	return
 end
 
-mason.setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
+mason.setup()
 
-local presentMasonLsp, masonLsp = pcall(require, "mason-lspconfig")
-if presentMasonLsp then
-	masonLsp.setup({
-		ensure_installed = { "delve", "node-debug2-adapter", "typescript-language-server" },
-		automatic_installation = true,
-	})
+local servers = {
+	-- LSP servers
+	"bash-language-server",
+	"css-lsp",
+	"diagnostic-languageserver",
+	"dockerfile-language-server",
+	"eslint-lsp",
+	"golangci-lint-langserver",
+	"gopls",
+	"graphql-language-service-cli",
+	"html-lsp",
+	"json-lsp",
+	"lua-language-server",
+	"prisma-language-server",
+	"rust-analyzer",
+	"sqls",
+	"stylelint-lsp",
+	"svelte-language-server",
+	"tailwindcss-language-server",
+	"typescript-language-server",
+	"yaml-language-server",
+
+	-- DAP
+	"delve",
+	"node-debug2-adapter",
+	"firefox-debug-adapter",
+	"chrome-debug-adapter",
+
+	-- linters
+	"eslint_d",
+	"shellcheck",
+
+	-- formatters
+	"prettierd",
+	"shfmt",
+}
+
+for i, server_name in pairs(servers) do
+	if not require("mason-registry").is_installed(server_name) then
+		vim.cmd("MasonInstall " .. server_name)
+	end
 end
 
-require("config.lsp.servers").setup(on_attach, default_lsp_config)
+local handlers = require("config.lsp.handlers")
+handlers.setup()
+
+local on_attach = handlers.on_attach
+local capabilities = handlers.capabilities
+
 require("config.lsp.servers.tsserver").setup()
+
+require("config.lsp.servers").setup(on_attach, capabilities)
 require("config.lsp.servers.null_ls").setup(on_attach)
 require("config.lsp.servers.ls_emmet").setup(capabilities)
