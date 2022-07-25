@@ -1,4 +1,4 @@
-local present, lspconfig = pcall(require, "lspconfig")
+local present, _ = pcall(require, "lspconfig")
 if not present then
 	return
 end
@@ -47,7 +47,7 @@ local servers = {
 	"shfmt",
 }
 
-for i, server_name in pairs(servers) do
+for _, server_name in pairs(servers) do
 	if not require("mason-registry").is_installed(server_name) then
 		vim.cmd("MasonInstall " .. server_name)
 	end

@@ -19,6 +19,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("machakann/vim-sandwich") -- vim surround alternative
 	use("tpope/vim-unimpaired")
+	use("nathom/filetype.nvim")
 
 	use({ "mg979/vim-visual-multi" })
 
@@ -189,8 +190,6 @@ return packer.startup(function(use)
 
 	-------------------------
 	------- Programming utils
-	use({ "sheerun/vim-polyglot" })
-	-- use 'evanleck/vim-svelte'
 	use({
 		"leafOfTree/vim-svelte-plugin",
 		requires = "leafgarland/typescript-vim",
@@ -389,6 +388,7 @@ return packer.startup(function(use)
 
 	use({
 		"mickael-menu/zk-nvim",
+		ft = "markdown",
 		config = function()
 			require("config.plugins.zk")
 		end,
