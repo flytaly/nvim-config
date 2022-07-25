@@ -1,14 +1,9 @@
+local format = require("config.lsp.format")
+
 local function set_default_keymaps(_, bufnr)
 	local function keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
-
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
@@ -28,7 +23,8 @@ local function set_default_keymaps(_, bufnr)
 	keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	keymap("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap("n", "<leader>gf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+
+	vim.keymap.set("n", "<leader>gf", format.format, opts)
 
 	keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	keymap("n", "<C-p>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)

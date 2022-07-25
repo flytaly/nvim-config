@@ -1,6 +1,6 @@
 local lsp_keymaps = require("config.lsp.lsp-keymaps")
 local present_aerial, aerial = pcall(require, "aerial")
-local formatOnSave = require("config.lsp.format-on-save")
+local format = require("config.lsp.format")
 
 local M = {}
 
@@ -69,13 +69,8 @@ M.on_attach = function(client, bufnr)
 
 	lsp_keymaps.set_default_keymaps(client, bufnr)
 
-	if client.name == "sumneko_lua" then
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-	end
-
-	formatOnSave.isEnabled = true
-	formatOnSave.createAutocmd(client, bufnr)
+	format.isEnabled = true
+	format.createAutocmd(client, bufnr)
 end
 
 local present_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

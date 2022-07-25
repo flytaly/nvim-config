@@ -212,9 +212,6 @@ return packer.startup(function(use)
 
 	use("mhartington/formatter.nvim")
 
-	-- use("neovim/nvim-lspconfig")
-	-- use("williamboman/nvim-lsp-installer")
-
 	use({
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",

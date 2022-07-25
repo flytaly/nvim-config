@@ -22,15 +22,24 @@ M.createAutocmd = function(client, bufnr)
 			if not M.isEnabled then
 				return nil
 			end
-
-			if is08Version then
-				vim.lsp.buf.format({ bufnr = bufnr })
-			else
-				vim.lsp.buf.formatting_sync()
-			end
 		end,
 	})
-	-- end
+
+	M.format(bufnr)
+end
+
+M.format = function(bufnr)
+	if is08Version then
+		vim.lsp.buf.format({
+			bufnr = bufnr,
+			filter = function(client)
+				-- Never request following servers for formatting
+				return client.name ~= "tsserver" and client.name ~= "sumneko_lua"
+			end,
+		})
+	else
+		vim.lsp.buf.formatting_sync()
+	end
 end
 
 return M
