@@ -190,14 +190,6 @@ return packer.startup(function(use)
 
 	-------------------------
 	------- Programming utils
-	use({
-		"leafOfTree/vim-svelte-plugin",
-		requires = "leafgarland/typescript-vim",
-		config = function()
-			vim.g.vim_svelte_plugin_use_typescript = 1
-		end,
-	})
-
 	use({ "fatih/vim-go" })
 
 	-- Comments
