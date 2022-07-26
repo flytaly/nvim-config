@@ -53,7 +53,7 @@ local CmpColors = {
 	CmpItemKindTypeParameter = { fg = colors.yellow },
 }
 
-M.setup = function()
+M.setupColors = function()
 	for group, color in pairs(CmpColors) do
 		util.highlight(group, color)
 	end

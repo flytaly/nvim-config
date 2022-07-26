@@ -161,7 +161,7 @@ return packer.startup(function(use)
 				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
 				css_fn = true,
 			}
-			require("colorizer").setup({ "svelte", "html", "css", "conf" }, conf)
+			require("colorizer").setup({ "svelte", "html", "css", "conf", "lua" }, conf)
 		end,
 	})
 
@@ -289,7 +289,6 @@ return packer.startup(function(use)
 			require("config.plugins.nvim-cmp")
 		end,
 	})
-	use({ "mtoohey31/cmp-fish", ft = "fish" })
 	use({
 		"L3MON4D3/LuaSnip",
 		requires = {

@@ -1,6 +1,6 @@
 -- Disable filetype plugin, use the new Lua version
 vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 1
+vim.g.did_load_filetypes = 0
 
 local function setfiletype(pattern, filetype)
 	vim.api.nvim_create_autocmd("BufRead,BufNewFile", {

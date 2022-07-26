@@ -5,6 +5,9 @@
 
 -- local colorscheme = "tokyonight"
 local colorscheme = "catppuccin"
---
+
 require("config.theme.theme").setup(colorscheme)
-require("config.theme.cmp").setup()
+
+vim.cmd("Catppuccin frappe")
+
+require("config.theme.cmp").setupColors()
