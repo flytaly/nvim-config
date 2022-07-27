@@ -19,13 +19,11 @@ M.createAutocmd = function(client, bufnr)
 		group = augroup,
 		buffer = bufnr,
 		callback = function()
-			if not M.isEnabled then
-				return nil
+			if M.isEnabled then
+				M.format(bufnr)
 			end
 		end,
 	})
-
-	M.format(bufnr)
 end
 
 M.format = function(bufnr)
