@@ -38,3 +38,20 @@ vim.keymap.set("n", "<leader>q", ":Bdelete<CR>")
 vim.keymap.set("n", "<F8>", function()
 	require("null-ls").toggle("cspell")
 end)
+
+-- save and source
+vim.keymap.set("n", "<leader>cx", function()
+	vim.cmd("w")
+	vim.cmd("so %")
+end)
+
+-- toggle foldmethod
+vim.keymap.set("n", "yof", function()
+	if vim.opt.foldmethod:get() == "expr" then
+		vim.cmd([[set foldmethod=manual]])
+		print("set foldmethod=manual")
+	else
+		vim.cmd([[set foldmethod=expr]])
+		print("set foldmethod=expr")
+	end
+end)
