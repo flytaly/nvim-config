@@ -6,7 +6,7 @@ end
 
 local trouble_present, trouble = pcall(require, "trouble.providers.telescope")
 if not trouble_present then
-	return
+	print("trouble is not installed")
 end
 
 local telescope_actions = require("telescope.actions.set")

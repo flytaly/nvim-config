@@ -7,11 +7,11 @@ if not packer_present then
 end
 
 return packer.startup(function(use)
-	use({ "wbthomason/packer.nvim" })
-	use({
+	use("wbthomason/packer.nvim")
+	use({ -- select entire buffer
 		"kana/vim-textobj-entire",
-		requires = { { "kana/vim-textobj-user" } }, -- create your own text objects
-	}) -- select entire buffer
+		requires = { "kana/vim-textobj-user" }, -- create your own text objects
+	})
 	-- use("vim-scripts/restore_view.vim")
 	use("nvim-lua/plenary.nvim") -- useful lua functions
 	use("unblevable/quick-scope") -- highlight unique chars
@@ -20,17 +20,29 @@ return packer.startup(function(use)
 	use("machakann/vim-sandwich") -- vim surround alternative
 	use("tpope/vim-unimpaired")
 	use("nathom/filetype.nvim")
-
-	use({ "mg979/vim-visual-multi" })
-
-	use({ "lambdalisue/suda.vim" })
-
+	use("mg979/vim-visual-multi")
+	use("lambdalisue/suda.vim")
 	use({
 		"folke/which-key.nvim",
 		config = function()
 			require("plugins.which-key")
 		end,
 	})
+
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("plugins.trouble")
+		end,
+	})
+
+	use({
+		"rcarriga/nvim-notify",
+		config = function()
+			vim.notify = require("notify")
+		end,
+	})
+
 	use({
 		"luukvbaal/stabilize.nvim",
 		config = function()
@@ -42,6 +54,13 @@ return packer.startup(function(use)
 		"sidebar-nvim/sidebar.nvim",
 		config = function()
 			require("plugins.sidebar")
+		end,
+	})
+
+	use({
+		"nanozuki/tabby.nvim",
+		config = function()
+			require("tabby").setup()
 		end,
 	})
 
@@ -58,8 +77,6 @@ return packer.startup(function(use)
 			require("plugins.vim-maximizer")
 		end,
 	})
-
-	use({ "https://github.com/moll/vim-bbye" })
 
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -78,17 +95,17 @@ return packer.startup(function(use)
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
+			"nvim-telescope/telescope-dap.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
 		config = function()
 			require("plugins.telescope")
 		end,
 	})
-
-	use({ "nvim-telescope/telescope-ui-select.nvim" })
-
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	use({
 		"phaazon/hop.nvim", -- easy-motion alternative
@@ -106,7 +123,6 @@ return packer.startup(function(use)
 
 	use({
 		"kyazdani42/nvim-tree.lua",
-		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("plugins.nvim-tree")
 		end,
@@ -126,15 +142,29 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- consistent navigation between vim and terminal splits
-	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" })
+	use({ "https://github.com/moll/vim-bbye" })
+
+	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" }) -- consistent navigation between vim and terminal splits
 
 	use("fladson/vim-kitty")
 
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		-- requires = "anuvyklack/nvim-keymap-amend", -- only for preview
+		config = function()
+			require("pretty-fold").setup()
+			-- require("pretty-fold.preview").setup()
+		end,
+	})
+
 	------- Themes and styles
-	-- use 'shaunsingh/nord.nvim'
 	use("kyazdani42/nvim-web-devicons")
-	use("folke/tokyonight.nvim")
+
+	-- use("shaunsingh/nord.nvim")
+	-- use("folke/tokyonight.nvim")
+	-- use("rmehri01/onenord.nvim")
+	-- use("rebelot/kanagawa.nvim")
+	-- use("sainnhe/everforest")
 
 	use({
 		"catppuccin/nvim",
@@ -144,28 +174,14 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("rmehri01/onenord.nvim")
-	use("rebelot/kanagawa.nvim")
-	use("sainnhe/everforest")
-
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			local conf = {
-				RGB = true, -- #RGB hex codes
-				RRGGBB = true, -- #RRGGBB hex codes
-				names = true, -- "Name" codes like Blue
-				RRGGBBAA = true, -- #RRGGBBAA hex codes
-				rgb_fn = true, -- CSS rgb() and rgba() functions
-				hsl_fn = true, -- CSS hsl() and hsla() functions
-				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-				css_fn = true,
-			}
-			require("colorizer").setup({ "svelte", "html", "css", "conf", "lua" }, conf)
+			require("plugins.nvim-colorizer")
 		end,
 	})
 
-	use("lukas-reineke/indent-blankline.nvim")
+	use("lukas-reineke/indent-blankline.nvim") -- indentation guides
 
 	use({
 		"folke/zen-mode.nvim",
@@ -182,24 +198,17 @@ return packer.startup(function(use)
 	})
 
 	use({
-		"rcarriga/nvim-notify",
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
-			vim.notify = require("notify")
+			require("alpha").setup(require("alpha.themes.startify").config)
 		end,
 	})
 
 	-------------------------
 	------- Programming utils
 	use({ "fatih/vim-go" })
-
-	-- Comments
-	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("plugins.comment")
-		end,
-	})
+	use({ "nanotee/sqls.nvim", ft = "sql" })
 
 	use("mhartington/formatter.nvim")
 
@@ -209,40 +218,32 @@ return packer.startup(function(use)
 		"neovim/nvim-lspconfig",
 	})
 
+	use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
 	use("jose-elias-alvarez/typescript.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
-
 	use("AndrewRadev/splitjoin.vim")
 
 	use({
 		"ThePrimeagen/refactoring.nvim",
-		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-treesitter/nvim-treesitter" } },
 		config = function()
 			require("refactoring").setup({})
 		end,
 	})
 
 	use({
-		"nanozuki/tabby.nvim",
+		"windwp/nvim-autopairs",
+		after = "nvim-cmp",
 		config = function()
-			require("tabby").setup()
+			require("nvim-autopairs").setup({
+				fast_wrap = {},
+			})
 		end,
 	})
-
-	use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
 
 	use({ -- a code outline window for skimming and quick navigation
 		"stevearc/aerial.nvim",
 		config = function()
 			require("plugins.aerial-nvim")
-		end,
-	})
-
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("plugins.trouble")
 		end,
 	})
 
@@ -256,6 +257,12 @@ return packer.startup(function(use)
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		requires = {
+			"nvim-treesitter/playground",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"RRethy/nvim-treesitter-textsubjects",
+			"p00f/nvim-ts-rainbow",
+		},
 		run = function()
 			vim.cmd([[TSUpdate]])
 		end,
@@ -263,15 +270,28 @@ return packer.startup(function(use)
 			require("plugins.treesitter")
 		end,
 	})
-	use("nvim-treesitter/playground")
-	use({ "RRethy/nvim-treesitter-textsubjects" })
-	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
 
-	use({ "p00f/nvim-ts-rainbow" })
+	use("weilbith/nvim-code-action-menu")
 
-	use({ "weilbith/nvim-code-action-menu" })
+	-------------------------
+	------- Comments
+	use({
+		"numToStr/Comment.nvim",
+		requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		config = function()
+			require("plugins.comment")
+		end,
+	})
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	})
 
-	---- Completion and Snippets
+	-------------------------------
+	------- Completion and Snippets
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
@@ -304,21 +324,11 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({
-		"windwp/nvim-autopairs",
-		after = "nvim-cmp",
-		config = function()
-			require("nvim-autopairs").setup({
-				fast_wrap = {},
-			})
-		end,
-	})
-
-	-- debug
+	-------------------------------
+	------- Debug
 	use("mfussenegger/nvim-dap")
 	use("leoluz/nvim-dap-go")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use("nvim-telescope/telescope-dap.nvim")
 	use({
 		"theHamsta/nvim-dap-virtual-text",
 		config = function()
@@ -326,14 +336,14 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-------------------------------
+	------- Tests
 	use({
 		"david-kunz/jester",
 		config = function()
 			require("plugins.jester")
 		end,
 	})
-
-	--
 	use({
 		"vim-test/vim-test",
 		config = function()
@@ -341,33 +351,14 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({ "nanotee/sqls.nvim", ft = "sql" })
-
-	use({
-		"anuvyklack/pretty-fold.nvim",
-		-- requires = "anuvyklack/nvim-keymap-amend", -- only for preview
-		config = function()
-			require("pretty-fold").setup()
-			-- require("pretty-fold.preview").setup()
-		end,
-	})
-
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	})
-
-	-- markdown
+	---------------------------
+	------- Markdown and notes
 	use({
 		"ekickx/clipboard-image.nvim",
 		config = function()
 			require("plugins.clipboard-image")
 		end,
 	})
-
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && yarn install",
@@ -375,7 +366,6 @@ return packer.startup(function(use)
 			require("plugins.markdown-preview")
 		end,
 	})
-
 	use({
 		"mickael-menu/zk-nvim",
 		ft = "markdown",
@@ -383,15 +373,6 @@ return packer.startup(function(use)
 			require("plugins.zk")
 		end,
 	})
-
-	use({
-		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
-	})
-
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
