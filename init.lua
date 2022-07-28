@@ -1,7 +1,7 @@
+require("plugins")
 require("config.mapping")
 require("config.filetype")
 require("config.options")
-require("config.plugins")
 require("config.theme")
 require("config.lsp")
 require("config.debug")

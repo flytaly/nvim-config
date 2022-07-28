@@ -9,8 +9,8 @@ if present_ctp_feline then
 	-- catppuccin default feline config
 	feline.setup({ components = ctp_feline.get() })
 else
-	local felineColors = require("config.plugins.statusline.feline-colors")
-	local felineComponents = require("config.plugins.statusline.feline-components")
+	local felineColors = require("plugins.statusline.feline-colors")
+	local felineComponents = require("plugins.statusline.feline-components")
 
 	feline.setup({
 		components = felineComponents.components,

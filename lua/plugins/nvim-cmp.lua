@@ -133,10 +133,14 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp", max_item_count = 20 },
+		{
+			name = "nvim_lsp", --[[, max_item_count = 20 ]] 
+		},
 		{ name = "fish" },
 		{ name = "npm", keyword_length = 4 },
-		{ name = "luasnip", max_item_count = 10 },
+		{
+			name = "luasnip",--[[ , max_item_count = 10 ]] 
+		},
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", keyword_length = 4, max_item_count = 10 },

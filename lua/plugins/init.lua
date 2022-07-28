@@ -28,7 +28,7 @@ return packer.startup(function(use)
 	use({
 		"folke/which-key.nvim",
 		config = function()
-			require("config.plugins.which-key")
+			require("plugins.which-key")
 		end,
 	})
 	use({
@@ -41,21 +41,21 @@ return packer.startup(function(use)
 	use({
 		"sidebar-nvim/sidebar.nvim",
 		config = function()
-			require("config.plugins.sidebar")
+			require("plugins.sidebar")
 		end,
 	})
 
 	use({
 		"sindrets/diffview.nvim",
 		config = function()
-			require("config.plugins.diffview")
+			require("plugins.diffview")
 		end,
 	})
 
 	use({ -- maximize and restore windows
 		"szw/vim-maximizer",
 		config = function()
-			require("config.plugins.vim-maximizer")
+			require("plugins.vim-maximizer")
 		end,
 	})
 
@@ -65,14 +65,14 @@ return packer.startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("config.plugins.gitsigns")
+			require("plugins.gitsigns")
 		end,
 	})
 
 	use({
 		"feline-nvim/feline.nvim",
 		config = function()
-			require("config.plugins.statusline.feline")
+			require("plugins.statusline.feline")
 		end,
 	})
 
@@ -80,7 +80,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("config.plugins.telescope")
+			require("plugins.telescope")
 		end,
 	})
 
@@ -93,14 +93,14 @@ return packer.startup(function(use)
 	use({
 		"phaazon/hop.nvim", -- easy-motion alternative
 		config = function()
-			require("config.plugins.hop")
+			require("plugins.hop")
 		end,
 	})
 
 	use({
 		"luukvbaal/nnn.nvim",
 		config = function()
-			require("config.plugins.nnn")
+			require("plugins.nnn")
 		end,
 	})
 
@@ -108,21 +108,21 @@ return packer.startup(function(use)
 		"kyazdani42/nvim-tree.lua",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
-			require("config.plugins.nvim-tree")
+			require("plugins.nvim-tree")
 		end,
 	})
 
 	use({
 		"lyokha/vim-xkbswitch", --- switch from RU -> EN automatically
 		config = function()
-			require("config.plugins.vim-xkbswitch")
+			require("plugins.vim-xkbswitch")
 		end,
 	})
 
 	use({
 		"akinsho/toggleterm.nvim",
 		config = function()
-			require("config.plugins.toggleterm")
+			require("plugins.toggleterm")
 		end,
 	})
 
@@ -140,7 +140,7 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 		config = function()
-			require("config.plugins.catppuccin")
+			require("plugins.catppuccin")
 		end,
 	})
 
@@ -170,14 +170,14 @@ return packer.startup(function(use)
 	use({
 		"folke/zen-mode.nvim",
 		config = function()
-			require("config.plugins.zen-mode")
+			require("plugins.zen-mode")
 		end,
 	})
 
 	use({
 		"stevearc/dressing.nvim",
 		config = function()
-			require("config.plugins.nvim-dressing")
+			require("plugins.nvim-dressing")
 		end,
 	})
 
@@ -197,7 +197,7 @@ return packer.startup(function(use)
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
-			require("config.plugins.comment")
+			require("plugins.comment")
 		end,
 	})
 
@@ -234,7 +234,7 @@ return packer.startup(function(use)
 	use({ -- a code outline window for skimming and quick navigation
 		"stevearc/aerial.nvim",
 		config = function()
-			require("config.plugins.aerial-nvim")
+			require("plugins.aerial-nvim")
 		end,
 	})
 
@@ -242,7 +242,7 @@ return packer.startup(function(use)
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("config.plugins.trouble")
+			require("plugins.trouble")
 		end,
 	})
 
@@ -250,7 +250,7 @@ return packer.startup(function(use)
 		"vuki656/package-info.nvim",
 		requires = "MunifTanjim/nui.nvim",
 		config = function()
-			require("config.plugins.package-info")
+			require("plugins.package-info")
 		end,
 	})
 
@@ -260,7 +260,7 @@ return packer.startup(function(use)
 			vim.cmd([[TSUpdate]])
 		end,
 		config = function()
-			require("config.plugins.treesitter")
+			require("plugins.treesitter")
 		end,
 	})
 	use("nvim-treesitter/playground")
@@ -286,7 +286,7 @@ return packer.startup(function(use)
 			"David-Kunz/cmp-npm",
 		},
 		config = function()
-			require("config.plugins.nvim-cmp")
+			require("plugins.nvim-cmp")
 		end,
 	})
 	use({
@@ -300,7 +300,7 @@ return packer.startup(function(use)
 			},
 		},
 		config = function()
-			require("config.plugins.snippets")
+			require("plugins.snippets")
 		end,
 	})
 
@@ -329,7 +329,7 @@ return packer.startup(function(use)
 	use({
 		"david-kunz/jester",
 		config = function()
-			require("config.plugins.jester")
+			require("plugins.jester")
 		end,
 	})
 
@@ -337,7 +337,7 @@ return packer.startup(function(use)
 	use({
 		"vim-test/vim-test",
 		config = function()
-			require("config.plugins.vim-test")
+			require("plugins.vim-test")
 		end,
 	})
 
@@ -364,7 +364,7 @@ return packer.startup(function(use)
 	use({
 		"ekickx/clipboard-image.nvim",
 		config = function()
-			require("config.plugins.clipboard-image")
+			require("plugins.clipboard-image")
 		end,
 	})
 
@@ -372,7 +372,7 @@ return packer.startup(function(use)
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && yarn install",
 		config = function()
-			require("config.plugins.markdown-preview")
+			require("plugins.markdown-preview")
 		end,
 	})
 
@@ -380,7 +380,7 @@ return packer.startup(function(use)
 		"mickael-menu/zk-nvim",
 		ft = "markdown",
 		config = function()
-			require("config.plugins.zk")
+			require("plugins.zk")
 		end,
 	})
 
