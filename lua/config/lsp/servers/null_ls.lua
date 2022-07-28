@@ -11,7 +11,7 @@ local sources = {
 	-- b.diagnostics.codespell,
 	-- b.diagnostics.cspell.with({ filetypes = { "markdown", "text" } }),
 	b.diagnostics.cspell.with({
-		filetypes = { "markdown", "text" },
+		filetypes = { "markdown", "text", "gitcommit" },
 		disabled_filetypes = { "nvimtree", "lua" },
 	}),
 	-- b.diagnostics.write_good,
