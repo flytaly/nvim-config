@@ -2,49 +2,83 @@
 local present_dap, dap = pcall(require, "dap")
 
 if not present_dap then
-  return
+	return
 end
 
-local set = vim.keymap.set
+local h = require("config/debug/debug_helpers")
 
+dap.set_log_level("TRACE")
 
-dap.adapters.node2 = {
-  type = "executable",
-  command = "node",
-  args = { os.getenv("HOME") .. "/Apps/vscode-node-debug2/out/src/nodeDebug.js" },
-}
+dap.adapters.node2 = function(cb)
+	local adapter = {
+		type = "executable",
+		command = "node",
+		args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/node-debug2-adapter/out/src/nodeDebug.js" },
+	}
+	cb(adapter)
+end
+
+dap.configurations.javascript = { h.launch_node, h.pick_node_attach }
+dap.configurations.typescript = { h.launch_node, h.pick_node_attach }
 
 local sign = vim.fn.sign_define
 
 -- catppuccin colors
 sign("dapstopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
-sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
-sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
-sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 
+local set = vim.keymap.set
 
-set("n", "<A-k>", function() dap.step_out() end)
-set("n", "<A-l>", function() dap.step_into() end)
-set("n", "<A-j>", function() dap.step_over() end)
-
-set("n", "<leader>db", function() dap.toggle_breakpoint() end)
-set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
-set("n", "<leader>ds", function() dap.terminate() end)
-set("n", "<leader>dn", function() dap.continue() end)
-set("n", "<leader>dk", function() dap.up() end)
-set("n", "<leader>dj", function() dap.down() end)
-
-set("n", "<leader>dr", function() dap.repl.open({}, 'vsplit') end)
-set("n", "<leader>de", function() dap.set_exception_breakpoints({ "all" }) end)
-set("n", "<leader>da", function() require('config/debug/debugHelper').attach() end)
-set("n", "<leader>dA", function() require('config/debug/debugHelper').attachToRemote() end)
-set("n", "<leader>di", function() require('dap.ui.widgets').hover() end)
-set("n", "<leader>d?", function()
-  local widgets = require 'dap.ui.widgets';
-  widgets.centered_float(widgets.scopes)
+set("n", "<A-k>", function()
+	dap.step_out()
+end)
+set("n", "<A-l>", function()
+	dap.step_into()
+end)
+set("n", "<A-j>", function()
+	dap.step_over()
 end)
 
+set("n", "<leader>db", function()
+	dap.toggle_breakpoint()
+end)
+set("n", "<leader>dB", function()
+	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end)
+set("n", "<leader>ds", function()
+	dap.terminate()
+end)
+set("n", "<leader>dn", function()
+	dap.continue()
+end)
+set("n", "<leader>dk", function()
+	dap.up()
+end)
+set("n", "<leader>dj", function()
+	dap.down()
+end)
 
+set("n", "<leader>dr", function()
+	dap.repl.open({}, "vsplit")
+end)
+set("n", "<leader>de", function()
+	dap.set_exception_breakpoints({ "all" })
+end)
+set("n", "<leader>da", function()
+	h.attach()
+end)
+set("n", "<leader>dA", function()
+	h.attach_remote()
+end)
+set("n", "<leader>di", function()
+	require("dap.ui.widgets").hover()
+end)
+set("n", "<leader>d?", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end)
 
 ------------------------------------------------------
 ----- Dap Go
@@ -52,8 +86,10 @@ end)
 local present_dap_go, dap_go = pcall(require, "dap-go")
 
 if present_dap_go then
-  dap_go.setup()
-  set("n", "<leader>dt", function() dap_go.debug_test() end)
+	dap_go.setup()
+	set("n", "<leader>dt", function()
+		dap_go.debug_test()
+	end)
 end
 
 ------------------------------------------------------
@@ -61,20 +97,23 @@ end
 local present_dapui, dapui = pcall(require, "dapui")
 
 if present_dapui then
-  dapui.setup()
-  set("n", "<leader>du", function() dapui.toggle() end)
-  set("v", "<A-e>", function() dapui.eval() end)
+	dapui.setup()
+	set("n", "<leader>du", function()
+		dapui.toggle()
+	end)
+	set("v", "<A-e>", function()
+		dapui.eval()
+	end)
 
-  dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
-  end
-  dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
-  end
-  dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
-  end
-
+	dap.listeners.after.event_initialized["dapui_config"] = function()
+		dapui.open()
+	end
+	dap.listeners.before.event_terminated["dapui_config"] = function()
+		dapui.close()
+	end
+	dap.listeners.before.event_exited["dapui_config"] = function()
+		dapui.close()
+	end
 end
 
 ------------------------------------------------------
@@ -82,8 +121,8 @@ end
 local present_telescope, telescope = pcall(require, "telescope")
 
 if present_telescope then
-  telescope.load_extension("dap")
-  set("n", "<leader>df", ":Telescope dap frames<CR>")
-  set("n", "<leader>dc", ":Telescope dap commands<CR>")
-  set("n", "<leader>dl", ":Telescope dap list_breakpoints<CR>")
+	telescope.load_extension("dap")
+	set("n", "<leader>df", ":Telescope dap frames<CR>")
+	set("n", "<leader>dc", ":Telescope dap commands<CR>")
+	set("n", "<leader>dl", ":Telescope dap list_breakpoints<CR>")
 end

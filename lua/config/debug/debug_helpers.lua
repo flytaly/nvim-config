@@ -1,6 +1,29 @@
 local dap = require("dap")
 
-local function debugJest(testName, filename)
+local M = {}
+
+M.pick_node_attach = {
+	-- For this to work you need to make sure the node process is started with the `--inspect` flag.
+	name = "Attach to node process",
+	type = "node2",
+	request = "attach",
+	processId = require("dap.utils").pick_process,
+}
+
+
+M.launch_node = {
+	name = "Launch node",
+	type = "node2",
+	request = "launch",
+	program = "${file}",
+	cwd = vim.fn.getcwd(),
+	outFiles = { vim.fn.getcwd() .. "/dist/*.js" },
+	sourceMaps = true,
+	protocol = "inspector",
+	console = "integratedTerminal",
+}
+
+M.debug_jest = function(testName, filename)
 	print("starting " .. testName .. " in " .. filename)
 	dap.run({
 		type = "node2",
@@ -15,7 +38,7 @@ local function debugJest(testName, filename)
 	})
 end
 
-local function attach()
+M.attach = function()
 	print("attaching")
 	dap.run({
 		type = "node2",
@@ -27,7 +50,7 @@ local function attach()
 	})
 end
 
-local function attachToRemote()
+M.attach_remote = function()
 	print("attaching")
 	dap.run({
 		type = "node2",
@@ -42,8 +65,4 @@ local function attachToRemote()
 	})
 end
 
-return {
-	debugJest = debugJest,
-	attach = attach,
-	attachToRemote = attachToRemote,
-}
+return M
