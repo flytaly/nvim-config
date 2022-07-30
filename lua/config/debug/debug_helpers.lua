@@ -10,6 +10,16 @@ M.pick_node_attach = {
 	processId = require("dap.utils").pick_process,
 }
 
+M.launch_firefox = {
+	name = "Debug with Firefox",
+	type = "firefox",
+	request = "launch",
+	reAttach = true,
+	sourceMaps = true,
+	url = "http://localhost:6969",
+	webRoot = "${workspaceFolder}",
+	firefoxExecutable = "/usr/bin/firefox",
+}
 
 M.launch_node = {
 	name = "Launch node",
