@@ -2,37 +2,6 @@ local dap = require("dap")
 
 local M = {}
 
-M.pick_node_attach = {
-	-- For this to work you need to make sure the node process is started with the `--inspect` flag.
-	name = "Attach to node process",
-	type = "node2",
-	request = "attach",
-	processId = require("dap.utils").pick_process,
-}
-
-M.launch_firefox = {
-	name = "Debug with Firefox",
-	type = "firefox",
-	request = "launch",
-	reAttach = true,
-	sourceMaps = true,
-	url = "http://localhost:6969",
-	webRoot = "${workspaceFolder}",
-	firefoxExecutable = "/usr/bin/firefox",
-}
-
-M.launch_node = {
-	name = "Launch node",
-	type = "node2",
-	request = "launch",
-	program = "${file}",
-	cwd = vim.fn.getcwd(),
-	outFiles = { vim.fn.getcwd() .. "/dist/*.js" },
-	sourceMaps = true,
-	protocol = "inspector",
-	console = "integratedTerminal",
-}
-
 M.debug_jest = function(testName, filename)
 	print("starting " .. testName .. " in " .. filename)
 	dap.run({

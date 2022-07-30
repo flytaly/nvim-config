@@ -5,28 +5,9 @@ if not present_dap then
 	return
 end
 
+require("config.debug.dap_config")
 local h = require("config/debug/debug_helpers")
 
-dap.set_log_level("TRACE")
-
-local packages_path = os.getenv("HOME") .. "/.local/share/nvim/mason/packages"
-
-dap.adapters.node2 = {
-	type = "executable",
-	command = "node",
-	args = { packages_path .. "/node-debug2-adapter/out/src/nodeDebug.js" },
-}
-
-dap.adapters.firefox = {
-	type = "executable",
-	command = "node",
-	args = {
-		packages_path .. "/firefox-debug-adapter/dist/adapter.bundle.js",
-	},
-}
-
-dap.configurations.javascript = { h.launch_node, h.launch_firefox, h.pick_node_attach }
-dap.configurations.typescript = { h.launch_node, h.launch_firefox, h.pick_node_attach }
 
 local sign = vim.fn.sign_define
 
