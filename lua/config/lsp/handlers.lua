@@ -57,8 +57,6 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 M.on_attach = function(client, bufnr)
-	-- TODO: uncomment after pull request is merged
-	-- TODO: https://github.com/nvim-lua/lsp-status.nvim/pull/78
 	-- if present_lsp_status then
 	-- 	lsp_status.on_attach(client, bufnr)
 	-- end

@@ -10,7 +10,7 @@ aerial.setup({
 	backends = { "lsp", "treesitter", "markdown" },
 
 	-- If close_on_select is true, aerial will automatically close after jumping to a symbol
-	close_on_select = true,
+	close_on_select = false,
 
 	-- Enum: prefer_right, prefer_left, right, left, float
 	-- Determines the default direction to open the aerial window. The 'prefer'
