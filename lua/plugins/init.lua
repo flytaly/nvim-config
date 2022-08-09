@@ -128,10 +128,20 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- use different layouts in normal and input modes
+    -- using xkbswitch 
+	-- use({
+	-- 	"lyokha/vim-xkbswitch", --- switch from RU -> EN automatically
+	-- 	config = function()
+	-- 		require("plugins.vim-xkbswitch")
+	-- 	end,
+	-- })
+	--
+	-- using fcitx
 	use({
-		"lyokha/vim-xkbswitch", --- switch from RU -> EN automatically
+		"lilydjwg/fcitx.vim",
 		config = function()
-			require("plugins.vim-xkbswitch")
+			vim.g.fcitx5_remote = "/usr/bin/fcitx5-remote"
 		end,
 	})
 
@@ -149,11 +159,17 @@ return packer.startup(function(use)
 	use("fladson/vim-kitty")
 
 	use({
-		"anuvyklack/pretty-fold.nvim",
-		-- requires = "anuvyklack/nvim-keymap-amend", -- only for preview
+		"kevinhwang91/nvim-ufo",
+		requires = "kevinhwang91/promise-async",
+
 		config = function()
-			require("pretty-fold").setup()
-			-- require("pretty-fold.preview").setup()
+			require("ufo").setup({
+				provider_selector = function(bufnr, filetype, buftype)
+					return { "treesitter", "indent" }
+				end,
+			})
+			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 		end,
 	})
 
