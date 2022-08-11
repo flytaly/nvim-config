@@ -129,7 +129,7 @@ return packer.startup(function(use)
 	})
 
 	-- use different layouts in normal and input modes
-    -- using xkbswitch 
+	-- using xkbswitch
 	-- use({
 	-- 	"lyokha/vim-xkbswitch", --- switch from RU -> EN automatically
 	-- 	config = function()
@@ -176,11 +176,11 @@ return packer.startup(function(use)
 	------- Themes and styles
 	use("kyazdani42/nvim-web-devicons")
 
-	-- use("shaunsingh/nord.nvim")
-	-- use("folke/tokyonight.nvim")
-	-- use("rmehri01/onenord.nvim")
-	-- use("rebelot/kanagawa.nvim")
-	-- use("sainnhe/everforest")
+	use("shaunsingh/nord.nvim")
+	use("folke/tokyonight.nvim")
+	use("rmehri01/onenord.nvim")
+	use("rebelot/kanagawa.nvim")
+	use("sainnhe/everforest")
 
 	use({
 		"catppuccin/nvim",

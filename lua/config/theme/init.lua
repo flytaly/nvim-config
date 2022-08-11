@@ -1,3 +1,5 @@
+require("config.theme.kitty-background")
+
 ------------------------------------------------------
 -- QuickScope
 -- vim.cmd([[hi QuickScopePrimary guifg=#29CB2B gui=underline ctermfg=155 cterm=underline]])
