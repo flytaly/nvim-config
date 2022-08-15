@@ -173,6 +173,17 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"natecraddock/workspaces.nvim",
+		config = function()
+			require("workspaces").setup({
+				hooks = {
+					open = { "NvimTreeOpen", "Telescope find_files" },
+				},
+			})
+		end,
+	})
+
 	------- Themes and styles
 	use("kyazdani42/nvim-web-devicons")
 
