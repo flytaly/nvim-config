@@ -24,8 +24,11 @@ local get_kitty_background = function()
 			args = { "@", "get-colors" },
 			cwd = "/usr/bin/",
 			on_exit = function(j, _)
-				local color = split(j:result()[4])[2]
-				vim.g.ORIGINAL_KITTY_BG_COLOR = color
+				arg = j:result()[4]
+				if arg then
+					local color = split(arg)[2]
+					vim.g.ORIGINAL_KITTY_BG_COLOR = color
+				end
 			end,
 		}):start()
 	end

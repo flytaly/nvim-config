@@ -82,6 +82,7 @@ telescope.setup({
 telescope.load_extension("aerial")
 telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
+telescope.load_extension("workspaces")
 
 vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>")
 vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>")
@@ -95,3 +96,4 @@ vim.keymap.set("n", "<leader>ft", ":Telescope builtin<CR>")
 vim.keymap.set("n", "<leader>fa", ":Telescope aerial<CR>")
 vim.keymap.set("n", "<leader>fc", ":Telescope git_bcommits<CR>")
 vim.keymap.set("n", "<leader>fC", ":Telescope git_commits<CR>")
+vim.keymap.set("n", "<leader>fw", ":Telescope workspaces<CR>")
