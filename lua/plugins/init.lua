@@ -275,6 +275,16 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("symbols-outline").setup({
+				highlight_hovered_item = false,
+			})
+			vim.keymap.set("n", "<leader>xo", "<cmd>SymbolsOutline<CR>")
+		end,
+	})
+
+	use({
 		"vuki656/package-info.nvim",
 		requires = "MunifTanjim/nui.nvim",
 		config = function()
