@@ -410,6 +410,14 @@ return packer.startup(function(use)
 			require("plugins.zk")
 		end,
 	})
+	use({
+		"phaazon/mind.nvim",
+		requires = { "s1n7ax/nvim-window-picker" },
+		config = function()
+			require("window-picker").setup()
+			require("mind").setup()
+		end,
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
