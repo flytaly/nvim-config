@@ -29,11 +29,12 @@ opt.termguicolors = true
 opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"
 opt.laststatus = 3
 
-vim.cmd([[set nowrap]])
-vim.cmd([[set tabstop=4]])
-vim.cmd([[set shiftwidth=4]])
-vim.cmd([[set smartindent]])
-vim.cmd([[set expandtab]])
+
+opt.wrap = false
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.smartindent = true
+opt.expandtab = true
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
