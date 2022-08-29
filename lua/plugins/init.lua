@@ -7,92 +7,55 @@ if not packer_present then
 end
 
 return packer.startup(function(use)
-	use("wbthomason/packer.nvim")
-	use({ -- select entire buffer
-		"kana/vim-textobj-entire",
-		requires = { "kana/vim-textobj-user" }, -- create your own text objects
-	})
+	use({ "wbthomason/packer.nvim" })
+	use({ "kana/vim-textobj-entire", requires = { "kana/vim-textobj-user" } }) -- select entire buffer
 	-- use("vim-scripts/restore_view.vim")
-	use("nvim-lua/plenary.nvim") -- useful lua functions
-	use("unblevable/quick-scope") -- highlight unique chars
-	use("nvim-lua/popup.nvim")
-	use("tpope/vim-fugitive")
-	use("machakann/vim-sandwich") -- vim surround alternative
-	use("tpope/vim-unimpaired")
-	use("nathom/filetype.nvim")
-	use("mg979/vim-visual-multi")
-	use("lambdalisue/suda.vim")
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("plugins.which-key")
-		end,
-	})
+	use({ "nvim-lua/plenary.nvim" }) -- useful lua functions
+	use({ "unblevable/quick-scope" }) -- highlight unique chars
+	use({ "nvim-lua/popup.nvim" })
+	use({ "tpope/vim-fugitive" })
+	use({ "tpope/vim-unimpaired" })
+	use({ "machakann/vim-sandwich" }) -- vim surround alternative
+	use({ "nathom/filetype.nvim" })
+	use({ "mg979/vim-visual-multi" })
+	use({ "lambdalisue/suda.vim" })
+	use({ "folke/which-key.nvim", config = 'require("plugins.which-key")' })
+	use({ "folke/trouble.nvim", config = 'require("plugins.trouble")' })
+	use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' })
+	use({ "luukvbaal/stabilize.nvim", config = 'require("stabilize").setup()' })
+	use({ "sidebar-nvim/sidebar.nvim", config = 'require("plugins.sidebar")' })
+	use({ "nanozuki/tabby.nvim", config = 'require("tabby").setup()' })
+	use({ "sindrets/diffview.nvim", config = 'require("plugins.diffview")' })
+	use({ "szw/vim-maximizer", config = 'require("plugins.vim-maximizer")' }) -- maximize and restore windows
+	use({ "lewis6991/gitsigns.nvim", config = 'require("plugins.gitsigns")' })
+	use({ "feline-nvim/feline.nvim", config = 'require("plugins.statusline.feline")' })
+	use({ "phaazon/hop.nvim", config = 'require("plugins.hop")' }) -- easy-motion alternative
+	use({ "luukvbaal/nnn.nvim", config = 'require("plugins.nnn")' })
+	use({ "kyazdani42/nvim-tree.lua", config = 'require("plugins.nvim-tree")' })
+	use({ "akinsho/toggleterm.nvim", config = 'require("plugins.toggleterm")' })
+	use({ "https://github.com/moll/vim-bbye" })
+	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" }) -- consistent navigation between vim and terminal splits
+	use({ "fladson/vim-kitty" }) -- syntax highlighting for Kitty config
+	use({ "natecraddock/workspaces.nvim", config = 'require("plugins.workspaces")' })
+	----- Folding
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = 'require("plugins.nvim-ufo")' })
 
-	use({
-		"folke/trouble.nvim",
-		config = function()
-			require("plugins.trouble")
-		end,
-	})
+	----- Themes and styles
+	use({ "stevearc/dressing.nvim", config = 'require("plugins.nvim-dressing")' })
+	use({ "kyazdani42/nvim-web-devicons" })
 
-	use({
-		"rcarriga/nvim-notify",
-		config = function()
-			vim.notify = require("notify")
-		end,
-	})
+	use({ "shaunsingh/nord.nvim" })
+	use({ "folke/tokyonight.nvim" })
+	use({ "rmehri01/onenord.nvim" })
+	use({ "rebelot/kanagawa.nvim" })
+	use({ "sainnhe/everforest" })
+	use({ "catppuccin/nvim", as = "catppuccin", config = 'require("plugins.catppuccin")' })
 
-	use({
-		"luukvbaal/stabilize.nvim",
-		config = function()
-			require("stabilize").setup()
-		end,
-	})
+	use({ "norcalli/nvim-colorizer.lua", config = 'require("plugins.nvim-colorizer")' })
+	use({ "lukas-reineke/indent-blankline.nvim" }) -- indentation guides
+	use({ "folke/zen-mode.nvim", config = 'require("plugins.zen-mode")' })
 
-	use({
-		"sidebar-nvim/sidebar.nvim",
-		config = function()
-			require("plugins.sidebar")
-		end,
-	})
-
-	use({
-		"nanozuki/tabby.nvim",
-		config = function()
-			require("tabby").setup()
-		end,
-	})
-
-	use({
-		"sindrets/diffview.nvim",
-		config = function()
-			require("plugins.diffview")
-		end,
-	})
-
-	use({ -- maximize and restore windows
-		"szw/vim-maximizer",
-		config = function()
-			require("plugins.vim-maximizer")
-		end,
-	})
-
-	use({
-		"lewis6991/gitsigns.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("plugins.gitsigns")
-		end,
-	})
-
-	use({
-		"feline-nvim/feline.nvim",
-		config = function()
-			require("plugins.statusline.feline")
-		end,
-	})
-
+	----- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
@@ -102,196 +65,38 @@ return packer.startup(function(use)
 			"nvim-telescope/telescope-dap.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
-		config = function()
-			require("plugins.telescope")
-		end,
+		config = 'require("plugins.telescope")',
 	})
 
-	use({
-		"phaazon/hop.nvim", -- easy-motion alternative
-		config = function()
-			require("plugins.hop")
-		end,
-	})
-
-	use({
-		"luukvbaal/nnn.nvim",
-		config = function()
-			require("plugins.nnn")
-		end,
-	})
-
-	use({
-		"kyazdani42/nvim-tree.lua",
-		config = function()
-			require("plugins.nvim-tree")
-		end,
-	})
-
-	-- use different layouts in normal and input modes
-	-- using xkbswitch
-	-- use({
-	-- 	"lyokha/vim-xkbswitch", --- switch from RU -> EN automatically
-	-- 	config = function()
-	-- 		require("plugins.vim-xkbswitch")
-	-- 	end,
-	-- })
-	--
-	-- using fcitx
-	use({
-		"lilydjwg/fcitx.vim",
-		config = function()
-			vim.g.fcitx5_remote = "/usr/bin/fcitx5-remote"
-		end,
-	})
-
-	use({
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("plugins.toggleterm")
-		end,
-	})
-
-	use({ "https://github.com/moll/vim-bbye" })
-
-	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" }) -- consistent navigation between vim and terminal splits
-
-	use("fladson/vim-kitty")
-
-	use({
-		"kevinhwang91/nvim-ufo",
-		requires = "kevinhwang91/promise-async",
-
-		config = function()
-			require("ufo").setup({
-				provider_selector = function(bufnr, filetype, buftype)
-					return { "treesitter", "indent" }
-				end,
-			})
-			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-		end,
-	})
-
-	use({
-		"natecraddock/workspaces.nvim",
-		config = function()
-			require("workspaces").setup({
-				hooks = {
-					open = { "NvimTreeOpen", "Telescope find_files" },
-				},
-			})
-		end,
-	})
-
-	------- Themes and styles
-	use("kyazdani42/nvim-web-devicons")
-
-	use("shaunsingh/nord.nvim")
-	use("folke/tokyonight.nvim")
-	use("rmehri01/onenord.nvim")
-	use("rebelot/kanagawa.nvim")
-	use("sainnhe/everforest")
-
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-		config = function()
-			require("plugins.catppuccin")
-		end,
-	})
-
-	use({
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("plugins.nvim-colorizer")
-		end,
-	})
-
-	use("lukas-reineke/indent-blankline.nvim") -- indentation guides
-
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("plugins.zen-mode")
-		end,
-	})
-
-	use({
-		"stevearc/dressing.nvim",
-		config = function()
-			require("plugins.nvim-dressing")
-		end,
-	})
-
-	use({
-		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
-	})
+	----- Use different layouts in normal and input modes
+	----- Option 1: using xkbswitch
+	-- use({ "lyokha/vim-xkbswitch", config = 'require("plugins.vim-xkbswitch")' })
+	----- Option 2: using fcitx
+	use({ "lilydjwg/fcitx.vim", config = 'require("plugins.fcitx")' })
 
 	-------------------------
-	------- Programming utils
+	----- Programming utils
 	use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = 'require("go").setup()', ft = "go" })
 	use({ "nanotee/sqls.nvim", ft = "sql" })
-
-	use("mhartington/formatter.nvim")
-
+	use({ "weilbith/nvim-code-action-menu" })
+	use({ "mhartington/formatter.nvim" })
 	use({
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	})
+	use({ "nvim-lua/lsp-status.nvim" }) -- generate statusline components from the LSP client.
+	use({ "jose-elias-alvarez/typescript.nvim" })
+	use({ "jose-elias-alvarez/null-ls.nvim" })
+	use({ "AndrewRadev/splitjoin.vim" })
+	use({ "ThePrimeagen/refactoring.nvim", config = 'require("refactoring").setup({})' })
+	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = 'require("plugins.nvim-autopairs")' })
+	use({ "vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim", config = 'require("plugins.package-info")' })
+	-- a code outline window for skimming and quick navigation
+	use({ "stevearc/aerial.nvim", config = 'require("plugins.aerial-nvim")' })
+	use({ "simrat39/symbols-outline.nvim", config = require("plugins.symbols-outline") })
 
-	use("nvim-lua/lsp-status.nvim") -- generate statusline components from the LSP client.
-	use("jose-elias-alvarez/typescript.nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("AndrewRadev/splitjoin.vim")
-
-	use({
-		"ThePrimeagen/refactoring.nvim",
-		config = function()
-			require("refactoring").setup({})
-		end,
-	})
-
-	use({
-		"windwp/nvim-autopairs",
-		after = "nvim-cmp",
-		config = function()
-			require("nvim-autopairs").setup({
-				fast_wrap = {},
-			})
-		end,
-	})
-
-	use({ -- a code outline window for skimming and quick navigation
-		"stevearc/aerial.nvim",
-		config = function()
-			require("plugins.aerial-nvim")
-		end,
-	})
-
-	use({
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			require("symbols-outline").setup({
-				highlight_hovered_item = false,
-			})
-			vim.keymap.set("n", "<leader>xo", "<cmd>SymbolsOutline<CR>")
-		end,
-	})
-
-	use({
-		"vuki656/package-info.nvim",
-		requires = "MunifTanjim/nui.nvim",
-		config = function()
-			require("plugins.package-info")
-		end,
-	})
-
+	----- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		requires = {
@@ -308,27 +113,15 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("weilbith/nvim-code-action-menu")
-
-	-------------------------
-	------- Comments
+	----- Comments
 	use({
 		"numToStr/Comment.nvim",
 		requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
-		config = function()
-			require("plugins.comment")
-		end,
+		config = 'require("plugins.comment")',
 	})
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	})
+	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim", config = 'require("todo-comments").setup()' })
 
-	-------------------------------
-	------- Completion and Snippets
+	----- Completion and Snippets
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
@@ -342,9 +135,7 @@ return packer.startup(function(use)
 			"saadparwaiz1/cmp_luasnip",
 			"David-Kunz/cmp-npm",
 		},
-		config = function()
-			require("plugins.nvim-cmp")
-		end,
+		config = 'require("plugins.nvim-cmp")',
 	})
 	use({
 		"L3MON4D3/LuaSnip",
@@ -356,63 +147,35 @@ return packer.startup(function(use)
 				run = "yarn install --frozen-lockfile && yarn compile",
 			},
 		},
-		config = function()
-			require("plugins.snippets")
-		end,
+		config = 'require("plugins.snippets")',
 	})
 
-	-------------------------------
-	------- Debug
-	use("mfussenegger/nvim-dap")
-	use("leoluz/nvim-dap-go")
+	----- Debug
+	use({ "mfussenegger/nvim-dap" })
+	use({ "leoluz/nvim-dap-go" })
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use({
 		"theHamsta/nvim-dap-virtual-text",
-		config = function()
-			require("nvim-dap-virtual-text").setup()
-		end,
+		config = 'require("nvim-dap-virtual-text").setup()',
 	})
 
-	-------------------------------
-	------- Tests
-	use({
-		"david-kunz/jester",
-		config = function()
-			require("plugins.jester")
-		end,
-	})
-	use({
-		"vim-test/vim-test",
-		config = function()
-			require("plugins.vim-test")
-		end,
-	})
+	----- Tests
+	use({ "david-kunz/jester", config = 'require("plugins.jester")' })
+	use({ "vim-test/vim-test", config = 'require("plugins.vim-test")' })
 
-	---------------------------
-	------- Markdown and notes
-	use({
-		"ekickx/clipboard-image.nvim",
-		config = function()
-			require("plugins.clipboard-image")
-		end,
-	})
+	----- Markdown and notes
+	use({ "ekickx/clipboard-image.nvim", ft = "markdown", config = 'require("plugins.clipboard-image")' })
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && yarn install",
-		config = function()
-			require("plugins.markdown-preview")
-		end,
-	})
-	use({
-		"mickael-menu/zk-nvim",
+		config = 'require("plugins.markdown-preview")',
 		ft = "markdown",
-		config = function()
-			require("plugins.zk")
-		end,
 	})
+	use({ "mickael-menu/zk-nvim", ft = "markdown", config = 'require("plugins.zk")' })
+
 	use({
 		"phaazon/mind.nvim",
-		requires = { "s1n7ax/nvim-window-picker" },
+		requires = "s1n7ax/nvim-window-picker",
 		config = function()
 			require("window-picker").setup()
 			require("mind").setup()
