@@ -84,7 +84,13 @@ telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
 telescope.load_extension("workspaces")
 
-vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>")
+vim.keymap.set("n", "<leader><space>", function()
+	local ok = pcall(vim.cmd, [[:Telescope git_files]])
+	if not ok then
+		vim.cmd([[:Telescope find_files]])
+	end
+end)
+--[[ vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>") ]]
 vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
