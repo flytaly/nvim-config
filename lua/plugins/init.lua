@@ -92,9 +92,7 @@ return packer.startup(function(use)
 	use({ "ThePrimeagen/refactoring.nvim", config = 'require("refactoring").setup({})' })
 	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = 'require("plugins.nvim-autopairs")' })
 	use({ "vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim", config = 'require("plugins.package-info")' })
-	-- a code outline window for skimming and quick navigation
-	use({ "stevearc/aerial.nvim", config = 'require("plugins.aerial-nvim")' })
-	use({ "simrat39/symbols-outline.nvim", config = require("plugins.symbols-outline") })
+	use({ "simrat39/symbols-outline.nvim", config = 'require("plugins.symbols-outline")' })
 
 	----- Treesitter
 	use({
