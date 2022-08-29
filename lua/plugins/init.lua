@@ -234,7 +234,7 @@ return packer.startup(function(use)
 
 	-------------------------
 	------- Programming utils
-	use({ "fatih/vim-go" })
+	use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = 'require("go").setup()', ft = "go" })
 	use({ "nanotee/sqls.nvim", ft = "sql" })
 
 	use("mhartington/formatter.nvim")
