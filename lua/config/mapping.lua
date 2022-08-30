@@ -46,12 +46,21 @@ vim.keymap.set("n", "<leader>cx", function()
 end)
 
 -- toggle foldmethod
-vim.keymap.set("n", "yof", function()
-	if vim.opt.foldmethod:get() == "expr" then
-		vim.cmd([[set foldmethod=manual]])
-		print("set foldmethod=manual")
-	else
-		vim.cmd([[set foldmethod=expr]])
-		print("set foldmethod=expr")
-	end
-end)
+-- vim.keymap.set("n", "yof", function()
+-- 	if vim.opt.foldmethod:get() == "expr" then
+-- 		vim.cmd([[set foldmethod=manual]])
+-- 		print("set foldmethod=manual")
+-- 	else
+-- 		vim.cmd([[set foldmethod=expr]])
+-- 		print("set foldmethod=expr")
+-- 	end
+-- end)
+
+-- Close dap float windows and quickfix with q and Esc.
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "qf", "dap-float" },
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>close!<CR>", { silent = true, buffer = true })
+		vim.keymap.set("n", "<Esc>", "<cmd>close!<CR>", { silent = true, buffer = true })
+	end,
+})

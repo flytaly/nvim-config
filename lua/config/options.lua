@@ -29,7 +29,6 @@ opt.termguicolors = true
 opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"
 opt.laststatus = 3
 
-
 opt.wrap = false
 opt.tabstop = 4
 opt.shiftwidth = 4

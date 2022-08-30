@@ -9,7 +9,7 @@ end
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 	use({ "kana/vim-textobj-entire", requires = { "kana/vim-textobj-user" } }) -- select entire buffer
-	-- use("vim-scripts/restore_view.vim")
+	use({ "vim-scripts/restore_view.vim" })
 	use({ "nvim-lua/plenary.nvim" }) -- useful lua functions
 	use({ "unblevable/quick-scope" }) -- highlight unique chars
 	use({ "nvim-lua/popup.nvim" })
@@ -44,10 +44,10 @@ return packer.startup(function(use)
 	use({ "stevearc/dressing.nvim", config = 'require("plugins.nvim-dressing")' })
 	use({ "kyazdani42/nvim-web-devicons" })
 
-	use({ "shaunsingh/nord.nvim" })
-	use({ "folke/tokyonight.nvim" })
-	use({ "rmehri01/onenord.nvim" })
-	use({ "rebelot/kanagawa.nvim" })
+	--[[ use({ "shaunsingh/nord.nvim" }) ]]
+	--[[ use({ "folke/tokyonight.nvim" }) ]]
+	--[[ use({ "rmehri01/onenord.nvim" }) ]]
+	--[[ use({ "rebelot/kanagawa.nvim" }) ]]
 	use({ "sainnhe/everforest" })
 	use({ "catppuccin/nvim", as = "catppuccin", config = 'require("plugins.catppuccin")' })
 
@@ -76,7 +76,7 @@ return packer.startup(function(use)
 
 	-------------------------
 	----- Programming utils
-	use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = 'require("go").setup()', ft = "go" })
+	use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = 'require("plugins/go")', ft = "go" })
 	use({ "nanotee/sqls.nvim", ft = "sql" })
 	use({ "weilbith/nvim-code-action-menu" })
 	use({ "mhartington/formatter.nvim" })
