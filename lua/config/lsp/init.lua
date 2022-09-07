@@ -31,6 +31,9 @@ local servers = {
 	"tailwindcss-language-server",
 	"typescript-language-server",
 	"yaml-language-server",
+	"marksman",
+	"texlab",
+	--[[ "ltex-ls", ]]
 
 	-- DAP
 	"delve",

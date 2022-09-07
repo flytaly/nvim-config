@@ -1,7 +1,11 @@
-local ok, ap = pcall(require, "nvim-autopairs")
+local ok, npairs = pcall(require, "nvim-autopairs")
 
 if not ok then
 	return
 end
 
-ap.setup({ fast_wrap = {} })
+npairs.setup({ fast_wrap = {} })
+
+local Rule = require("nvim-autopairs.rule")
+npairs.add_rule(Rule("$$", "$$", "markdown"))
+npairs.add_rule(Rule("**", "**", "markdown"))

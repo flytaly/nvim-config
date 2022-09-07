@@ -170,6 +170,7 @@ return packer.startup(function(use)
 		ft = "markdown",
 	})
 	use({ "mickael-menu/zk-nvim", ft = "markdown", config = 'require("plugins.zk")' })
+	use({ "preservim/vim-markdown" })
 
 	use({
 		"phaazon/mind.nvim",

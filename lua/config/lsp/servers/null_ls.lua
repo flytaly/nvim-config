@@ -7,7 +7,7 @@ local sources = {
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,
 	b.formatting.beautysh,
-	-- b.completion.spell.with({ filetypes = { "markdown", "text" } }),
+	b.completion.spell.with({ filetypes = { "markdown", "text" } }),
 	-- b.diagnostics.codespell,
 	-- b.diagnostics.cspell.with({ filetypes = { "markdown", "text" } }),
 	b.diagnostics.cspell.with({
