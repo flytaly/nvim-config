@@ -1,0 +1,7 @@
+{
+    "snippet": {
+        "prefix": ["imgcen"],
+        "body": ["<p align=\"center\">", "\t<img src=\"$1\" width=\"300$2\" alt=\"$3\">", "</p>"],
+        "description": "Center image"
+    }
+}

@@ -1,32 +1,38 @@
 {
-  "name": "my-snippets",
-  "contributes": {
-    "snippets": [
-      {
-        "language": [
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-          "vue",
-          "svelte",
-          "html"
-        ],
-        "path": "./snippets/js_common.json"
-      },
-      {
-        "language": [
-          "typescriptreact"
-        ],
-        "path": "./snippets/typescriptreact.json"
-      },
-      {
-        "language": [
-          "javascriptreact",
-          "typescriptreact"
-        ],
-        "path": "./snippets/javascriptreact.json"
-      }
-    ]
-  }
+    "name": "my-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "vue",
+                    "svelte",
+                    "html"
+                ],
+                "path": "./snippets/js_common.json"
+            },
+            {
+                "language": [
+                    "typescriptreact"
+                ],
+                "path": "./snippets/typescriptreact.json"
+            },
+            {
+                "language": [
+                    "javascriptreact",
+                    "typescriptreact"
+                ],
+                "path": "./snippets/javascriptreact.json"
+            },
+            {
+                "language": [
+                    "markdown"
+                ],
+                "path": "./snippets/markdown.json"
+            }
+        ]
+    }
 }
