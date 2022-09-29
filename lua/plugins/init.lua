@@ -39,17 +39,18 @@ return packer.startup(function(use)
 	use({ "natecraddock/workspaces.nvim", config = 'require("plugins.workspaces")' })
 	----- Folding
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = 'require("plugins.nvim-ufo")' })
+	use({ "startup-nvim/startup.nvim", config = 'require"startup".setup()' })
 
 	----- Themes and styles
 	use({ "stevearc/dressing.nvim", config = 'require("plugins.nvim-dressing")' })
 	use({ "kyazdani42/nvim-web-devicons" })
-
 	--[[ use({ "shaunsingh/nord.nvim" }) ]]
 	--[[ use({ "folke/tokyonight.nvim" }) ]]
 	--[[ use({ "rmehri01/onenord.nvim" }) ]]
 	--[[ use({ "rebelot/kanagawa.nvim" }) ]]
 	use({ "sainnhe/everforest" })
 	use({ "catppuccin/nvim", as = "catppuccin", config = 'require("plugins.catppuccin")' })
+	use({ "sam4llis/nvim-tundra" })
 
 	use({ "norcalli/nvim-colorizer.lua", config = 'require("plugins.nvim-colorizer")' })
 	use({ "lukas-reineke/indent-blankline.nvim" }) -- indentation guides
@@ -63,6 +64,7 @@ return packer.startup(function(use)
 			"nvim-telescope/telescope-ui-select.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			"nvim-telescope/telescope-dap.nvim",
+			"nvim-telescope/telescope-live-grep-args.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 		config = 'require("plugins.telescope")',
@@ -91,7 +93,12 @@ return packer.startup(function(use)
 	use({ "AndrewRadev/splitjoin.vim" })
 	use({ "ThePrimeagen/refactoring.nvim", config = 'require("refactoring").setup({})' })
 	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = 'require("plugins.nvim-autopairs")' })
-	use({ "vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim", config = 'require("plugins.package-info")' })
+	use({
+		"vuki656/package-info.nvim",
+		ft = "json",
+		requires = "MunifTanjim/nui.nvim",
+		config = 'require("plugins.package-info")',
+	})
 	use({ "simrat39/symbols-outline.nvim", config = 'require("plugins.symbols-outline")' })
 
 	----- Treesitter

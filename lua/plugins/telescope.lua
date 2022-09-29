@@ -82,6 +82,7 @@ telescope.setup({
 telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
 telescope.load_extension("workspaces")
+telescope.load_extension("live_grep_args")
 
 vim.keymap.set("n", "<leader><space>", function()
 	local ok = pcall(vim.cmd, [[:Telescope git_files]])
@@ -94,7 +95,8 @@ vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
+--[[ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>") ]]
+vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>fG", ":Telescope grep_string<CR>")
 vim.keymap.set("n", "<leader>fo", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>")
 vim.keymap.set("n", "<leader>ft", ":Telescope builtin<CR>")
