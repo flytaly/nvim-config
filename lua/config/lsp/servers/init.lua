@@ -5,6 +5,9 @@ M.setup = function(on_attach, capabilities)
 	local configs = {
 		cssls = require("config.lsp.servers.cssls"),
 		jsonls = require("config.lsp.servers.jsonls"),
+		gopls = {
+			settings = { gopls = { env = { GOFLAGS = "-tags=windows,linux,unittest" } } },
+		},
 		sqls = {
 			on_attach = function(client, bufnr)
 				local ok, sqls = pcall(require, "sqls")
