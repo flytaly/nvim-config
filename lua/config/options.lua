@@ -16,6 +16,7 @@ opt.splitright = true -- splits to the right
 opt.splitbelow = true -- splits below
 opt.updatetime = 300
 opt.undofile = true -- persists undo tree
+opt.relativenumber = true
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.foldcolumn = "1"

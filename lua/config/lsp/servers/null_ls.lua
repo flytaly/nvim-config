@@ -21,6 +21,7 @@ local sources = {
 	b.code_actions.gitsigns.with({ disabled_filetypes = { "sql" } }),
 	b.code_actions.gitrebase.with({ disabled_filetypes = { "sql" } }),
 	b.code_actions.refactoring,
+	b.code_actions.cspell,
 	-- b.hover.dictionary,
 }
 

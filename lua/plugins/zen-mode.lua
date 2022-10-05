@@ -19,7 +19,7 @@ zen_mode.setup({
 		options = {
 			signcolumn = "yes", -- disable signcolumn
 			number = true, -- disable number column
-			-- relativenumber = true, -- disable relative numbers
+			relativenumber = true, -- disable relative numbers
 			-- cursorline = false, -- disable cursorline
 			-- cursorcolumn = false, -- disable cursor column
 			-- foldcolumn = "0", -- disable fold column
@@ -35,7 +35,7 @@ zen_mode.setup({
 			showcmd = false, -- disables the command in the last line of the screen
 		},
 		twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-		gitsigns = { enabled = true }, -- disables git signs
+		--[[ gitsigns = { enabled = true }, -- disables git signs ]]
 		tmux = { enabled = false }, -- disables the tmux statusline
 		-- this will change the font size on kitty when in zen mode
 		-- to make this work, you need to set the following kitty options:

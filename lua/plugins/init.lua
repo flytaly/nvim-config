@@ -21,7 +21,7 @@ return packer.startup(function(use)
 	use({ "lambdalisue/suda.vim" })
 	use({ "folke/which-key.nvim", config = 'require("plugins.which-key")' })
 	use({ "folke/trouble.nvim", config = 'require("plugins.trouble")' })
-	use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' })
+	--[[ use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' }) ]]
 	use({ "luukvbaal/stabilize.nvim", config = 'require("stabilize").setup()' })
 	use({ "sidebar-nvim/sidebar.nvim", config = 'require("plugins.sidebar")' })
 	use({ "nanozuki/tabby.nvim", config = 'require("tabby").setup()' })
