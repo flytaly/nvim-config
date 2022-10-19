@@ -21,7 +21,8 @@ return packer.startup(function(use)
 	use({ "lambdalisue/suda.vim" })
 	use({ "folke/which-key.nvim", config = 'require("plugins.which-key")' })
 	use({ "folke/trouble.nvim", config = 'require("plugins.trouble")' })
-	--[[ use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' }) ]]
+	use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' })
+	--[[ use({ "phaazon/notisys.nvim", tag = "v0.1", config = "require'notisys'.setup()" }) ]]
 	use({ "luukvbaal/stabilize.nvim", config = 'require("stabilize").setup()' })
 	use({ "sidebar-nvim/sidebar.nvim", config = 'require("plugins.sidebar")' })
 	use({ "nanozuki/tabby.nvim", config = 'require("tabby").setup()' })
@@ -113,9 +114,7 @@ return packer.startup(function(use)
 		run = function()
 			vim.cmd([[TSUpdate]])
 		end,
-		config = function()
-			require("plugins.treesitter")
-		end,
+		config = 'require("plugins.treesitter")',
 	})
 
 	----- Comments
@@ -157,12 +156,12 @@ return packer.startup(function(use)
 
 	----- Debug
 	use({ "mfussenegger/nvim-dap" })
-	use({ "leoluz/nvim-dap-go" })
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use({
-		"theHamsta/nvim-dap-virtual-text",
-		config = 'require("nvim-dap-virtual-text").setup()',
-	})
+	use({ "theHamsta/nvim-dap-virtual-text", config = 'require("nvim-dap-virtual-text").setup()' })
+
+	use({ "leoluz/nvim-dap-go" })
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+	use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
 
 	----- Tests
 	use({ "david-kunz/jester", config = 'require("plugins.jester")' })
