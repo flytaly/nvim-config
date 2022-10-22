@@ -10,29 +10,36 @@ treesitter_config.setup({
 		"comment",
 		"cpp",
 		"css",
+		"diff",
 		"dockerfile",
 		"fish",
+		"gitignore",
 		"glsl",
 		"go",
 		"graphql",
 		"html",
+		"http",
 		"java",
 		"javascript",
 		"jsdoc",
 		"json",
 		"jsonc",
 		"lua",
+		"make",
 		"markdown",
 		"markdown_inline",
 		"prisma",
 		"python",
 		"query",
+		"regex",
 		"rst",
 		"rust",
+		"scss",
 		"svelte",
 		"tsx",
 		"typescript",
 		"vim",
+		"sql",
 	},
 
 	-- JoosepAlviste/nvim-ts-context-commentstring
@@ -76,26 +83,26 @@ treesitter_config.setup({
 				["ic"] = "@class.inner",
 			},
 		},
-        move = {
-                enable = true,
-                set_jumps = true, -- whether to set jumps in the jumplist
-                goto_next_start = {
-                  ["]m"] = "@function.outer",
-                  ["]]"] = "@class.outer"
-                },
-                goto_next_end = {
-                  ["]M"] = "@function.outer",
-                  ["]["] = "@class.outer"
-                },
-                goto_previous_start = {
-                  ["[m"] = "@function.outer",
-                  ["[["] = "@class.outer"
-                },
-                goto_previous_end = {
-                  ["[M"] = "@function.outer",
-                  ["[]"] = "@class.outer"
-                }
-              },
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				["]]"] = "@class.outer",
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[m"] = "@function.outer",
+				["[["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+		},
 	},
 
 	playground = {

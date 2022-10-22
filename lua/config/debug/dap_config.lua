@@ -112,7 +112,17 @@ local vscode_jest = {
 	internalConsoleOptions = "neverOpen",
 }
 
-local js = { launch_node, launch_firefox, launch_chrome, pick_node_attach, attach_firefox, attach_chrome, vscode_launch, vscode_attach, vscode_jest }
+local js = {
+	launch_node,
+	launch_firefox,
+	launch_chrome,
+	pick_node_attach,
+	attach_firefox,
+	attach_chrome,
+	vscode_launch,
+	vscode_attach,
+	vscode_jest,
+}
 
 dap.configurations.javascript = js
 dap.configurations.typescript = js

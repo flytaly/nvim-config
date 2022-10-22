@@ -38,6 +38,7 @@ return packer.startup(function(use)
 	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" }) -- consistent navigation between vim and terminal splits
 	use({ "fladson/vim-kitty" }) -- syntax highlighting for Kitty config
 	use({ "natecraddock/workspaces.nvim", config = 'require("plugins.workspaces")' })
+	use({ "folke/noice.nvim", event = "VimEnter", config = 'require("noice").setup({messages={enabled=false}})' })
 	----- Folding
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = 'require("plugins.nvim-ufo")' })
 	use({ "startup-nvim/startup.nvim", config = 'require"startup".setup()' })
