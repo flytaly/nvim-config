@@ -34,19 +34,6 @@ local open_in_nvim_tree = function(prompt_bufnr)
 	vim.cmd("/" .. file_name)
 end
 
--- https://github.com/nvim-telescope/telescope.nvim/issues/559
-local fixfolds = {
-	hidden = true,
-	attach_mappings = function(_)
-		telescope_actions.select:enhance({
-			post = function()
-				vim.cmd(":normal! zx")
-			end,
-		})
-		return true
-	end,
-}
-
 telescope.setup({
 	extensions = {
 		file_browser = {
@@ -67,15 +54,6 @@ telescope.setup({
 				["<c-s>"] = open_in_nvim_tree,
 			},
 		},
-	},
-	pickers = {
-		buffers = fixfolds,
-		file_browser = fixfolds,
-		find_files = fixfolds,
-		git_files = fixfolds,
-		grep_string = fixfolds,
-		live_grep = fixfolds,
-		oldfiles = fixfolds,
 	},
 })
 
