@@ -1,3 +1,6 @@
+vim.g.do_filetype_lua = 1 -- Use the new Lua version
+vim.g.did_load_filetypes = 0 -- Do not source the default filetype.vim
+
 --- Default Neovim Options
 local opt = vim.opt
 

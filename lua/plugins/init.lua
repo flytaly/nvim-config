@@ -16,13 +16,13 @@ return packer.startup(function(use)
 	use({ "tpope/vim-fugitive" })
 	use({ "tpope/vim-unimpaired" })
 	use({ "machakann/vim-sandwich" }) -- vim surround alternative
-	use({ "nathom/filetype.nvim" })
+	use({ "nathom/filetype.nvim", config = 'require("plugins.filetype")' })
 	use({ "mg979/vim-visual-multi" })
 	use({ "lambdalisue/suda.vim" })
 	use({ "folke/which-key.nvim", config = 'require("plugins.which-key")' })
 	use({ "folke/trouble.nvim", config = 'require("plugins.trouble")' })
 	use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' })
-	--[[ use({ "phaazon/notisys.nvim", tag = "v0.1", config = "require'notisys'.setup()" }) ]]
+	use({ "phaazon/notisys.nvim", tag = "v0.1", config = "require'notisys'.setup()" })
 	use({ "luukvbaal/stabilize.nvim", config = 'require("stabilize").setup()' })
 	use({ "sidebar-nvim/sidebar.nvim", config = 'require("plugins.sidebar")' })
 	use({ "nanozuki/tabby.nvim", config = 'require("tabby").setup()' })
@@ -42,6 +42,7 @@ return packer.startup(function(use)
 	use({ "startup-nvim/startup.nvim", config = 'require"startup".setup()' })
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = 'require("plugins.nvim-ufo")' }) -- folding
 	use({ "gabrielpoca/replacer.nvim", config = 'require("plugins.replacer")' })
+	use({ "RRethy/vim-illuminate", config = 'require("illuminate").configure({})' })
 
 	----- Themes and styles
 	use({ "stevearc/dressing.nvim", config = 'require("plugins.nvim-dressing")' })
