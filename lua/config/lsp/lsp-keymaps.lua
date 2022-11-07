@@ -19,7 +19,9 @@ local function set_default_keymaps(_, bufnr)
 	vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 
-	vim.keymap.set("n", "<leader>gf", format.format, opts)
+	vim.keymap.set("n", "<leader>gf", function()
+		format.format(bufnr)
+	end)
 
 	vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.keymap.set({ "i", "n" }, "<C-'>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)

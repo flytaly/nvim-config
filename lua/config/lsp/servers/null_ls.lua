@@ -1,8 +1,31 @@
 local null_ls = require("null-ls")
 local b = null_ls.builtins
 
+local prettier_filetypes = {
+	"javascript",
+	"javascriptreact",
+	"typescript",
+	"typescriptreact",
+	"vue",
+	"css",
+	"scss",
+	"less",
+	"html",
+	"json",
+	"jsonc",
+	"yaml",
+	"markdown",
+	"markdown.mdx",
+	"graphql",
+	"handlebars",
+	"glsl", -- install plugin: `npm install prettier-plugin-glsl`
+}
+
 local sources = {
-	b.formatting.prettier_d_slim,
+	--[[ b.formatting.prettier_d_slim, ]]
+	b.formatting.prettierd.with({ filetypes = prettier_filetypes }),
+
+	--[[ b.formatting.prettierd.with({ filetypes = { "glsl" } }), ]]
 	b.formatting.stylua,
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,
