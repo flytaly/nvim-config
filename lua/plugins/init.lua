@@ -83,7 +83,6 @@ return packer.startup(function(use)
 	use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = 'require("plugins/go")', ft = "go" })
 	use({ "nanotee/sqls.nvim", ft = "sql" })
 	use({ "weilbith/nvim-code-action-menu" })
-	use({ "mhartington/formatter.nvim" })
 	use({
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",

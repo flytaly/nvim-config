@@ -24,8 +24,6 @@ local prettier_filetypes = {
 local sources = {
 	--[[ b.formatting.prettier_d_slim, ]]
 	b.formatting.prettierd.with({ filetypes = prettier_filetypes }),
-
-	--[[ b.formatting.prettierd.with({ filetypes = { "glsl" } }), ]]
 	b.formatting.stylua,
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,

@@ -1,7 +1,8 @@
 local M = {}
 
-vim.keymap.set("n", "<leader>gs", function()
+vim.keymap.set("n", "yof", function()
 	M.isEnabled = not M.isEnabled
+	print("format on save", (M.isEnabled and "enabled" or "disabled"))
 end)
 
 M.isEnabled = true

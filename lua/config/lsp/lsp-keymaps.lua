@@ -20,7 +20,7 @@ local function set_default_keymaps(_, bufnr)
 	vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 
 	vim.keymap.set("n", "<leader>gf", function()
-		format.format(bufnr)
+		format.format()
 	end)
 
 	vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
