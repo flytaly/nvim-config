@@ -18,12 +18,16 @@ local prettier_filetypes = {
 	"markdown.mdx",
 	"graphql",
 	"handlebars",
-	"glsl", -- install plugin: `npm install prettier-plugin-glsl`
 }
 
 local sources = {
 	--[[ b.formatting.prettier_d_slim, ]]
 	b.formatting.prettierd.with({ filetypes = prettier_filetypes }),
+	b.formatting.prettier.with({
+		filetypes = {
+			"glsl", -- install plugin: `npm install prettier-plugin-glsl`
+		},
+	}),
 	b.formatting.stylua,
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,

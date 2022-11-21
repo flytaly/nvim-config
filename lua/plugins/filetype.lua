@@ -10,6 +10,8 @@ filetype.setup({
 			html = "html",
 			pcss = "scss",
 			prisma = "prisma",
+			frag = "glsl",
+			vert = "glsl",
 		},
 	},
 })
