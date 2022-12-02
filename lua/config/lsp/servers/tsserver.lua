@@ -1,24 +1,5 @@
 local M = {}
 
-local function filter(arr, fn)
-	if type(arr) ~= "table" then
-		return arr
-	end
-
-	local filtered = {}
-	for k, v in pairs(arr) do
-		if fn(v, k, arr) then
-			table.insert(filtered, v)
-		end
-	end
-
-	return filtered
-end
-
-local function filterReactDTS(value)
-	return string.match(value.uri, "react/index.d.ts") == nil
-end
-
 -- Filter react definition files after using vim.lsp.buf.definition()
 -- preventing opening quickfix window.
 -- https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
@@ -39,7 +20,6 @@ M.setup = function()
 	if presentTS then
 		TS.setup({
 			server = {
-				handlers = handlers,
 				flags = { debounce_text_changes = 200 },
 			},
 		})

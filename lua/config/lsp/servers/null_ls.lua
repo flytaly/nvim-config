@@ -28,6 +28,7 @@ local sources = {
 			"glsl", -- install plugin: `npm install prettier-plugin-glsl`
 		},
 	}),
+	b.diagnostics.stylelint,
 	b.formatting.stylua,
 	b.formatting.trim_whitespace.with({ filetypes = { "tmux", "teal", "zsh", "tridactyl" } }),
 	b.formatting.shfmt,

@@ -1,4 +1,5 @@
 local format = require("config.lsp.format")
+local filterDTS = require("config.lsp.filter-dts")
 
 local function set_default_keymaps(_, bufnr)
 	-- Mappings.
@@ -8,12 +9,19 @@ local function set_default_keymaps(_, bufnr)
 	vim.keymap.set({ "n", "v" }, "ga", "<cmd>CodeActionMenu<CR>", opts)
 	vim.keymap.set("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.keymap.set("v", "<space>ca", ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
-	vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.keymap.set("n", "<C-t>gd", ":tab split<CR>:lua vim.lsp.buf.definition()<CR>", opts)
+
+	vim.keymap.set("n", "gd", function()
+		vim.lsp.buf.definition({ on_list = filterDTS.on_list })
+	end, opts)
+	vim.keymap.set("n", "<C-t>gd", function()
+		vim.api.nvim_command("tab split")
+		vim.lsp.buf.definition({ on_list = filterDTS.on_list })
+	end, opts)
+
 	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	-- use Trouble for references
-	-- vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	vim.keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
