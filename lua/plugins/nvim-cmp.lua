@@ -112,6 +112,20 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i" }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			end
+		end, { "i", "s" }),
 	},
 
 	formatting = {
@@ -134,12 +148,12 @@ cmp.setup({
 	},
 	sources = {
 		{
-			name = "nvim_lsp", --[[, max_item_count = 20 ]] 
+			name = "nvim_lsp", --[[, max_item_count = 20 ]]
 		},
 		{ name = "fish" },
 		{ name = "npm", keyword_length = 4 },
 		{
-			name = "luasnip",--[[ , max_item_count = 10 ]] 
+			name = "luasnip",--[[ , max_item_count = 10 ]]
 		},
 		{ name = "nvim_lua" },
 		{ name = "path" },
