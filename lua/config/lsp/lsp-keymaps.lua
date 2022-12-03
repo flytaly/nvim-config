@@ -21,7 +21,7 @@ local function set_default_keymaps(_, bufnr)
 	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	-- use Trouble for references
-	vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	--[[ vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts) ]]
 	vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	vim.keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
