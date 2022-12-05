@@ -37,6 +37,12 @@ vim.keymap.set("n", "<F8>", function()
 	require("null-ls").toggle("cspell")
 end)
 
+-- Center screen after vertical movements
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- save and source
 vim.keymap.set("n", "<leader>cx", function()
 	vim.cmd("w")
