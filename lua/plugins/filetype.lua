@@ -12,6 +12,7 @@ filetype.setup({
 			prisma = "prisma",
 			frag = "glsl",
 			vert = "glsl",
+			sh = "sh",
 		},
 	},
 })
