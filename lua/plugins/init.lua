@@ -9,6 +9,7 @@ end
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 	use({ "kana/vim-textobj-entire", requires = { "kana/vim-textobj-user" } }) -- select entire buffer
+	use({ "kazhala/close-buffers.nvim", config = 'require("plugins.close-buffers")' })
 	use({ "vim-scripts/restore_view.vim" })
 	use({ "nvim-lua/plenary.nvim" }) -- useful lua functions
 	use({ "unblevable/quick-scope" }) -- highlight unique chars
@@ -33,7 +34,6 @@ return packer.startup(function(use)
 	use({ "luukvbaal/nnn.nvim", config = 'require("plugins.nnn")' })
 	use({ "kyazdani42/nvim-tree.lua", config = 'require("plugins.nvim-tree")' })
 	use({ "akinsho/toggleterm.nvim", config = 'require("plugins.toggleterm")' })
-	use({ "https://github.com/moll/vim-bbye" })
 	use({ "knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/" }) -- consistent navigation between vim and terminal splits
 	use({ "fladson/vim-kitty" }) -- syntax highlighting for Kitty config
 	use({ "natecraddock/workspaces.nvim", config = 'require("plugins.workspaces")' })

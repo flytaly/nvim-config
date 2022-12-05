@@ -33,8 +33,6 @@ vim.keymap.set("n", "<C-t>n", ":tabnew<CR>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("n", "<leader>q", ":Bdelete<CR>")
-
 vim.keymap.set("n", "<F8>", function()
 	require("null-ls").toggle("cspell")
 end)
