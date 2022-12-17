@@ -24,7 +24,6 @@ packer.startup({
 		use({ "folke/trouble.nvim", config = 'require("plugins.trouble")' })
 		--[[ use({ "vigoux/notifier.nvim", config = 'require("notifier").setup({})' }) ]]
 		--[[ use({ "phaazon/notisys.nvim", tag = "v0.1", config = "require'notisys'.setup()" }) ]]
-		use({ "luukvbaal/stabilize.nvim", config = 'require("stabilize").setup()' })
 		use({ "sidebar-nvim/sidebar.nvim", config = 'require("plugins.sidebar")' })
 		use({ "nanozuki/tabby.nvim", config = 'require("tabby").setup()' })
 		use({ "sindrets/diffview.nvim", config = 'require("plugins.diffview")' })
@@ -47,7 +46,6 @@ packer.startup({
 		}) -- folding
 		use({ "gabrielpoca/replacer.nvim", config = 'require("plugins.replacer")' })
 		use({ "RRethy/vim-illuminate", config = 'require("illuminate").configure({})' })
-		use({ "nathom/filetype.nvim", config = 'require("plugins.filetype")' })
 		use({ "mbbill/undotree" })
 
 		----- Themes and styles

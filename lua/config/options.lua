@@ -1,5 +1,5 @@
--- vim.g.do_filetype_lua = 1 -- Use the new Lua version
--- vim.g.did_load_filetypes = 0 -- Do not source the default filetype.vim
+vim.g.do_filetype_lua = 1 -- Use the new Lua version
+-- vim.g.did_load_filetypes = 0 -- A value of 0 for this variable disables filetype.vim. A value of 1 disables both filetype.vim and filetype.lua
 
 --- Default Neovim Options
 local opt = vim.opt
@@ -38,6 +38,8 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.smartindent = true
 opt.expandtab = true
+
+opt.scrolloff = 4
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
