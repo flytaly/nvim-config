@@ -1,6 +1,3 @@
-vim.g.do_filetype_lua = 1 -- Use the new Lua version
--- vim.g.did_load_filetypes = 0 -- A value of 0 for this variable disables filetype.vim. A value of 1 disables both filetype.vim and filetype.lua
-
 --- Default Neovim Options
 local opt = vim.opt
 

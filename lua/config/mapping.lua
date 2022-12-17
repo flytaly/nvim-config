@@ -20,6 +20,9 @@ vim.keymap.set("n", "<C-s>", ":w<CR>") -- save
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a") -- save
 vim.keymap.set("n", "<A-q>", ":q!<CR>") -- close w/o saving
 
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+
 -- Navigate buffers
 vim.keymap.set("n", "<C-Right>", ":bnext<CR>")
 vim.keymap.set("n", "<C-Left>", ":bprevious<CR>")
