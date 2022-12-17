@@ -40,10 +40,15 @@ packer.startup({
 		use({ "natecraddock/workspaces.nvim", config = 'require("plugins.workspaces")' })
 		--[[ use({ "folke/noice.nvim", event = "VimEnter", config = 'require("plugins.noice")' }) ]]
 		use({ "startup-nvim/startup.nvim", config = 'require"startup".setup()' })
-		use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = 'require("plugins.nvim-ufo")' }) -- folding
+		use({
+			"kevinhwang91/nvim-ufo",
+			requires = "kevinhwang91/promise-async",
+			config = 'require("plugins.nvim-ufo")',
+		}) -- folding
 		use({ "gabrielpoca/replacer.nvim", config = 'require("plugins.replacer")' })
 		use({ "RRethy/vim-illuminate", config = 'require("illuminate").configure({})' })
 		use({ "nathom/filetype.nvim", config = 'require("plugins.filetype")' })
+		use({ "mbbill/undotree" })
 
 		----- Themes and styles
 		use({ "stevearc/dressing.nvim", config = 'require("plugins.nvim-dressing")' })
