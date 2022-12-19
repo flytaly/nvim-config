@@ -24,11 +24,18 @@ end
 M.on_list = function(options)
 	local items = options.items
 	if #items > 1 then
-		items = M.filter(items, filterReactDTS)
+		local filtered = M.filter(items, filterReactDTS)
+		if #filtered == 1 then
+			items = filtered
+		end
 	end
-
 	vim.fn.setqflist({}, " ", { title = options.title, items = items, context = options.context })
-	vim.api.nvim_command("cfirst") -- or maybe you want 'copen' instead of 'cfirst'
+	if #items == 1 then
+		vim.api.nvim_command("cfirst") -- or maybe you want 'copen' instead of 'cfirst'
+	else
+		-- vim.api.nvim_command("copen")
+		vim.cmd([[Trouble quickfix]])
+	end
 end
 
 return M

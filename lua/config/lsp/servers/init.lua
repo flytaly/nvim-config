@@ -29,6 +29,11 @@ M.setup = function(on_attach, capabilities)
 				client.server_capabilities.documentRangeFormattingProvider = false
 			end,
 		},
+		graphql = {
+			on_attach = function(client)
+				client.server_capabilities.workspaceSymbolProvider = false
+			end,
+		},
 		tsserver = {
 			filetypes = {
 				"javascript",
