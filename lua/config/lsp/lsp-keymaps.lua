@@ -34,7 +34,8 @@ local function set_default_keymaps(_, bufnr)
 	vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.keymap.set({ "i", "n" }, "<C-'>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
-	vim.keymap.set("n", "<leader>fls", "<cmd>Telescope lsp_workspace_symbols<CR>", opts)
+	vim.keymap.set("n", "<leader>fws", "<cmd>Telescope lsp_workspace_symbols<CR>", opts)
+	vim.keymap.set("n", "<leader>fds", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 end
 
 return {
