@@ -16,6 +16,7 @@ packer.startup({
 		use({ "unblevable/quick-scope" }) -- highlight unique chars
 		use({ "nvim-lua/popup.nvim" })
 		use({ "tpope/vim-fugitive" })
+		use({ "tpope/vim-rhubarb" })
 		use({ "tpope/vim-unimpaired" })
 		use({ "machakann/vim-sandwich" }) -- vim surround alternative
 		use({ "mg979/vim-visual-multi" })
@@ -56,6 +57,7 @@ packer.startup({
 		--[[ use({ "rmehri01/onenord.nvim" }) ]]
 		--[[ use({ "rebelot/kanagawa.nvim" }) ]]
 		use({ "sainnhe/everforest" })
+
 		use({ "catppuccin/nvim", as = "catppuccin", config = 'require("plugins.catppuccin")' })
 		use({ "sam4llis/nvim-tundra" })
 
