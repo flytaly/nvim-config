@@ -101,7 +101,11 @@ packer.startup({
 		use({ "jose-elias-alvarez/null-ls.nvim" })
 		use({ "AndrewRadev/splitjoin.vim" })
 		use({ "ThePrimeagen/refactoring.nvim", config = 'require("refactoring").setup({})' })
-		use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = 'require("plugins.nvim-autopairs")' })
+		use({
+			"m4xshen/autoclose.nvim",
+			config = 'require("autoclose").setup({})',
+		})
+
 		use({
 			"vuki656/package-info.nvim",
 			ft = "json",
@@ -190,14 +194,6 @@ packer.startup({
 		use({ "mickael-menu/zk-nvim", ft = "markdown", config = 'require("plugins.zk")' })
 		use({ "preservim/vim-markdown" })
 
-		use({
-			"phaazon/mind.nvim",
-			requires = "s1n7ax/nvim-window-picker",
-			config = function()
-				require("window-picker").setup()
-				require("mind").setup()
-			end,
-		})
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
 		if PACKER_BOOTSTRAP then
