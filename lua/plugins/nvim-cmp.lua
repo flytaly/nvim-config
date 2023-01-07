@@ -141,12 +141,14 @@ cmp.setup({
 				buffer = "[buf]",
 				nvim_lua = "[lua]",
 				path = "[path]",
+				cmp_tabnine = "[tab9]",
 			})[entry.source.name]
 
 			return vim_item
 		end,
 	},
 	sources = {
+		{ name = "cmp_tabnine" },
 		{
 			name = "nvim_lsp", --[[, max_item_count = 20 ]]
 		},
