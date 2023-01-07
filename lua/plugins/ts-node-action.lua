@@ -1,0 +1,59 @@
+local ts_node_action = require("ts-node-action")
+local helpers = require("ts-node-action.helpers")
+local toggle_boolean = require("ts-node-action.actions.toggle_boolean")
+
+local padding = {
+	[","] = "%s ",
+	[":"] = "%s ",
+}
+
+local toggle_multiline = require("ts-node-action.actions.toggle_multiline")(padding)
+
+local operators = {
+	["!="] = "==",
+	["!=="] = "===",
+	["=="] = "!=",
+	["==="] = "!==",
+	[">"] = "<",
+	["<"] = ">",
+	[">="] = "<=",
+	["<="] = ">=",
+}
+
+local function toggle_operator(node)
+	local replacement = {}
+
+	for child, _ in node:iter_children() do
+		local text = helpers.node_text(child)
+		if operators[text] then
+			table.insert(replacement, operators[text])
+		else
+			table.insert(replacement, text)
+		end
+	end
+
+	return table.concat(replacement, " ")
+end
+
+local js = {
+	["true"] = toggle_boolean,
+	["false"] = toggle_boolean,
+	["array"] = toggle_multiline,
+	["object"] = toggle_multiline,
+	["object_pattern"] = toggle_multiline,
+	["object_type"] = toggle_multiline,
+	["formal_parameters"] = toggle_multiline,
+	["argument_list"] = toggle_multiline,
+	["method_parameters"] = toggle_multiline,
+	["binary_expression"] = toggle_operator,
+}
+
+ts_node_action.setup({
+	typescript = js,
+	typescriptreact = js,
+	javascript = js,
+	javascriptreact = js,
+	svelte = js,
+})
+
+vim.keymap.set({ "n" }, "Z", require("ts-node-action").node_action, { desc = "Trigger Node Action" })

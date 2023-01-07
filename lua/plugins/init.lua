@@ -99,7 +99,11 @@ packer.startup({
 		use({ "nvim-lua/lsp-status.nvim" }) -- generate statusline components from the LSP client.
 		use({ "jose-elias-alvarez/typescript.nvim" })
 		use({ "jose-elias-alvarez/null-ls.nvim" })
-		use({ "AndrewRadev/splitjoin.vim" })
+		use({
+			"ckolkey/ts-node-action",
+			requires = { "nvim-treesitter" },
+			config = 'require("plugins/ts-node-action")',
+		})
 		use({ "ThePrimeagen/refactoring.nvim", config = 'require("refactoring").setup({})' })
 		use({
 			"m4xshen/autoclose.nvim",
