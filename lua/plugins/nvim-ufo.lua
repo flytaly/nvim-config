@@ -1,13 +1,14 @@
-local ok, ufo = pcall(require, "ufo")
+return {
+	"kevinhwang91/nvim-ufo",
+	dependencies = "kevinhwang91/promise-async",
+	config = function()
+		require("ufo").setup({
+			provider_selector = function(bufnr, filetype, buftype)
+				return { "treesitter", "indent" }
+			end,
+		})
 
-if not ok then
-	return
-end
-
-ufo.setup({
-	provider_selector = function(bufnr, filetype, buftype)
-		return { "treesitter", "indent" }
+		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 	end,
-})
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+}
