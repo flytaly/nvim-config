@@ -20,13 +20,12 @@ return {
 	{ "lambdalisue/suda.vim" },
 	{ "nanozuki/tabby.nvim", config = true },
 	{ "sindrets/diffview.nvim", opts = { file_panel = { win_config = { position = "left" } } } },
-	--[[ { ]]
-	--[[ 	"startup-nvim/startup.nvim", ]]
-	--[[ 	dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }, ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("startup").setup() ]]
-	--[[ 	end, ]]
-	--[[ }, ]]
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	},
 	{
 		"szw/vim-maximizer",
 		init = function()
