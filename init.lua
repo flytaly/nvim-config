@@ -1,7 +1,6 @@
 require("config.mapping")
 
 require("config.lazy-nvim-install")
-require("lazy").setup("plugins")
 require("plugins")
 
 require("config.options")
