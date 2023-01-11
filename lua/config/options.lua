@@ -1,6 +1,10 @@
 --- Default Neovim Options
 local opt = vim.opt
 
+-- https://github.com/kevinhwang91/nvim-ufo/issues/4
+vim.o.statuscolumn =
+	'%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  " }%*'
+
 opt.completeopt = { "menu", "menuone", "noselect" } -- better autocomplete options
 opt.cmdheight = 1 -- only one line for commands
 opt.encoding = "UTF-8"
