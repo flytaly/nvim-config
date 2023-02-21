@@ -84,6 +84,14 @@ return {
 			end
 		end
 
+		local function toggle_popup()
+			if cmp.visible() then
+				cmp.abort()
+			else
+				cmp.complete()
+			end
+		end
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -93,12 +101,9 @@ return {
 			mapping = {
 				["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+				["<C-Space>"] = cmp.mapping({ i = toggle_popup, c = toggle_popup }),
 				["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-				["<C-e>"] = cmp.mapping({
-					i = cmp.mapping.abort(),
-					c = cmp.mapping.close(),
-				}),
+				["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				["<C-n>"] = cmp.mapping(select_next()),
 				["<Down>"] = cmp.mapping(select_next()),
@@ -130,8 +135,6 @@ return {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif has_words_before() then
-						cmp.complete()
 					else
 						fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 					end

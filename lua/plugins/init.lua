@@ -55,12 +55,12 @@ return {
 			vim.api.nvim_set_keymap("n", "<Leader>gr", ':lua require("replacer").run()<cr>', { silent = true })
 		end,
 	},
-	{
-		"RRethy/vim-illuminate",
-		config = function()
-			require("illuminate").configure({})
-		end,
-	},
+	--[[ { ]]
+	--[[ 	"RRethy/vim-illuminate", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("illuminate").configure({}) ]]
+	--[[ 	end, ]]
+	--[[ }, ]]
 	{ "mbbill/undotree" },
 	{ "kyazdani42/nvim-web-devicons" },
 	{ "sainnhe/everforest" },
@@ -94,4 +94,21 @@ return {
 	{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "microsoft/vscode-js-debug", opt = true, build = "npm install --legacy-peer-deps && npm run compile" },
 	{ "preservim/vim-markdown" },
+	{
+		"Exafunction/codeium.vim",
+		init = function()
+			vim.keymap.set("i", "<c-.>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true })
+			vim.keymap.set("i", "<c-,>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true })
+			vim.keymap.set("i", "<c-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true })
+			vim.keymap.set("i", "<c-cr>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
+		end,
+	},
 }
