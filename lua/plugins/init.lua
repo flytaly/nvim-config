@@ -92,7 +92,11 @@ return {
 	{ "theHamsta/nvim-dap-virtual-text", config = true },
 	{ "leoluz/nvim-dap-go" },
 	{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
-	{ "microsoft/vscode-js-debug", opt = true, build = "npm install --legacy-peer-deps && npm run compile" },
+	{
+		"microsoft/vscode-js-debug",
+		opt = true,
+		build = "npm install --legacy-peer-deps && npm run compile",
+	},
 	{ "preservim/vim-markdown" },
 	{
 		"Exafunction/codeium.vim",
