@@ -25,7 +25,7 @@ local servers = {
 	"lua-language-server",
 	"prisma-language-server",
 	"rust-analyzer",
-	"sqls",
+	"sqlls",
 	"stylelint-lsp",
 	"svelte-language-server",
 	"tailwindcss-language-server",
