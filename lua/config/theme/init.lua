@@ -10,4 +10,4 @@ require("config.theme.theme").setup(colorscheme)
 
 require("config.theme.cmp").setupColors()
 
-require("config.theme.kitty-background")
+-- require("config.theme.kitty-background")

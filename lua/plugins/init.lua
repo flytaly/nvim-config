@@ -26,6 +26,7 @@ return {
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
 	},
+	{ "Th3Whit3Wolf/one-nvim" },
 	{
 		"szw/vim-maximizer",
 		init = function()
