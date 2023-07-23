@@ -9,9 +9,11 @@ return {
 		"hrsh7th/cmp-nvim-lsp-document-symbol",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"saadparwaiz1/cmp_luasnip",
+		"kristijanhusak/vim-dadbod-completion",
 		"David-Kunz/cmp-npm",
 		{ "tzachar/cmp-tabnine", build = "./install.sh" },
 	},
+
 	config = function()
 		local presentCmp, cmp = pcall(require, "cmp")
 		local present_lua_snip, ls = pcall(require, "luasnip")
@@ -173,7 +175,7 @@ return {
 				{ name = "fish" },
 				{ name = "npm", keyword_length = 4 },
 				{
-					name = "luasnip",--[[ , max_item_count = 10 ]]
+					name = "luasnip", --[[ , max_item_count = 10 ]]
 				},
 				{ name = "nvim_lua" },
 				{ name = "path" },
@@ -184,6 +186,13 @@ return {
 				ghost_text = true,
 				native_menu = false,
 			},
+		})
+
+		-- Set configuration for specific filetype.
+		cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
+			sources = cmp.config.sources({
+				{ name = "vim-dadbod-completion" },
+			}),
 		})
 
 		-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
