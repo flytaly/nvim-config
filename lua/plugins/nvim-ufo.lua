@@ -1,27 +1,22 @@
+local ftMap = {
+	vim = "indent",
+	python = { "indent" },
+	git = "",
+	typescript = "",
+	typescriptreact = "",
+	javascript = "",
+	--[[ css = "", ]]
+}
+
 return {
 	"kevinhwang91/nvim-ufo",
-	dependencies = {
-		"kevinhwang91/promise-async",
-		{
-			"luukvbaal/statuscol.nvim",
-			config = function()
-				--[[ https://github.com/luukvbaal/statuscol.nvim/issues/27 ]]
-				local builtin = require("statuscol.builtin")
-				require("statuscol").setup({
-					relculright = true,
-					segments = {
-						{ text = { " ", builtin.foldfunc, " " }, click = "v:lua.ScFa" }, -- fold
-						{ text = { "%s" }, click = "v:lua.ScSa" }, -- status
-						{ text = { builtin.lnumfunc }, click = "v:lua.ScLa" }, -- numbers
-					},
-				})
-			end,
-		},
-	},
+	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
 		require("ufo").setup({
+			open_fold_hl_timeout = 150,
 			provider_selector = function(bufnr, filetype, buftype)
-				return { "treesitter", "indent" }
+				return ftMap[filetype] or { "treesitter", "indent" }
+				--[[ return ftMap[filetype] or { "indent" } ]]
 			end,
 		})
 
