@@ -19,18 +19,20 @@ local get_kitty_background = function()
 
 	if vim.g.ORIGINAL_KITTY_BG_COLOR == nil then
 		-- HACK: getting background color
-		Job:new({
-			command = "kitty",
-			args = { "@", "get-colors" },
-			cwd = "/usr/bin/",
-			on_exit = function(j, _)
-				arg = j:result()[4]
-				if arg then
-					local color = split(arg)[2]
-					vim.g.ORIGINAL_KITTY_BG_COLOR = color
-				end
-			end,
-		}):start()
+		Job
+			:new({
+				command = "kitty",
+				args = { "@", "get-colors" },
+				cwd = "/usr/bin/",
+				on_exit = function(j, _)
+					arg = j:result()[4]
+					if arg then
+						local color = split(arg)[2]
+						vim.g.ORIGINAL_KITTY_BG_COLOR = color
+					end
+				end,
+			})
+			:start()
 	end
 end
 

@@ -8,7 +8,6 @@ end
 require("config.debug.dap_config")
 local h = require("config/debug/debug_helpers")
 
-
 local sign = vim.fn.sign_define
 
 -- catppuccin colors
