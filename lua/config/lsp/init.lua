@@ -33,6 +33,7 @@ local servers = {
 	"yaml-language-server",
 	"marksman",
 	"texlab",
+	"phpactor",
 	--[[ "ltex-ls", ]]
 
 	-- DAP
