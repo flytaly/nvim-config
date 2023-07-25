@@ -50,12 +50,20 @@ return {
 		end,
 	},
 	{
-		"kyazdani42/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua",
 		init = function()
 			vim.keymap.set("n", "<leader>no", ":NvimTreeToggle<CR>")
 			vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>")
 		end,
 		config = true,
+	},
+	{
+		-- refactor on file rename/move in nvim-tree with some LSP
+		"antosha417/nvim-lsp-file-operations",
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-tree.lua" },
+		init = function()
+			require("lsp-file-operations").setup()
+		end,
 	},
 	{ "knubie/vim-kitty-navigator", build = "cp ./*.py ~/.config/kitty/" }, -- consistent navigation between vim and terminal splits
 	{ "fladson/vim-kitty" }, -- syntax highlighting for Kitty config
@@ -92,7 +100,6 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	{ "nvim-lua/lsp-status.nvim" }, -- generate statusline components from the LSP client.
-	{ "jose-elias-alvarez/typescript.nvim" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "ThePrimeagen/refactoring.nvim", config = true },
 	{ "m4xshen/autoclose.nvim", opts = { {} } },

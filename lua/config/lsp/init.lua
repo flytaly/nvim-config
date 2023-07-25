@@ -65,6 +65,5 @@ local on_attach = handlers.on_attach
 local capabilities = handlers.capabilities
 
 require("config.lsp.servers").setup(on_attach, capabilities)
-require("config.lsp.servers.tsserver").setup()
 require("config.lsp.servers.null_ls").setup(on_attach)
 require("config.lsp.servers.ls_emmet").setup(capabilities)
