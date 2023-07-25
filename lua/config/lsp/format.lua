@@ -31,7 +31,7 @@ M.format = function(bufnr)
 		bufnr = bufnr,
 		filter = function(client)
 			-- Never request following servers for formatting
-			return client.name ~= "tsserver" and client.name ~= "sumneko_lua"
+			return client.name ~= "tsserver" and client.name ~= "lua_ls"
 		end,
 	})
 end
