@@ -35,17 +35,6 @@ M.setup = function(on_attach, capabilities)
 				client.server_capabilities.workspaceSymbolProvider = false
 			end,
 		},
-		tsserver = {
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"svelte",
-			},
-		},
 	}
 
 	local presentMasonLsp, masonLsp = pcall(require, "mason-lspconfig")

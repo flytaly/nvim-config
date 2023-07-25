@@ -29,7 +29,7 @@ local servers = {
 	"stylelint-lsp",
 	"svelte-language-server",
 	"tailwindcss-language-server",
-	"typescript-language-server",
+	--[[ "typescript-language-server", ]]
 	"yaml-language-server",
 	"marksman",
 	"texlab",
