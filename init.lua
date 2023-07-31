@@ -8,5 +8,5 @@ else
 	require("config.lsp")
 	require("config.debug")
 	require("neovide")
-	require("eslint")
+	require("commands")
 end
