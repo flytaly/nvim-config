@@ -24,7 +24,8 @@ return {
 		vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>")
 		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 		--[[ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>") ]]
-		vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+		vim.keymap.set("n", "<leader>fg", ":Telescope live_grep_args<CR>")
+		vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 		vim.keymap.set("n", "<leader>fG", ":Telescope grep_string<CR>")
 		vim.keymap.set("n", "<leader>fo", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>")
 		vim.keymap.set("n", "<leader>ft", ":Telescope builtin<CR>")
