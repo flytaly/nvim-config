@@ -30,12 +30,12 @@ return {
 		"sindrets/diffview.nvim",
 		opts = { file_panel = { win_config = { position = "left" } } },
 	},
-	{
-		"goolord/alpha-nvim",
-		config = function()
-			require("alpha").setup(require("alpha.themes.dashboard").config)
-		end,
-	},
+	--[[ { ]]
+	--[[ 	"goolord/alpha-nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("alpha").setup(require("alpha.themes.dashboard").config) ]]
+	--[[ 	end, ]]
+	--[[ }, ]]
 	{ "Th3Whit3Wolf/one-nvim" },
 	{
 		"szw/vim-maximizer",
@@ -105,7 +105,11 @@ return {
 	{ "m4xshen/autoclose.nvim", opts = { {} } },
 	{
 		"simrat39/symbols-outline.nvim",
-		opts = { highlight_hovered_item = true },
+		opts = {
+			highlight_hovered_item = true,
+			--[[ symbol_blacklist = { "Variable", "Constant", "Key", "Property" }, ]]
+			autofold_depth = 3,
+		},
 		init = function()
 			vim.keymap.set("n", "<leader>xo", "<cmd>SymbolsOutline<CR>")
 		end,
