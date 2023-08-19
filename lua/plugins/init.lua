@@ -84,6 +84,11 @@ return {
 	{ "kyazdani42/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
 	{
+		"Verf/deepwhite.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
 		"Shatur/neovim-ayu",
 		init = function()
 			require("ayu").setup({})

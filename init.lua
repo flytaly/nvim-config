@@ -7,6 +7,7 @@ else
 	require("config.theme")
 	require("config.lsp")
 	require("config.debug")
+	require("autocmd")
 	require("neovide")
 	require("commands")
 end
