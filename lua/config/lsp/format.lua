@@ -15,25 +15,28 @@ M.createAutocmd = function(client, bufnr)
 	end
 
 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	vim.api.nvim_create_autocmd("BufWritePre", {
+	vim.api.nvim_create_autocmd("BufWritePost", {
 		group = augroup,
 		buffer = bufnr,
 		callback = function()
 			if M.isEnabled then
-				M.format(bufnr)
+				vim.cmd([[ FormatWrite ]])
 			end
 		end,
 	})
 end
 
 M.format = function(bufnr)
-	vim.lsp.buf.format({
+	vim.cmd([[ Format ]])
+	--[[ local filetype = vim.bo.filetype
+
+	--[[ vim.lsp.buf.format({
 		bufnr = bufnr,
 		filter = function(client)
 			-- Never request following servers for formatting
 			return client.name ~= "tsserver" and client.name ~= "lua_ls"
 		end,
-	})
+	}) ]]
 end
 
 return M
