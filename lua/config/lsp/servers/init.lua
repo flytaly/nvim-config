@@ -19,8 +19,7 @@ M.setup = function(on_attach, capabilities)
 				on_attach(client, bufnr)
 			end,
 		},
-		ls = {},
-		sumneko_lua = require("config.lsp.servers.sumneko_lua")(on_attach),
+		lua_ls = { settings = { Lua = { diagnostics = { globals = { "vim" } } } } },
 		html = { init_options = { provideFormatter = false } },
 		stylelint_lsp = {
 			root_dir = lspconfig.util.root_pattern(".stylelintrc", "stylelint.config.js", "package.json"),
