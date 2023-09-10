@@ -1,6 +1,6 @@
-local lsp_keymaps = require("config.lsp.lsp-keymaps")
 local present_aerial, aerial = pcall(require, "aerial")
-local format = require("config.lsp.format")
+local format = require("config.format")
+local lsp_mapping = require("config.mapping.lsp-keymaps")
 
 local M = {}
 
@@ -45,48 +45,33 @@ M.setup = function()
 	})
 end
 
--- local present_lsp_status, lsp_status = pcall(require, "lsp-status")
---
--- if present_lsp_status then
--- 	lsp_status.register_progress()
--- 	lsp_status.config({
--- 		diagnostics = false,
--- 	})
--- end
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 M.on_attach = function(client, bufnr)
-	-- if present_lsp_status then
-	-- 	lsp_status.on_attach(client, bufnr)
-	-- end
-
 	if present_aerial then
 		aerial.on_attach(client, bufnr)
 	end
 
-	lsp_keymaps.set_default_keymaps(client, bufnr)
-
 	format.isEnabled = true
 	format.createAutocmd(client, bufnr)
-end
 
-local present_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+	lsp_mapping.set_keymaps(bufnr)
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+local present_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if present_cmp_nvim_lsp then
 	capabilities = cmp_nvim_lsp.default_capabilities()
+	--Enable (broadcasting) snippet capability for completion
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 end
-
--- if present_lsp_status then
--- 	capabilities = vim.tbl_deep_extend("keep", capabilities, lsp_status.capabilities)
--- end
 
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
+
+M.capabilities = capabilities
 
 return M

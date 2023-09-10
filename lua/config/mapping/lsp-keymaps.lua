@@ -1,8 +1,10 @@
-local format = require("config.lsp.format")
-local filterDTS = require("config.lsp.filter-dts")
+local format = require("config.format")
+local filterDTS = require("config.mapping.filter-dts")
 
-local function set_default_keymaps(_, bufnr)
-	-- Mappings.
+local M = {}
+
+M.set_keymaps = function(bufnr)
+	-- Mappings
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -39,6 +41,4 @@ local function set_default_keymaps(_, bufnr)
 	vim.keymap.set("n", "<leader>fds", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 end
 
-return {
-	set_default_keymaps = set_default_keymaps,
-}
+return M
