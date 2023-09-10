@@ -13,10 +13,10 @@ return {
 				lua = { require("formatter.filetypes.lua").stylua },
 				sql = { require("formatter.filetypes.sql").pgformat },
 				sh = { require("formatter.filetypes.sh").shfmt },
+				fish = { require("formatter.filetypes.fish").fishindent },
 
 				glsl = { prettier },
 				svelte = { prettier },
-
 				javascript = { prettier_d },
 				javascriptreact = { prettier_d },
 				typescript = { prettier_d },
