@@ -23,5 +23,5 @@ masonLsp.setup_handlers({
 	end,
 })
 
-require("config.lsp.servers.null_ls").setup(on_attach)
+require("config.lsp.servers.null_ls").setup(handlers.on_attach)
 require("config.lsp.servers.ls_emmet")
