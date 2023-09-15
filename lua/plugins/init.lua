@@ -44,7 +44,7 @@ return {
 		end,
 	}, -- maximize and restore windows
 	{
-		"feline-nvim/feline.nvim",
+		"famiu/feline.nvim",
 		config = function()
 			require("plugins.feline.feline")
 		end,
