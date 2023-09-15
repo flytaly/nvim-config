@@ -36,10 +36,6 @@ vim.keymap.set("n", "<C-t>n", ":tabnew<CR>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("n", "<F8>", function()
-	require("null-ls").toggle("cspell")
-end)
-
 -- Center screen after vertical movements
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")

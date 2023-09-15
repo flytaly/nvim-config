@@ -105,7 +105,6 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	{ "nvim-lua/lsp-status.nvim" }, -- generate statusline components from the LSP client.
-	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "ThePrimeagen/refactoring.nvim", config = true },
 	{ "m4xshen/autoclose.nvim", opts = { {} } },
 	{
