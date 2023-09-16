@@ -22,19 +22,10 @@ return {
 		"sindrets/diffview.nvim",
 		opts = { file_panel = { win_config = { position = "left" } } },
 	},
-	--[[ { ]]
-	--[[ 	"goolord/alpha-nvim", ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("alpha").setup(require("alpha.themes.dashboard").config) ]]
-	--[[ 	end, ]]
-	--[[ }, ]]
-	{ "Th3Whit3Wolf/one-nvim" },
 	{
 		"szw/vim-maximizer",
-		init = function()
-			vim.keymap.set("n", "<leader>mm", ":MaximizerToggle!<CR>")
-		end,
-	}, -- maximize and restore windows
+		keys = { { "<leader>mm", "<cmd>MaximizerToggle<cr>", desc = "Maximize current window" } },
+	},
 	{
 		"famiu/feline.nvim",
 		config = function()
@@ -69,12 +60,6 @@ return {
 			},
 		},
 	},
-	--[[ { ]]
-	--[[ 	"RRethy/vim-illuminate", ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("illuminate").configure({}) ]]
-	--[[ 	end, ]]
-	--[[ }, ]]
 	{ "mbbill/undotree" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
@@ -105,9 +90,7 @@ return {
 			--[[ symbol_blacklist = { "Variable", "Constant", "Key", "Property" }, ]]
 			autofold_depth = 3,
 		},
-		init = function()
-			vim.keymap.set("n", "<leader>xo", "<cmd>SymbolsOutline<CR>")
-		end,
+		keys = { { "<leader>xo", "<cmd>SymbolsOutline<CR>", desc = "Symbols Outline" } },
 	},
 	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", config = true },
 	{ "mfussenegger/nvim-dap" },
@@ -121,21 +104,4 @@ return {
 		build = "npm install --legacy-peer-deps && npm run compile",
 	},
 	{ "preservim/vim-markdown" },
-	{
-		"Exafunction/codeium.vim",
-		init = function()
-			vim.keymap.set("i", "<c-.>", function()
-				return vim.fn["codeium#CycleCompletions"](1)
-			end, { expr = true })
-			vim.keymap.set("i", "<c-,>", function()
-				return vim.fn["codeium#CycleCompletions"](-1)
-			end, { expr = true })
-			vim.keymap.set("i", "<c-x>", function()
-				return vim.fn["codeium#Clear"]()
-			end, { expr = true })
-			vim.keymap.set("i", "<c-cr>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true })
-		end,
-	},
 }
