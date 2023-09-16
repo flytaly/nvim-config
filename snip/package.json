@@ -16,9 +16,10 @@
             },
             {
                 "language": [
+                    "react",
                     "typescriptreact"
                 ],
-                "path": "./snippets/typescriptreact.json"
+                "path": "./snippets/react.json"
             },
             {
                 "language": [
