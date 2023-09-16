@@ -1,13 +1,5 @@
 return {
 	{ "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } }, -- select entire buffer
-	{
-		"kazhala/close-buffers.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>q", function()
-				require("close_buffers").delete({ type = "this" }) -- Delete the current buffer
-			end)
-		end,
-	},
 	{ "vim-scripts/restore_view.vim" },
 	{ "nvim-lua/plenary.nvim" }, -- useful lua functions
 	{ "unblevable/quick-scope" }, -- highlight unique chars
