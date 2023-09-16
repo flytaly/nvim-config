@@ -81,7 +81,7 @@ return {
 	--[[ 	end, ]]
 	--[[ }, ]]
 	{ "mbbill/undotree" },
-	{ "kyazdani42/nvim-web-devicons" },
+	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
 	{
 		"Verf/deepwhite.nvim",
