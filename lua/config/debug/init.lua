@@ -84,7 +84,7 @@ end, { desc = "dap.ui.widgets: scopes" })
 
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "Dap Go",
-	pattern = "go",
+	pattern = "*.go",
 	group = vim.api.nvim_create_augroup("go-test", {}),
 	callback = function(opts)
 		local present_dap_go, dap_go = pcall(require, "dap-go")
