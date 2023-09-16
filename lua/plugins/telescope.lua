@@ -18,21 +18,45 @@ return {
 			end
 		end)
 		--[[ vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>") ]]
-		vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>")
-		vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>")
-		vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-		vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>")
-		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+		vim.keymap.set(
+			"n",
+			"<leader>f/",
+			":Telescope current_buffer_fuzzy_find<CR>",
+			{ desc = "Telescope: current_buffer_fuzzy_find" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>/",
+			":Telescope current_buffer_fuzzy_find<CR>",
+			{ desc = "Telescope: current_buffer_fuzzy_find" }
+		)
+		vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
+		vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
+		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Telescope: find_files" })
 		--[[ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>") ]]
-		vim.keymap.set("n", "<leader>fg", ":Telescope live_grep_args<CR>")
-		vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-		vim.keymap.set("n", "<leader>fG", ":Telescope grep_string<CR>")
-		vim.keymap.set("n", "<leader>fo", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>")
-		vim.keymap.set("n", "<leader>ft", ":Telescope builtin<CR>")
-		vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>")
-		vim.keymap.set("n", "<leader>fc", ":Telescope git_bcommits<CR>")
-		vim.keymap.set("n", "<leader>fC", ":Telescope git_commits<CR>")
-		vim.keymap.set("n", "<leader>fw", ":Telescope workspaces<CR>")
+		vim.keymap.set("n", "<leader>fg", ":Telescope live_grep_args<CR>", { desc = "Telescope: live grep args" })
+		vim.keymap.set(
+			"n",
+			"<leader>fG",
+			":Telescope grep_string<CR>",
+			{ desc = "Telescope: grep a word under cursor" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fo",
+			"<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
+			{ desc = "Telescope: file browser" }
+		)
+		vim.keymap.set("n", "<leader>ft", ":Telescope builtin<CR>", { desc = "Telescope: builtin" })
+		vim.keymap.set(
+			"n",
+			"<leader>fs",
+			":Telescope lsp_document_symbols<CR>",
+			{ desc = "Telescope: lsp document symbols" }
+		)
+		vim.keymap.set("n", "<leader>fc", ":Telescope git_bcommits<CR>", { desc = "Telescope: git buffer commits" })
+		vim.keymap.set("n", "<leader>fC", ":Telescope git_commits<CR>", { desc = "Telescope: git commits" })
+		vim.keymap.set("n", "<leader>fw", ":Telescope workspaces<CR>", { desc = "Telescope: workspaces" })
 	end,
 
 	config = function()

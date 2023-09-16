@@ -20,64 +20,82 @@ local set = vim.keymap.set
 
 set("n", "<A-k>", function()
 	dap.step_out()
-end)
+end, { desc = "dap: step out" })
+
 set("n", "<A-l>", function()
 	dap.step_into()
-end)
+end, { desc = "dap: step into" })
+
 set("n", "<A-j>", function()
 	dap.step_over()
-end)
+end, { desc = "dap: step over" })
 
 set("n", "<leader>db", function()
 	dap.toggle_breakpoint()
-end)
+end, { desc = "dap: toggle breakpoint" })
+
 set("n", "<leader>dB", function()
 	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end)
+end, { desc = "dap: set breakpoint" })
+
 set("n", "<leader>ds", function()
 	dap.terminate()
-end)
+end, { desc = "dap: terminate" })
+
 set("n", "<leader>dn", function()
 	dap.continue()
-end)
+end, { desc = "dap: continue" })
+
 set("n", "<leader>dk", function()
 	dap.up()
-end)
+end, { desc = "dap: up" })
+
 set("n", "<leader>dj", function()
 	dap.down()
-end)
+end, { desc = "dap: down" })
 
 set("n", "<leader>dr", function()
 	dap.repl.open({}, "vsplit")
-end)
+end, { desc = "dap: open repl" })
+
 set("n", "<leader>de", function()
 	dap.set_exception_breakpoints({ "all" })
-end)
+end, { desc = "dap: set exception breakpoints" })
+
 set("n", "<leader>da", function()
 	h.attach()
-end)
+end, { desc = "dap: attach" })
+
 set("n", "<leader>dA", function()
 	h.attach_remote()
-end)
+end, { desc = "dap: attach remote" })
+
 set("n", "<leader>di", function()
 	require("dap.ui.widgets").hover()
-end)
+end, { desc = "dap.ui.widgets: hover" })
+
 set("n", "<leader>d?", function()
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.scopes)
-end)
+end, { desc = "dap.ui.widgets: scopes" })
 
 ------------------------------------------------------
 ----- Dap Go
 
-local present_dap_go, dap_go = pcall(require, "dap-go")
-
-if present_dap_go then
-	dap_go.setup()
-	set("n", "<leader>dt", function()
-		dap_go.debug_test()
-	end)
-end
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Dap Go",
+	pattern = "go",
+	group = vim.api.nvim_create_augroup("go-test", {}),
+	callback = function(opts)
+		local present_dap_go, dap_go = pcall(require, "dap-go")
+		if present_dap_go then
+			dap_go.setup()
+			vim.keymap.set("n", "<leader>dt", function()
+				dap_go.debug_test()
+			end, { desc = "Dap Go: debug test" })
+		end
+	end,
+})
 
 ------------------------------------------------------
 ----- Dap UI
@@ -87,10 +105,10 @@ if present_dapui then
 	dapui.setup()
 	set("n", "<leader>du", function()
 		dapui.toggle()
-	end)
+	end, { desc = "Dap UI: Toggle" })
 	set("v", "<A-e>", function()
 		dapui.eval()
-	end)
+	end, { desc = "Dap UI: Eval" })
 
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
@@ -109,7 +127,7 @@ local present_telescope, telescope = pcall(require, "telescope")
 
 if present_telescope then
 	telescope.load_extension("dap")
-	set("n", "<leader>df", ":Telescope dap frames<CR>")
-	set("n", "<leader>dc", ":Telescope dap commands<CR>")
-	set("n", "<leader>dl", ":Telescope dap list_breakpoints<CR>")
+	set("n", "<leader>df", ":Telescope dap frames<CR>", { desc = "Telescope: dap frames" })
+	set("n", "<leader>dc", ":Telescope dap commands<CR>", { desc = "Telescope: dap commands" })
+	set("n", "<leader>dl", ":Telescope dap list_breakpoints<CR>", { desc = "Telescope: dap list_breakpoints" })
 end

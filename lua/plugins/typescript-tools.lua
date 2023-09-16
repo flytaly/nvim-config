@@ -31,8 +31,8 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "gO", ":TSToolsOrganizeImports<CR>")
+		vim.keymap.set("n", "gO", ":TSToolsOrganizeImports<CR>", { desc = "TS: Organize Imports" })
 		-- vim.keymap.set("n", "gFR", ":TypescriptRenameFile<CR>") -- doesn't exist
-		vim.keymap.set("n", "gI", ":TSToolsAddMissingImports<CR>")
+		vim.keymap.set("n", "gI", ":TSToolsAddMissingImports<CR>", { desc = "TS: Add Missing Imports" })
 	end,
 }
