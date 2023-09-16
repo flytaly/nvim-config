@@ -28,23 +28,11 @@ return {
 					p = "Install a different package version",
 				},
 			},
-			c = {
-				a = "Code Actions",
-			},
 			g = {
 				name = "+LSP",
-				f = "Format Document",
-				s = "Toggle format on save",
 			},
 			x = {
-				name = "bars",
-				a = "Aerial toggle",
-				s = "Sidebar toggle",
-				x = "Trouble toggle",
-				w = "Trouble: workspace diagnostics",
-				d = "Trouble: document diagnostics",
-				q = "Trouble: quickfix",
-				l = "Trouble: loclist",
+				name = "Trouble",
 			},
 			d = {
 				name = "debug",
@@ -108,62 +96,6 @@ return {
 			["<A-j>"] = "dap.step_over()",
 		})
 
-		wk.setup({
-			plugins = {
-				marks = false,
-				registers = false,
-				spelling = { enabled = false },
-				presets = {
-					operators = false,
-					motions = false,
-					text_objects = false,
-					windows = true,
-					z = true,
-					g = true,
-				},
-			},
-			-- add operators that will trigger motion and text object completion
-			-- to enable all native operators, set the preset / operators plugin above
-			operators = { gc = "Comments" },
-			icons = {
-				breadcrumb = "»",
-				separator = "➜ ",
-				group = "+",
-			},
-			window = {
-				border = "none",
-				position = "bottom",
-				margin = { 0, 0, 0, 0 },
-				padding = { 4, 2, 4, 2 },
-			},
-			layout = {
-				height = {
-					min = 4,
-					max = 25,
-				},
-				width = {
-					min = 20,
-					max = 50,
-				},
-				spacing = 8,
-			},
-			ignore_missing = false,
-			hidden = {
-				"<silent>",
-				"<cmd>",
-				"<Cmd>",
-				"<CR>",
-				"call",
-				"lua",
-				"^:",
-				"^ ",
-			},
-			show_help = true,
-			triggers = "auto",
-			triggers_blacklist = {
-				i = { "," },
-				n = { "'" },
-			},
-		})
+		wk.setup({})
 	end,
 }

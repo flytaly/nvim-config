@@ -51,28 +51,31 @@ return {
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		init = function()
-			vim.keymap.set("n", "<leader>no", ":NvimTreeToggle<CR>")
-			vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>")
-		end,
+		keys = {
+			{ "<leader>no", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree: toggle" },
+			{ "<leader>nf", "<cmd>NvimTreeFindFile<cr>", desc = "NvimTree: find current file" },
+		},
 		config = true,
 	},
 	{
 		-- refactor on file rename/move in nvim-tree with some LSP
 		"antosha417/nvim-lsp-file-operations",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-tree.lua" },
-		init = function()
-			require("lsp-file-operations").setup()
-		end,
+		config = true,
 	},
 	{ "knubie/vim-kitty-navigator", build = "cp ./*.py ~/.config/kitty/" }, -- consistent navigation between vim and terminal splits
 	{ "fladson/vim-kitty" }, -- syntax highlighting for Kitty config
 	{ "natecraddock/workspaces.nvim", opts = { hooks = { open = { "NvimTreeOpen", "Telescope find_files" } } } },
 	{
 		"gabrielpoca/replacer.nvim",
-		init = function()
-			vim.api.nvim_set_keymap("n", "<Leader>gr", ':lua require("replacer").run()<cr>', { silent = true })
-		end,
+		keys = {
+			{
+				"<leader>gr",
+				"<cmd>lua require('replacer').run()<cr>",
+				desc = "Replace in quickfix window",
+				silent = true,
+			},
+		},
 	},
 	--[[ { ]]
 	--[[ 	"RRethy/vim-illuminate", ]]
@@ -83,11 +86,7 @@ return {
 	{ "mbbill/undotree" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
-	{
-		"Verf/deepwhite.nvim",
-		lazy = false,
-		priority = 1000,
-	},
+	{ "Verf/deepwhite.nvim", lazy = false, priority = 1000 },
 	{
 		"Shatur/neovim-ayu",
 		init = function()

@@ -3,7 +3,7 @@ local M = {}
 vim.keymap.set("n", "yof", function()
 	M.isEnabled = not M.isEnabled
 	print("format on save", (M.isEnabled and "enabled" or "disabled"))
-end)
+end, { desc = "Toggle format on save" })
 
 M.isEnabled = true
 
