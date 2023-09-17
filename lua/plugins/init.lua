@@ -60,7 +60,7 @@ return {
 			},
 		},
 	},
-	{ "mbbill/undotree" },
+	{ "mbbill/undotree", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree: toggle" } } },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
 	{ "Verf/deepwhite.nvim", lazy = false, priority = 1000 },
