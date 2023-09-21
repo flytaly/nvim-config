@@ -22,5 +22,3 @@ masonLsp.setup_handlers({
 		lspconfig[server_name].setup(opts)
 	end,
 })
-
-require("config.lsp.servers.ls_emmet")

@@ -29,6 +29,7 @@ local servers = {
 	"texlab",
 	"phpactor",
 	--[[ "ltex-ls", ]]
+	"emmet-language-server",
 
 	-- DAP
 	"delve",
