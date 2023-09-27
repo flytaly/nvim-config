@@ -13,6 +13,6 @@ return {
 		require("key-menu").set("n", "g")
 		require("key-menu").set("n", "[")
 		require("key-menu").set("n", "]")
-		require("key-menu").set("n", "z")
+		--[[ require("key-menu").set("n", "z") ]]
 	end,
 }
