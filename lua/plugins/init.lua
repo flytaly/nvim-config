@@ -17,7 +17,6 @@ return {
 	{ "machakann/vim-sandwich" }, -- vim surround alternative
 	{ "mg979/vim-visual-multi" },
 	{ "lambdalisue/suda.vim" },
-	{ "nanozuki/tabby.nvim", config = true },
 	{
 		"sindrets/diffview.nvim",
 		opts = { file_panel = { win_config = { position = "left" } } },
