@@ -45,8 +45,12 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-tree.lua" },
 		config = true,
 	},
+
+	--- kitty
 	{ "knubie/vim-kitty-navigator", build = "cp ./*.py ~/.config/kitty/" }, -- consistent navigation between vim and terminal splits
 	{ "fladson/vim-kitty" }, -- syntax highlighting for Kitty config
+	{ "shaun-mathew/Chameleon.nvim", config = true }, -- change kitty background to match neovim theme
+
 	{ "natecraddock/workspaces.nvim", opts = { hooks = { open = { "NvimTreeOpen", "Telescope find_files" } } } },
 	{
 		"gabrielpoca/replacer.nvim",
