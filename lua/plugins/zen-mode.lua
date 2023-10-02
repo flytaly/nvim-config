@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("zen-mode").setup({
 			window = {
-				backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+				backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
 				-- height and width can be:
 				-- * an absolute number of cells when > 1
 				-- * a percentage of the width / height of the editor when <= 1
@@ -42,7 +42,7 @@ return {
 				-- - listen_on unix:/tmp/kitty
 				kitty = {
 					enabled = true,
-					font = "+0.5", -- font size increment
+					font = "+1.0", -- font size increment
 				},
 			},
 			-- callback where you can add custom code when the Zen window opens
