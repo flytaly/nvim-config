@@ -41,9 +41,6 @@ M.set_keymaps = function(bufnr)
 	set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
 	set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
 	set({ "i", "n" }, "<C-'>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Signature help" })
-
-	set("n", "<leader>fws", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "Workspace Symbols" })
-	set("n", "<leader>fds", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", { desc = "Dynamic Workspace Symbols" })
 end
 
 return M

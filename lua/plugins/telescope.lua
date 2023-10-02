@@ -54,6 +54,12 @@ return {
 			":Telescope lsp_document_symbols<CR>",
 			{ desc = "Telescope: lsp document symbols" }
 		)
+		vim.keymap.set(
+			"n",
+			"<leader>fS",
+			":Telescope lsp_dynamic_workspace_symbols<CR>",
+			{ desc = "Telescope: lsp dynamic workspace symbols" }
+		)
 		vim.keymap.set("n", "<leader>fc", ":Telescope git_bcommits<CR>", { desc = "Telescope: git buffer commits" })
 		vim.keymap.set("n", "<leader>fC", ":Telescope git_commits<CR>", { desc = "Telescope: git commits" })
 		vim.keymap.set("n", "<leader>fw", ":Telescope workspaces<CR>", { desc = "Telescope: workspaces" })
@@ -102,6 +108,7 @@ return {
 				},
 			},
 			defaults = {
+				file_ignore_patterns = { "^/node_moudules/*", "^/usr/*" },
 				mappings = {
 					i = {
 						["<c-a>"] = trouble.open_with_trouble,
