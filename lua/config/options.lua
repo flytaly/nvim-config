@@ -19,13 +19,17 @@ opt.undofile = true -- persists undo tree
 opt.relativenumber = true
 opt.exrc = true
 
+-- Folding
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
 -- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- https://reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+
 opt.shell = "fish"
 opt.termguicolors = true
 opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"
