@@ -19,9 +19,11 @@ M.createAutocmd = function(client, bufnr)
 		group = augroup,
 		buffer = bufnr,
 		callback = function()
-			if M.isEnabled then
-				vim.cmd([[ FormatWrite ]])
+			if not M.isEnabled or vim.bo.filetype == "go" then
+				return
 			end
+
+			vim.cmd([[ FormatWrite ]])
 		end,
 	})
 end
