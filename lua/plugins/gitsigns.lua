@@ -9,8 +9,8 @@ return {
 				end
 
 				-- Navigation
-				map("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true, desc = "Next hunk" })
-				map("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true, desc = "Previous hunk" })
+				map("n", "]c", ":Gitsigns next_hunk<CR>", { desc = "Gitsigns: Next hunk" })
+				map("n", "[c", ":Gitsigns prev_hunk<CR>", { desc = "Gitsigns: Previous hunk" })
 
 				-- Actions
 				map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Gitsigns: Stage hunk" })

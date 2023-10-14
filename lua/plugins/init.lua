@@ -4,7 +4,7 @@ return {
 	{ "nvim-lua/plenary.nvim" }, -- useful lua functions
 	{ "unblevable/quick-scope" }, -- highlight unique chars
 	{ "nvim-lua/popup.nvim" },
-	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-fugitive", keys = { { "<leader>hg", "<cmd>Git<cr>", desc = "Open Git" } } },
 	{ "tpope/vim-rhubarb" },
 	{ "tpope/vim-unimpaired" },
 	{ "tpope/vim-dadbod" },
@@ -107,4 +107,5 @@ return {
 		build = "npm install --legacy-peer-deps && npm run compile",
 	},
 	{ "preservim/vim-markdown" },
+	{ "sophacles/vim-processing" },
 }
