@@ -15,7 +15,7 @@ return {
 				sh = { require("formatter.filetypes.sh").shfmt },
 				fish = { require("formatter.filetypes.fish").fishindent },
 
-				glsl = { prettier },
+				--[[ glsl = { prettier }, ]]
 				svelte = { prettier },
 				javascript = { prettier_d },
 				javascriptreact = { prettier_d },
