@@ -15,7 +15,7 @@ return {
 				sh = { require("formatter.filetypes.sh").shfmt },
 				fish = { require("formatter.filetypes.fish").fishindent },
 
-				--[[ glsl = { prettier }, ]]
+				glsl = { prettier }, -- to work install prettier-plugin-glsl and add it to the prettier config: `plugins: ["prettier-plugin-glsl"]`
 				svelte = { prettier },
 				javascript = { prettier_d },
 				javascriptreact = { prettier_d },
