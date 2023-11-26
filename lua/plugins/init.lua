@@ -45,6 +45,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-tree.lua" },
 		config = true,
 	},
+	{ "stevearc/oil.nvim", config = true },
 
 	--- kitty
 	{ "knubie/vim-kitty-navigator", build = "cp ./*.py ~/.config/kitty/" }, -- consistent navigation between vim and terminal splits
