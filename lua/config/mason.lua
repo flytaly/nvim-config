@@ -23,6 +23,8 @@ local servers = {
 	"stylelint-lsp",
 	"svelte-language-server",
 	"tailwindcss-language-server",
+	"vue-language-server",
+	"unocss-language-server",
 	--[[ "typescript-language-server", ]]
 	"yaml-language-server",
 	"marksman",
