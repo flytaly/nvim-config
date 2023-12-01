@@ -28,7 +28,7 @@ opt.foldenable = true
 opt.foldmethod = "expr"
 -- https://reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+opt.foldtext = "foldtext()"
 
 opt.shell = "fish"
 opt.termguicolors = true
