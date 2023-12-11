@@ -54,6 +54,7 @@ return {
 
 		-- if you only want these mappings for toggle term use term://*toggleterm#* instead
 		vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+		vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
 
 		local Terminal = require("toggleterm.terminal").Terminal
 		local lazygit = Terminal:new({
