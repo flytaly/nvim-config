@@ -23,8 +23,9 @@ local servers = {
 	"stylelint-lsp",
 	"svelte-language-server",
 	"tailwindcss-language-server",
-	"vue-language-server",
 	"unocss-language-server",
+	"vue-language-server",
+	"pyright",
 	--[[ "typescript-language-server", ]]
 	"yaml-language-server",
 	"marksman",
@@ -47,6 +48,7 @@ local servers = {
 	-- formatters
 	"prettierd",
 	"shfmt",
+	"black",
 }
 
 for _, server_name in pairs(servers) do
