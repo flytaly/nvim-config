@@ -35,7 +35,11 @@ M.set_keymaps = function(bufnr)
 	set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
 
 	set("n", "<leader>gf", function()
-		format.format()
+		if vim.bo.filetype == "go" then
+			vim.cmd([[GoFmt]])
+		else
+			format.format()
+		end
 	end, { desc = "Format file", buffer = bufnr })
 
 	set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })

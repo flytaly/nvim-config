@@ -13,6 +13,7 @@ local servers = {
 	"dockerfile-language-server",
 	"eslint-lsp",
 	"golangci-lint-langserver",
+	"gopls",
 	"graphql-language-service-cli",
 	"html-lsp",
 	"json-lsp",
@@ -49,6 +50,7 @@ local servers = {
 	"prettierd",
 	"shfmt",
 	"black",
+	"gci",
 }
 
 for _, server_name in pairs(servers) do
