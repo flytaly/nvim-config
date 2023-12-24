@@ -16,7 +16,7 @@ return {
 		)
 		vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Trouble: quickfix" })
 		vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Trouble: loclist" })
-		vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { desc = "Trouble: lsp_references" })
+		vim.keymap.set("n", "gR", "<cmd>Trouble lsp_references<cr>", { desc = "Trouble: lsp_references" })
 	end,
 	config = function()
 		require("trouble").setup({})
