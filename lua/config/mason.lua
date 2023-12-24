@@ -9,7 +9,7 @@ local servers = {
 	-- LSP servers
 	"bash-language-server",
 	"css-lsp",
-	"diagnostic-languageserver",
+	-- "diagnostic-languageserver",  -- causes error in dap repl
 	"dockerfile-language-server",
 	"eslint-lsp",
 	"golangci-lint-langserver",
