@@ -1,5 +1,4 @@
 local present_aerial, aerial = pcall(require, "aerial")
-local format = require("config.format")
 local lsp_mapping = require("config.mapping.lsp-keymaps")
 
 local M = {}
@@ -51,10 +50,6 @@ M.on_attach = function(client, bufnr)
 	if present_aerial then
 		aerial.on_attach(client, bufnr)
 	end
-
-	format.isEnabled = true
-	format.createAutocmd(client, bufnr)
-
 	lsp_mapping.set_keymaps(bufnr)
 end
 
