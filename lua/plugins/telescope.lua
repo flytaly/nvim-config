@@ -107,6 +107,11 @@ return {
 					require("telescope.themes").get_dropdown(),
 				},
 			},
+			pickers = {
+				colorscheme = {
+					enable_preview = true,
+				},
+			},
 			defaults = {
 				file_ignore_patterns = { "^/node_moudules/*", "^/usr/*" },
 				mappings = {
