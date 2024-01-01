@@ -29,6 +29,7 @@ opt.foldmethod = "expr"
 -- https://reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldtext = "foldtext()"
+opt.foldmethod = "expr"
 
 opt.shell = "fish"
 opt.termguicolors = true
@@ -42,3 +43,14 @@ opt.smartindent = true
 opt.expandtab = true
 
 opt.scrolloff = 4
+
+-- I don't know what the reason but in some files
+-- folds don't work correctly, because some plugins can reset foldlevel.
+-- So this is a temporary fix.
+-- https://github.com/kevinhwang91/nvim-ufo/issues/57
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		-- vim.cmd([[setlocal foldlevel=99]])
+		vim.cmd([[set foldlevelstart=99]])
+	end,
+})
