@@ -61,6 +61,7 @@ return {
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
 	{ "Verf/deepwhite.nvim", lazy = false, priority = 1000 },
+	{ "typicode/bg.nvim", lazy = false },
 	{
 		"Shatur/neovim-ayu",
 		init = function()
