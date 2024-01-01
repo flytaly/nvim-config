@@ -26,12 +26,6 @@ return {
 		keys = { { "<leader>mm", "<cmd>MaximizerToggle<cr>", desc = "Maximize current window" } },
 	},
 	{
-		"famiu/feline.nvim",
-		config = function()
-			require("plugins.feline.feline")
-		end,
-	},
-	{
 		"nvim-tree/nvim-tree.lua",
 		keys = {
 			{ "<leader>no", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree: toggle" },
