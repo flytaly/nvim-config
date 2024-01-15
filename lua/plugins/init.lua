@@ -14,7 +14,7 @@ return {
 			vim.g.db_ui_save_location = "~/Dropbox/db_ui_queries"
 		end,
 	},
-	{ "machakann/vim-sandwich" }, -- vim surround alternative
+	-- { "machakann/vim-sandwich" }, -- vim surround alternative
 	{ "mg979/vim-visual-multi" },
 	{ "lambdalisue/suda.vim" },
 	{
