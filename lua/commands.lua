@@ -8,7 +8,7 @@ local memoDir = "" -- save directory name
 function eslint(dir)
 	vim.cmd([[compiler eslint]])
 
-	local files = "*.{ts,js,jsx,tsx,svelte}"
+	local files = "*.{ts,js,jsx,tsx,svelte,vue}"
 	if memoDir ~= "" then
 		dir = memoDir
 	end
