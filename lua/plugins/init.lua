@@ -90,7 +90,6 @@ return {
 		},
 		keys = { { "<leader>xo", "<cmd>SymbolsOutline<CR>", desc = "Symbols Outline" } },
 	},
-	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", config = true },
 	{ "mfussenegger/nvim-dap" },
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "theHamsta/nvim-dap-virtual-text", config = true },
