@@ -9,13 +9,14 @@ opt.inccommand = "nosplit"
 opt.incsearch = true
 opt.mouse = "a"
 opt.backup = false -- don't create backup files
-opt.showmode = false
 opt.writebackup = false -- don't create backup files
+opt.showmode = false
 opt.signcolumn = "yes"
 opt.splitright = true -- splits to the right
 opt.splitbelow = true -- splits below
 opt.updatetime = 300
 opt.undofile = true -- persists undo tree
+opt.number = true
 opt.relativenumber = true
 opt.exrc = true
 
