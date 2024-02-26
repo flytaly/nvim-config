@@ -43,6 +43,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("n", "<leader>np", ":echo expand('%:p')<CR>", { desc = "Print full path" })
+
 -- save and source
 vim.keymap.set("n", "<leader>cx", function()
 	vim.cmd("w")
