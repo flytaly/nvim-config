@@ -21,7 +21,7 @@ M.onSave = function(initial)
 			if not M.isEnabled or vim.bo.filetype == "go" then
 				return
 			end
-			vim.cmd([[FormatWriteLock]])
+			vim.cmd([[FormatWrite]])
 		end,
 	})
 end
