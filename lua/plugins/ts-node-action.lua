@@ -7,7 +7,6 @@ return {
 	config = function()
 		local ts_node_action = require("ts-node-action")
 		local helpers = require("ts-node-action.helpers")
-		local toggle_boolean = require("ts-node-action.actions.toggle_boolean")
 
 		local padding = {
 			[","] = "%s ",
@@ -43,8 +42,12 @@ return {
 		end
 
 		local js = {
-			["true"] = toggle_boolean,
-			["false"] = toggle_boolean,
+			["true"] = function()
+				return "false"
+			end,
+			["false"] = function()
+				return "true"
+			end,
 			["array"] = toggle_multiline,
 			["object"] = toggle_multiline,
 			["object_pattern"] = toggle_multiline,
