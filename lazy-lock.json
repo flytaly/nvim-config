@@ -92,6 +92,7 @@
   "vim-kitty": { "branch": "main", "commit": "dc5086d4bdd3cc99133015dad0a1f1b3b61f5aaf" },
   "vim-kitty-navigator": { "branch": "master", "commit": "20abf8613aa228a5def1ae02cd9da0f2d210352a" },
   "vim-markdown": { "branch": "master", "commit": "46add6c3017d3e4035dc10ffa9cb54221d8dfe1a" },
+  "vim-matchup": { "branch": "master", "commit": "2d660e4aa7c566014c667af2cda0458043527902" },
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "vim-processing": { "branch": "master", "commit": "91aaa18a54f8e507e48353ba87b1eb4ecd82a17c" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },

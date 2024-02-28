@@ -4,6 +4,7 @@ return {
 		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"RRethy/nvim-treesitter-textsubjects",
+		"andymass/vim-matchup",
 	},
 	build = function()
 		vim.cmd([[TSUpdate]])
