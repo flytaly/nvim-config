@@ -8,6 +8,7 @@ vim.g.neovide_transparency = 0.96
 vim.g.gui_font_default_size = 11
 vim.g.gui_font_size = vim.g.gui_font_default_size
 vim.g.gui_font_face = "JetBrainsMonoMedium Nerd Font"
+vim.opt.linespace = 1
 
 RefreshGuiFont = function()
 	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
@@ -28,11 +29,12 @@ ResetGuiFont()
 
 -- Keymaps
 
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set({ "n", "i" }, "<C-+>", function()
+vim.keymap.set({ "n", "i" }, "<C-=>", function()
 	ResizeGuiFont(1)
-end, opts)
+end, { desc = "Increase font size" })
 vim.keymap.set({ "n", "i" }, "<C-->", function()
 	ResizeGuiFont(-1)
-end, opts)
+end, { desc = "Decrease font size" })
+vim.keymap.set({ "n", "i" }, "<C-BS>", function()
+	ResetGuiFont()
+end, { desc = "Reset font size" })
