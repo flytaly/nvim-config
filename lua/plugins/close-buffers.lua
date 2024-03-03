@@ -1,7 +1,12 @@
 return {
 	"kazhala/close-buffers.nvim",
+	event = "VeryLazy",
 	keys = {
-		{ "<leader>q", "<cmd>BDelete this<cr>", desc = "Close current Buffer" },
-		{ "<leader>Q", "<cmd>BDelete hidden<cr>", desc = "Close hidden Buffers" },
+		{ "<leader>Q", "<cmd>BDelete hidden<CR>", desc = "Close hidden Buffers" },
+		{
+			"<leader>q",
+			"<cmd>bd<CR>", -- use bd to close current buffer and current tab
+			desc = "Close current Buffer",
+		},
 	},
 }
