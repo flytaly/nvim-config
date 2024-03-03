@@ -4,10 +4,10 @@ return {
 	{ "nvim-lua/plenary.nvim" }, -- useful lua functions
 	{ "unblevable/quick-scope" }, -- highlight unique chars
 	{ "nvim-lua/popup.nvim" },
-	{ "tpope/vim-fugitive", keys = { { "<leader>hg", "<cmd>Git<cr>", desc = "Open Git" } } },
-	{ "tpope/vim-rhubarb" },
+	{ "tpope/vim-fugitive", event = "VeryLazy", keys = { { "<leader>hg", "<cmd>Git<cr>", desc = "Open Git" } } },
+	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired" },
-	{ "tpope/vim-dadbod" },
+	{ "tpope/vim-dadbod", event = "VeryLazy" },
 	{
 		"kristijanhusak/vim-dadbod-ui",
 		config = function()
@@ -16,13 +16,15 @@ return {
 	},
 	-- { "machakann/vim-sandwich" }, -- vim surround alternative
 	{ "mg979/vim-visual-multi" },
-	{ "lambdalisue/suda.vim" },
+	{ "lambdalisue/suda.vim", event = "VeryLazy" },
 	{
 		"sindrets/diffview.nvim",
+		event = "VeryLazy",
 		opts = { file_panel = { win_config = { position = "left" } } },
 	},
 	{
 		"szw/vim-maximizer",
+		event = "VeryLazy",
 		keys = { { "<leader>mm", "<cmd>MaximizerToggle<cr>", desc = "Maximize current window" } },
 	},
 	{
@@ -57,7 +59,7 @@ return {
 			},
 		},
 	},
-	{ "mbbill/undotree", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree: toggle" } } },
+	{ "mbbill/undotree", event="VeryLazy", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree: toggle" } } },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
 	{ "Verf/deepwhite.nvim", lazy = false, priority = 1000 },
