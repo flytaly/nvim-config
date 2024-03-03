@@ -72,7 +72,6 @@ return {
 	},
 	{ "sam4llis/nvim-tundra" },
 	{ "lukas-reineke/indent-blankline.nvim" }, -- indentation guides
-	{ "RishabhRD/nvim-cheat.sh", dependencies = "RishabhRD/popfix" },
 	{ "nanotee/sqls.nvim", ft = "sql" },
 	{ "weilbith/nvim-code-action-menu" },
 	{
