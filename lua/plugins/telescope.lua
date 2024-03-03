@@ -113,7 +113,7 @@ return {
 				},
 			},
 			defaults = {
-				file_ignore_patterns = { "^/node_moudules/*", "^/usr/*" },
+				file_ignore_patterns = { "node_modules/*", "^/usr/*" },
 				mappings = {
 					i = {
 						["<c-a>"] = trouble.open_with_trouble,
