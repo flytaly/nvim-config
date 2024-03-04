@@ -5,7 +5,7 @@ opt.completeopt = { "menu", "menuone", "noselect" } -- better autocomplete optio
 opt.cmdheight = 1 -- only one line for commands
 opt.encoding = "UTF-8"
 opt.ignorecase = true -- case insensitive search. Use \C to enable case sensitive.
-opt.inccommand = "nosplit"
+opt.inccommand = "split"
 opt.incsearch = true
 opt.mouse = "a"
 opt.backup = false -- don't create backup files
@@ -34,7 +34,7 @@ opt.foldmethod = "expr"
 
 opt.shell = "fish"
 opt.termguicolors = true
-opt.listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣"
+opt.listchars = { eol = "↲", tab = "» ", trail = "~", extends = ">", precedes = "«", nbsp = "␣" }
 opt.laststatus = 3
 
 opt.wrap = false
@@ -43,7 +43,11 @@ opt.shiftwidth = 4
 opt.smartindent = true
 opt.expandtab = true
 
-opt.scrolloff = 4
+opt.cursorline = true
+opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.
+
+opt.hlsearch = true -- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- I don't know what the reason but in some files
 -- folds don't work correctly, because some plugins can reset foldlevel.
