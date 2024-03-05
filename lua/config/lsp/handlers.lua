@@ -46,27 +46,15 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-M.on_attach = function(client, bufnr)
-	if present_aerial then
-		aerial.on_attach(client, bufnr)
-	end
-	lsp_mapping.set_keymaps(bufnr)
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local present_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if present_cmp_nvim_lsp then
-	capabilities = cmp_nvim_lsp.default_capabilities()
-	--Enable (broadcasting) snippet capability for completion
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-end
-
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
-
-M.capabilities = capabilities
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("LspAttach", {}),
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if present_aerial then
+			aerial.on_attach(client, args.buf)
+		end
+		lsp_mapping.set_keymaps(args.buf)
+	end,
+})
 
 return M

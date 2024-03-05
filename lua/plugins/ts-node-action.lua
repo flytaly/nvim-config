@@ -64,6 +64,7 @@ return {
 			javascript = js,
 			javascriptreact = js,
 			svelte = js,
+			vue = js,
 		})
 	end,
 }

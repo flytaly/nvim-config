@@ -1,7 +1,6 @@
 local lspconfig = require("lspconfig")
 local M = {}
-
-M.get_configs = function(on_attach, capabilities)
+M.get_configs = function()
 	return {
 		cssls = { settings = { css = { validate = false } } },
 		jsonls = require("config.lsp.servers.jsonls"),
@@ -16,8 +15,25 @@ M.get_configs = function(on_attach, capabilities)
 					client.commands = sqls.commands
 					sqls.setup({ picker = "telescope" })
 				end
-				on_attach(client, bufnr)
 			end,
+		},
+		tsserver = {
+			init_options = {
+				hostInfo = "neovim",
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = (function()
+							if os.getenv("PNPM_HOME") then
+								return os.getenv("PNPM_HOME") .. "/global/5/node_modules/@vue/typescript-plugin"
+							end
+							return ""
+						end)(),
+						languages = { "typescript", "vue", "javascript" },
+					},
+				},
+			},
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json", "jsonc" },
 		},
 		lua_ls = {
 			settings = {

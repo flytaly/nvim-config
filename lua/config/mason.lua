@@ -27,7 +27,7 @@ local servers = {
 	"unocss-language-server",
 	"vue-language-server",
 	"pyright",
-	--[[ "typescript-language-server", ]]
+	"typescript-language-server",
 	"yaml-language-server",
 	"marksman",
 	"texlab",
