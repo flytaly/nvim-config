@@ -28,21 +28,6 @@ return {
 		event = "VeryLazy",
 		keys = { { "<leader>mm", "<cmd>MaximizerToggle<cr>", desc = "Maximize current window" } },
 	},
-	{
-		"nvim-tree/nvim-tree.lua",
-		keys = {
-			{ "<leader>no", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree: toggle" },
-			{ "<leader>nf", "<cmd>NvimTreeFindFile<cr>", desc = "NvimTree: find current file" },
-		},
-		config = true,
-	},
-	{
-		-- refactor on file rename/move in nvim-tree with some LSP
-		"antosha417/nvim-lsp-file-operations",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-tree.lua" },
-		config = true,
-	},
-
 	--- kitty
 	{ "knubie/vim-kitty-navigator", build = "cp ./*.py ~/.config/kitty/" }, -- consistent navigation between vim and terminal splits
 	{ "fladson/vim-kitty" }, -- syntax highlighting for Kitty config
