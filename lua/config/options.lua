@@ -45,7 +45,7 @@ opt.laststatus = 3
 
 opt.wrap = false
 opt.tabstop = 4
-opt.shiftwidth = 4
+opt.shiftwidth = 2
 opt.smartindent = true
 opt.expandtab = true
 
