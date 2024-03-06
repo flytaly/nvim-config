@@ -15,6 +15,7 @@ return {
 			vim.g.db_ui_save_location = "~/Dropbox/db_ui_queries"
 		end,
 	},
+	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
 	-- { "machakann/vim-sandwich" }, -- vim surround alternative
 	{ "mg979/vim-visual-multi" },
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },

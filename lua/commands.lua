@@ -5,7 +5,7 @@
 -- Add command `Lint directory` that sets eslint as a complier, launches it for js,ts files in the "directory"
 -- and opens Trouble quickfix window with errors
 local memoDir = "" -- save directory name
-function eslint(dir)
+local function eslint(dir)
 	vim.cmd([[compiler eslint]])
 
 	local files = "*.{ts,js,jsx,tsx,svelte,vue}"
