@@ -60,9 +60,14 @@ return {
 			},
 		},
 	},
-	{ "mbbill/undotree", event="VeryLazy", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree: toggle" } } },
+	{
+		"mbbill/undotree",
+		event = "VeryLazy",
+		keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree: toggle" } },
+	},
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "neanias/everforest-nvim" },
+	{ "rebelot/kanagawa.nvim" },
 	{ "Verf/deepwhite.nvim", lazy = false, priority = 1000 },
 	{ "typicode/bg.nvim", lazy = false },
 	{

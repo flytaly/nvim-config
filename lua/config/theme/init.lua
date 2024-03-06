@@ -1,4 +1,4 @@
-local colorscheme = "ayu-mirage"
+local colorscheme = "kanagawa-wave"
 -- local colorscheme = "everforest"
 -- local colorscheme = "catppuccin-frappe"
 
