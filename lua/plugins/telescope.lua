@@ -117,11 +117,13 @@ return {
 				mappings = {
 					i = {
 						["<c-a>"] = trouble.open_with_trouble,
+						["<a-a>"] = trouble.open_selected_with_trouble,
 						["<c-s>"] = open_in_nvim_tree,
 						["<c-d>"] = require("telescope.actions").delete_buffer,
 					},
 					n = {
 						["<c-a>"] = trouble.open_with_trouble,
+						["<a-a>"] = trouble.open_selected_with_trouble,
 						["<c-s>"] = open_in_nvim_tree,
 						["<c-d>"] = require("telescope.actions").delete_buffer,
 					},
