@@ -21,7 +21,13 @@ opt.relativenumber = true
 opt.exrc = true
 
 -- Folding
-opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	eob = " ",
+}
 opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
