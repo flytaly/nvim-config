@@ -8,3 +8,13 @@ if not ok then
 end
 
 require("config.theme.cmp").setupColors()
+
+local darkScheme = colorscheme
+local lightScheme = "deepwhite"
+local current = darkScheme
+
+-- local colorscheme = "everforest"
+vim.keymap.set("n", "<leader>\\t", function()
+	current = current == darkScheme and lightScheme or darkScheme
+	vim.cmd("colorscheme " .. current)
+end, { desc = "Toggle dark/light colorschemes" })
