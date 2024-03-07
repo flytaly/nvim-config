@@ -34,7 +34,7 @@ return {
 	{ "fladson/vim-kitty" }, -- syntax highlighting for Kitty config
 	--[[ { "shaun-mathew/Chameleon.nvim", config = true }, -- change kitty background to match neovim theme ]]
 
-	{ "natecraddock/workspaces.nvim", opts = { hooks = { open = { "NvimTreeOpen" } } } },
+	{ "natecraddock/workspaces.nvim", opts = { hooks = { open = { "Neotree" } } } },
 	{
 		"gabrielpoca/replacer.nvim",
 		keys = {
