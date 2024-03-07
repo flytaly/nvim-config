@@ -51,12 +51,6 @@ return {
 		event = "VeryLazy",
 		keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree: toggle" } },
 	},
-	{
-		"Shatur/neovim-ayu",
-		init = function()
-			require("ayu").setup({})
-		end,
-	},
 	{ "lukas-reineke/indent-blankline.nvim" }, -- indentation guides
 	{ "nanotee/sqls.nvim", ft = "sql" },
 	{ "weilbith/nvim-code-action-menu" },
