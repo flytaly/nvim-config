@@ -6,10 +6,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Folds
-vim.cmd([[
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave *.* mkview
-  autocmd BufWinEnter *.* silent! loadview
-augroup END
-]])
+-- vim.cmd([[
+-- augroup remember_folds
+--   autocmd!
+--   autocmd BufWinLeave *.* mkview
+--   autocmd BufWinEnter *.* silent! loadview
+-- augroup END
+-- ]])
