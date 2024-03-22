@@ -8,6 +8,7 @@ return {
 	--
 	keys = {
 		{ "<leader>xr", ":'<,'>SnipRun<cr>", desc = "SnipRun", mode = "v" },
+		{ "<leader>xr", ":SnipRun<cr>", desc = "SnipRun", mode = "n" },
 	},
 
 	config = function()
