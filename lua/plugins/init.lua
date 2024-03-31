@@ -64,7 +64,6 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	},
-	{ "nvim-lua/lsp-status.nvim" }, -- generate statusline components from the LSP client.
 	{ "ThePrimeagen/refactoring.nvim", config = true },
 	{ "m4xshen/autoclose.nvim", opts = { {} } },
 	{
