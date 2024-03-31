@@ -28,6 +28,7 @@ local servers = {
 	"vue-language-server",
 	"pyright",
 	"typescript-language-server",
+	"vtsls",
 	"yaml-language-server",
 	"marksman",
 	"texlab",
