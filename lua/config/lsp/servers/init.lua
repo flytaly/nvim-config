@@ -17,23 +17,28 @@ M.get_configs = function()
 				end
 			end,
 		},
-		tsserver = {
-			init_options = {
-				hostInfo = "neovim",
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = (function()
-							if os.getenv("PNPM_HOME") then
-								return os.getenv("PNPM_HOME") .. "/global/5/node_modules/@vue/typescript-plugin"
-							end
-							return ""
-						end)(),
-						languages = { "typescript", "vue", "javascript" },
+		vtsls = {
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json", "jsonc" },
+			settings = {
+				vtsls = {
+					tsserver = {
+						-- works in vtsls@0.2.2-alpha.1
+						-- https://github.com/yioneko/vtsls/issues/148 and
+						-- https://github.com/mason-org/mason-registry/issues/5064#issuecomment-2016431978
+						globalPlugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = require("mason-registry")
+									.get_package("vue-language-server")
+									:get_install_path() .. "/node_modules/@vue/language-server",
+								languages = { "vue" },
+								configNamespace = "typescript",
+								enableForWorkspaceTypeScriptVersions = true,
+							},
+						},
 					},
 				},
 			},
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json", "jsonc" },
 		},
 		lua_ls = {
 			settings = {
