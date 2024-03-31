@@ -53,11 +53,6 @@ return {
 	},
 	{ "lukas-reineke/indent-blankline.nvim" }, -- indentation guides
 	{ "nanotee/sqls.nvim", ft = "sql" },
-	{
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	},
 	{ "ThePrimeagen/refactoring.nvim", config = true },
 	{ "m4xshen/autoclose.nvim", opts = { {} } },
 	{
