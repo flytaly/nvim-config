@@ -12,9 +12,9 @@ M.set_keymaps = function(bufnr)
 	end
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	set({ "n", "v" }, "ga", "<cmd>CodeActionMenu<CR>", { desc = "Code Actions Menu" })
-	set("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code Actions" })
-	set("v", "<space>ca", ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", { desc = "Code Actions" })
+	set({ "n", "v" }, "<space>ca", function()
+		vim.lsp.buf.code_action({ context = { only = { "source", "refactor", "quickfix" } } })
+	end, { desc = "Code Actions" })
 
 	set("n", "gd", function()
 		vim.lsp.buf.definition({ on_list = filterDTS.on_list })

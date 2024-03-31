@@ -53,7 +53,12 @@ return {
 	},
 	{ "lukas-reineke/indent-blankline.nvim" }, -- indentation guides
 	{ "nanotee/sqls.nvim", ft = "sql" },
-	{ "weilbith/nvim-code-action-menu" },
+	{
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			vim.keymap.set({ "v", "n" }, "ga", require("actions-preview").code_actions)
+		end,
+	},
 	{
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
