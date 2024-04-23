@@ -32,7 +32,7 @@ local servers = {
 	"yaml-language-server",
 	"marksman",
 	"texlab",
-	"phpactor",
+	-- "phpactor",
 	--[[ "ltex-ls", ]]
 	"emmet-language-server",
 
@@ -52,6 +52,7 @@ local servers = {
 	"shfmt",
 	"black",
 	"gci",
+	"stylua"
 }
 
 for _, server_name in pairs(servers) do
