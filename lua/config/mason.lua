@@ -48,6 +48,7 @@ local servers = {
 	"cspell",
 
 	-- formatters
+	"prettier",
 	"prettierd",
 	"shfmt",
 	"black",
