@@ -1,7 +1,6 @@
 return {
 	"mhartington/formatter.nvim",
 	config = function()
-		local prettier_d = require("formatter.defaults").prettierd
 		local prettier = require("formatter.defaults").prettier
 		require("formatter").setup({
 			-- Enable or disable logging
@@ -18,22 +17,22 @@ return {
 
 				glsl = { prettier }, -- to work install prettier-plugin-glsl and add it to the prettier config: `plugins: ["prettier-plugin-glsl"]`
 				svelte = { prettier },
-				javascript = { prettier_d },
-				javascriptreact = { prettier_d },
-				typescript = { prettier_d },
-				typescriptreact = { prettier_d },
-				vue = { prettier_d },
-				css = { prettier_d },
-				scss = { prettier_d },
-				less = { prettier_d },
-				html = { prettier_d },
-				json = { prettier_d },
-				jsonc = { prettier_d },
-				yaml = { prettier_d },
-				markdown = { prettier_d },
-				graphql = { prettier_d },
-				handlebars = { prettier_d },
-				svg = { prettier_d },
+				javascript = { prettier },
+				javascriptreact = { prettier },
+				typescript = { prettier },
+				typescriptreact = { prettier },
+				vue = { prettier },
+				css = { prettier },
+				scss = { prettier },
+				less = { prettier },
+				html = { prettier },
+				json = { prettier },
+				jsonc = { prettier },
+				yaml = { prettier },
+				markdown = { prettier },
+				graphql = { prettier },
+				handlebars = { prettier },
+				svg = { prettier },
 
 				["*"] = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
