@@ -9,4 +9,5 @@ return {
 			require("ayu").setup({})
 		end,
 	},
+	{ "sainnhe/gruvbox-material" },
 }
