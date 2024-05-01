@@ -7,6 +7,26 @@ M.get_configs = function()
 		gopls = {
 			settings = { gopls = { env = { GOFLAGS = "-tags=windows,linux,unittest" } } },
 		},
+		eslint = {
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"html",
+				"markdown",
+				"json",
+				"jsonc",
+				"yaml",
+				"toml",
+				"gql",
+				"graphql",
+			},
+			settings = {
+				format = { enable = true },
+			},
+		},
 		sqls = {
 			on_attach = function(client, bufnr)
 				local ok, sqls = pcall(require, "sqls")
