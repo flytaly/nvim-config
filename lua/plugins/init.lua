@@ -75,5 +75,13 @@ return {
 		build = "npm install --legacy-peer-deps && npm run compile",
 	},
 	{ "preservim/vim-markdown" },
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("render-markdown").setup({})
+		end,
+	},
 	{ "sophacles/vim-processing" },
 }

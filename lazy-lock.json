@@ -65,6 +65,7 @@
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "quick-scope": { "branch": "master", "commit": "256d81e391a22eeb53791ff62ce65f870418fa71" },
   "refactoring.nvim": { "branch": "master", "commit": "d2786877c91aa409c824f27b4ce8a9f560dda60a" },
+  "render-markdown": { "branch": "main", "commit": "556dcc2c36f240653adef87bc8973025a1ad73e3" },
   "replacer.nvim": { "branch": "master", "commit": "32e1713230844fa52f7f0598c59295de3c90dc95" },
   "restore_view.vim": { "branch": "master", "commit": "8b933436e3ab8dec120841027183f0d72a4e2096" },
   "sniprun": { "branch": "master", "commit": "9006d4af4f7016523f8619ae1526ab4e7f0df785" },
