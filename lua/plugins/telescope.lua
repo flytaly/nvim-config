@@ -68,7 +68,7 @@ return {
 	config = function()
 		local telescope = require("telescope")
 
-		local trouble_present, trouble = pcall(require, "trouble.providers.telescope")
+		local trouble_present, trouble = pcall(require, "trouble.sources.telescope")
 		if not trouble_present then
 			print("trouble is not installed")
 		end
@@ -116,14 +116,14 @@ return {
 				file_ignore_patterns = { "node_modules/*", "^/usr/*" },
 				mappings = {
 					i = {
-						["<c-a>"] = trouble.open_with_trouble,
-						["<a-a>"] = trouble.open_selected_with_trouble,
+						["<c-a>"] = trouble.open,
+						["<a-a>"] = trouble.add,
 						["<c-s>"] = open_in_nvim_tree,
 						["<c-d>"] = require("telescope.actions").delete_buffer,
 					},
 					n = {
-						["<c-a>"] = trouble.open_with_trouble,
-						["<a-a>"] = trouble.open_selected_with_trouble,
+						["<c-a>"] = trouble.open,
+						["<a-a>"] = trouble.add,
 						["<c-s>"] = open_in_nvim_tree,
 						["<c-d>"] = require("telescope.actions").delete_buffer,
 					},
