@@ -14,6 +14,7 @@ M.get_configs = function()
 				"typescript",
 				"typescriptreact",
 				"vue",
+				"svelte",
 				"html",
 				"markdown",
 				"json",
