@@ -65,7 +65,7 @@ return {
 		keys = { { "<leader>xo", "<cmd>SymbolsOutline<CR>", desc = "Symbols Outline" } },
 	},
 	{ "mfussenegger/nvim-dap" },
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	{ "theHamsta/nvim-dap-virtual-text", config = true },
 	{ "leoluz/nvim-dap-go" },
 	{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },

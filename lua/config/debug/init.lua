@@ -119,6 +119,8 @@ if present_dapui then
 	dap.listeners.before.event_exited["dapui_config"] = function()
 		dapui.close()
 	end
+else
+	print("Dap UI not found")
 end
 
 ------------------------------------------------------
