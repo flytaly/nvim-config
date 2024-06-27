@@ -2,6 +2,7 @@ return {
 	"Exafunction/codeium.vim",
 	init = function()
 		vim.g.codeium_log_file = "~/.codeium/codeium.log"
+		vim.g.codeium_disable_bindings = 1
 		vim.keymap.set("i", "<c-.>", function()
 			return vim.fn["codeium#CycleCompletions"](1)
 		end, { expr = true, desc = "Codeium: Go to next completion" })
