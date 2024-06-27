@@ -2,8 +2,7 @@
 -- local colorscheme = "everforest"
 local darkScheme = "gruvbox-material"
 
--- local lightScheme = "deepwhite"
-local lightScheme = "gruvbox-material"
+local lightScheme = "deepwhite"
 
 local isDark = true
 
