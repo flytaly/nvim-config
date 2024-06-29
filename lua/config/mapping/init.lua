@@ -59,3 +59,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "<Esc>", "<cmd>close!<CR>", { silent = true, buffer = true, desc = "Close" })
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "fugitive" },
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>close!<CR>", { silent = true, buffer = true, desc = "Close" })
+	end,
+})
