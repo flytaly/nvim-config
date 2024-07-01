@@ -8,6 +8,15 @@ M.get_configs = function()
 			settings = { gopls = { env = { GOFLAGS = "-tags=windows,linux,unittest" } } },
 		},
 		eslint = {
+			root_dir = lspconfig.util.root_pattern(
+				"package.json",
+				".eslintrc",
+				".eslintrc.js",
+				".eslintrc.cjs",
+				".eslintrc.yaml",
+				".eslintrc.yml",
+				".eslintrc.json"
+			),
 			filetypes = {
 				"javascript",
 				"javascriptreact",

@@ -53,7 +53,7 @@ local servers = {
 	"shfmt",
 	"black",
 	"gci",
-	"stylua"
+	"stylua",
 }
 
 for _, server_name in pairs(servers) do

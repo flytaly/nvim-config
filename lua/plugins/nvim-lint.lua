@@ -3,7 +3,7 @@ return {
 	config = function()
 		require("lint").linters_by_ft = {
 			markdown = { "cspell" },
-			javascript = { "eslint" },
+			-- javascript = { "eslint" },
 			sh = { "shellcheck" },
 		}
 
