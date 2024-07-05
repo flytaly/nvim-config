@@ -5,9 +5,9 @@ end
 vim.g.neovide_cursor_animation_length = 0.07
 vim.g.neovide_transparency = 0.96
 
-vim.g.gui_font_default_size = 11
+vim.g.gui_font_default_size = 10
 vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "JetBrainsMonoMedium Nerd Font"
+vim.g.gui_font_face = "JetBrainsMono NFM Medium"
 vim.opt.linespace = 1
 
 RefreshGuiFont = function()
