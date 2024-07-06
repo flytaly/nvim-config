@@ -5,8 +5,9 @@ return {
 		{ "<leader>Q", "<cmd>BDelete hidden<CR>", desc = "Close hidden Buffers" },
 		{
 			"<leader>q",
-			"<cmd>bd<CR>", -- use bd to close current buffer and current tab
+			":bd<CR>:bnext<CR>", -- use bd to close current buffer and current tab, then go to the next
 			desc = "Close current Buffer",
+			{ noremap = true, silent = true },
 		},
 	},
 }
