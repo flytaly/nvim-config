@@ -9,20 +9,15 @@ return {
 		local wk = require("which-key")
 		wk.setup({})
 
-		wk.register({
-			["<leader>"] = {
-                ["`"] = {name = "Harpoon"},
-				f = {
-					name = "Telescope",
-					n = { name = "npm" },
-				},
-				d = { name = "debug" },
-				h = { name = "git" },
-				x = { name = "Trouble" },
-				t = { name = "Test" },
-				n = { name = "File explorers" },
-			},
+		wk.add({
+			{ "<leader>`", group = "Harpoon" },
+			{ "<leader>d", group = "debug" },
+			{ "<leader>f", group = "Telescope" },
+			{ "<leader>fn", group = "npm" },
+			{ "<leader>h", group = "git" },
+			{ "<leader>n", group = "File explorers" },
+			{ "<leader>t", group = "Test" },
+			{ "<leader>x", group = "Trouble" },
 		})
-
 	end,
 }
