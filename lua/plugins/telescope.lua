@@ -35,6 +35,7 @@ return {
 		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Telescope: find_files" })
 		--[[ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>") ]]
 		vim.keymap.set("n", "<leader>fg", ":Telescope live_grep_args<CR>", { desc = "Telescope: live grep args" })
+		vim.keymap.set("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Telescope: resume" })
 		vim.keymap.set(
 			"n",
 			"<leader>fG",
