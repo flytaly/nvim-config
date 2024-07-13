@@ -14,20 +14,20 @@ return {
 				map("n", "[c", ":Gitsigns prev_hunk<CR>", { desc = "Gitsigns: Previous hunk" })
 
 				-- Actions
-				map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Gitsigns: Stage hunk" })
-				map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "Gitsigns: Reset hunk" })
-				map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>", { desc = "Gitsigns: Stage buffer" })
-				map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Gitsigns: Undo stage hunk" })
-				map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>", { desc = "Gitsigns: Reset buffer" })
-				map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "Gitsigns: Preview hunk" })
-				map("n", "<leader>hd", "<cmd>Gitsigns diffthis<CR>", { desc = "Gitsigns: Diff this" })
+				map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "Gitsigns: Stage hunk" })
+				map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "Gitsigns: Reset hunk" })
+				map("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<CR>", { desc = "Gitsigns: Stage buffer" })
+				map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Gitsigns: Undo stage hunk" })
+				map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>", { desc = "Gitsigns: Reset buffer" })
+				map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "Gitsigns: Preview hunk" })
+				map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "Gitsigns: Diff this" })
 				map(
 					"n",
-					"<leader>hD",
+					"<leader>gD",
 					'<cmd>lua require"gitsigns".diffthis("~")<CR>',
 					{ desc = "Gitsigns: Diff this ~" }
 				)
-				map("n", "<leader>ht", "<cmd>Gitsigns toggle_deleted<CR>", { desc = "Gitsigns: Toggle deleted" })
+				map("n", "<leader>gt", "<cmd>Gitsigns toggle_deleted<CR>", { desc = "Gitsigns: Toggle deleted" })
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Gitsigns: Select hunk" })

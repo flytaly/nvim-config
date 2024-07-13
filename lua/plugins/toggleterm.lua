@@ -72,7 +72,7 @@ return {
 
 		vim.api.nvim_set_keymap(
 			"n",
-			"<leader>hl",
+			"<leader>gl",
 			"<cmd>lua _lazygit_toggle()<CR>",
 			{ noremap = true, silent = true, desc = "Lazygit" }
 		)

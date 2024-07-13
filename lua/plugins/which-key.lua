@@ -11,10 +11,11 @@ return {
 
 		wk.add({
 			{ "<leader>`", group = "Harpoon" },
-			{ "<leader>d", group = "debug" },
+			{ "<leader>a", group = "Actions" },
+			{ "<leader>d", group = "Debug" },
 			{ "<leader>f", group = "Telescope" },
 			{ "<leader>fn", group = "npm" },
-			{ "<leader>h", group = "git" },
+			{ "<leader>g", group = "Git" },
 			{ "<leader>n", group = "File explorers" },
 			{ "<leader>t", group = "Test" },
 			{ "<leader>x", group = "Trouble" },

@@ -5,7 +5,7 @@ return {
 	{ "unblevable/quick-scope" }, -- highlight unique chars
 	{ "nvim-lua/popup.nvim" },
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
-	{ "tpope/vim-fugitive", event = "VeryLazy", keys = { { "<leader>hg", "<cmd>Git<cr>", desc = "Open Git" } } },
+	{ "tpope/vim-fugitive", event = "VeryLazy", keys = { { "<leader>gg", "<cmd>Git<cr>", desc = "Open Git" } } },
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired" },
 	{ "tpope/vim-dadbod", event = "VeryLazy" },
@@ -39,7 +39,7 @@ return {
 		"gabrielpoca/replacer.nvim",
 		keys = {
 			{
-				"<leader>gr",
+				"<leader>ar",
 				"<cmd>lua require('replacer').run()<cr>",
 				desc = "Replace in quickfix window",
 				silent = true,

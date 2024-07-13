@@ -31,10 +31,10 @@ M.set_keymaps = function(bufnr)
 	--[[ set("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts) ]]
 	set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
 	set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
-	set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Go to diagnostic float" })
-	set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
+	set("n", "gC", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
+	set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Diagnostic float" })
 
-	set("n", "<leader>gf", function()
+	set("n", "<leader>af", function()
 		if vim.bo.filetype == "go" then
 			vim.cmd([[GoFmt]])
 		else
