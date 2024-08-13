@@ -13,7 +13,6 @@ local function eslint(dir)
 	end
 	if dir ~= "" then
 		memoDir = dir
-		dir = dir .. "/**/"
 	end
 	-- local files = "*.{ts,js,jsx,tsx,svelte,vue}"
 	-- vim.cmd("make " .. dir .. files)
