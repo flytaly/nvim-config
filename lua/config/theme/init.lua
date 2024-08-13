@@ -1,6 +1,7 @@
 -- local colorscheme = "kanagawa-wave"
 -- local colorscheme = "everforest"
-local darkScheme = "gruvbox-material"
+-- local darkScheme = "gruvbox-material"
+local darkScheme = "catppuccin-mocha"
 
 local lightScheme = "deepwhite"
 
