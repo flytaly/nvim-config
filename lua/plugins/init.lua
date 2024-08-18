@@ -16,7 +16,6 @@ return {
 		end,
 	},
 	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
-	-- { "machakann/vim-sandwich" }, -- vim surround alternative
 	{ "mg979/vim-visual-multi" },
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },
 	{
@@ -49,7 +48,7 @@ return {
 	{ "lukas-reineke/indent-blankline.nvim" }, -- indentation guides
 	{ "nanotee/sqls.nvim", ft = "sql" },
 	{ "ThePrimeagen/refactoring.nvim", config = true },
-	{ "m4xshen/autoclose.nvim", opts = { {} } },
+	{ "m4xshen/autoclose.nvim", opts = { options = { disable_command_mode = true } } },
 	{
 		"simrat39/symbols-outline.nvim",
 		opts = {
@@ -63,6 +62,7 @@ return {
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	{ "theHamsta/nvim-dap-virtual-text", config = true },
 	{ "leoluz/nvim-dap-go" },
+	{ "Jay-Madden/auto-fix-return.nvim", config = true },
 	{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
 	{
 		"microsoft/vscode-js-debug",
