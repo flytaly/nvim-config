@@ -11,7 +11,7 @@ return {
 		harpoon:setup()
 
 		nmap("<leader>`a", function()
-			harpoon:list():append()
+			harpoon:list():add()
 		end, "harpoon: add file")
 
 		nmap("<leader>`c", function()
