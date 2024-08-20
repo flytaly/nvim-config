@@ -16,5 +16,6 @@ vim.filetype.add({
 		vert = "glsl",
 		pcss = "scss",
 		prisma = "prisma",
+		http = "http",
 	},
 })
