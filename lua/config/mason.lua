@@ -16,6 +16,7 @@ local servers = {
 	"gopls",
 	"graphql-language-service-cli",
 	"html-lsp",
+	"htmx-lsp",
 	"json-lsp",
 	"lua-language-server",
 	"prisma-language-server",
