@@ -79,4 +79,5 @@ return {
 		end,
 	}, ]]
 	{ "sophacles/vim-processing" },
+	{ "nvim-treesitter/nvim-treesitter-context" },
 }
