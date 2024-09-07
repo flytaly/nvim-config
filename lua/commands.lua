@@ -27,9 +27,5 @@ end, { nargs = "?", desc = "Use Eslint in the given directory and launch quickfi
 -------------------------------------------
 -- Toggle diagnostics
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
-	if vim.diagnostic.is_disabled() then
-		vim.diagnostic.enable()
-	else
-		vim.diagnostic.disable()
-	end
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
