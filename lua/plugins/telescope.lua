@@ -33,8 +33,9 @@ return {
 		vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
 		vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
 		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Telescope: find_files" })
-		--[[ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>") ]]
-		vim.keymap.set("n", "<leader>fg", ":Telescope live_grep_args<CR>", { desc = "Telescope: live grep args" })
+		vim.keymap.set("n", "<leader>fg", function()
+			require("telescope").extensions.live_grep_args.live_grep_args({ search_dirs = { vim.fn.getcwd() } })
+		end, { desc = "Telescope: live grep args in cwd" })
 		vim.keymap.set("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Telescope: resume" })
 		vim.keymap.set(
 			"n",
@@ -107,6 +108,17 @@ return {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
+				live_grep_args = {
+					auto_quoting = true, -- enable/disable auto-quoting
+					mappings = {
+						i = {
+							["<A-i>"] = require("telescope-live-grep-args.actions").quote_prompt({
+								postfix = " --iglob ",
+							}),
+							["<C-space>"] = require("telescope.actions").to_fuzzy_refine,
+						},
+					},
+				},
 			},
 			pickers = {
 				colorscheme = {
@@ -135,5 +147,6 @@ return {
 		telescope.load_extension("ui-select")
 		telescope.load_extension("workspaces")
 		telescope.load_extension("live_grep_args")
+		telescope.load_extension("git_worktree")
 	end,
 }
