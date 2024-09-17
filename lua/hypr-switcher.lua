@@ -23,7 +23,7 @@ end
 
 local group = vim.api.nvim_create_augroup("HyperKeyboardSwitcher", { clear = true })
 
-vim.api.nvim_create_autocmd("InsertLeave", {
+vim.api.nvim_create_autocmd("InsertLeavePre", {
 	callback = function()
 		insert_layout = get_layout()
 		if insert_layout == en_layout then
