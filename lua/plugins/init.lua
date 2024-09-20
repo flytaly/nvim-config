@@ -8,13 +8,6 @@ return {
 	{ "tpope/vim-fugitive", event = "VeryLazy", keys = { { "<leader>gg", "<cmd>Git<cr>", desc = "Open Git" } } },
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired" },
-	{ "tpope/vim-dadbod", event = "VeryLazy" },
-	{
-		"kristijanhusak/vim-dadbod-ui",
-		config = function()
-			vim.g.db_ui_save_location = "~/Dropbox/db_ui_queries"
-		end,
-	},
 	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
 	{ "mg979/vim-visual-multi" },
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },
@@ -79,5 +72,5 @@ return {
 		end,
 	}, ]]
 	{ "sophacles/vim-processing" },
-	{ "nvim-treesitter/nvim-treesitter-context" },
+	{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 4 } },
 }
