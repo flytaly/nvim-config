@@ -1,27 +1,26 @@
 -- local colorscheme = "kanagawa-wave"
 -- local colorscheme = "everforest"
--- local darkScheme = "gruvbox-material"
-local darkScheme = "catppuccin-mocha"
+-- local scheme_dark = "gruvbox-material"
+local scheme_dark = "catppuccin-mocha"
 
-local lightScheme = "deepwhite"
+local scheme_light = "deepwhite"
 
-local isDark = true
+local is_dark = true
 
 local function setScheme()
-	vim.opt.background = isDark and "dark" or "light"
-	local scheme = isDark and darkScheme or lightScheme
+	vim.opt.background = is_dark and "dark" or "light"
+	local scheme = is_dark and scheme_dark or scheme_light
 
 	local ok, _ = pcall(vim.cmd.colorscheme, scheme)
 	if not ok then
 		vim.notify("colorscheme " .. scheme .. " not found!")
 	end
-
-	require("config.theme.cmp").setupColors()
+	require("config.theme.cmp").setupColors(is_dark)
 end
 
 setScheme()
 
 vim.keymap.set("n", "<leader>\\t", function()
-	isDark = not isDark
+	is_dark = not is_dark
 	setScheme()
 end, { desc = "Toggle dark/light colorschemes" })
