@@ -11,7 +11,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"kristijanhusak/vim-dadbod-completion",
 		"David-Kunz/cmp-npm",
-		{ "tzachar/cmp-tabnine", build = "./install.sh" },
+		-- { "tzachar/cmp-tabnine", build = "./install.sh" },
 	},
 
 	config = function()
@@ -100,6 +100,7 @@ return {
 					ls.lsp_expand(args.body)
 				end,
 			},
+
 			mapping = {
 				["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -134,18 +135,18 @@ return {
 						fallback()
 					end
 				end, { "i" }),
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					else
-						fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-					end
-				end, { "i", "s" }),
-				["<S-Tab>"] = cmp.mapping(function()
-					if cmp.visible() then
-						cmp.select_prev_item()
-					end
-				end, { "i", "s" }),
+				-- ["<Tab>"] = cmp.mapping(function(fallback)
+				-- 	if cmp.visible() then
+				-- 		cmp.select_next_item()
+				-- 	else
+				-- 		fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+				-- 	end
+				-- end, { "i", "s" }),
+				-- ["<S-Tab>"] = cmp.mapping(function()
+				-- 	if cmp.visible() then
+				-- 		cmp.select_prev_item()
+				-- 	end
+				-- end, { "i", "s" }),
 			},
 
 			formatting = {
@@ -168,7 +169,7 @@ return {
 				end,
 			},
 			sources = {
-				{ name = "cmp_tabnine" },
+				-- { name = "cmp_tabnine" },
 				{
 					name = "nvim_lsp", --[[, max_item_count = 20 ]]
 				},
@@ -183,8 +184,7 @@ return {
 				{ name = "nvim_lsp_signature_help" },
 			},
 			experimental = {
-				ghost_text = true,
-				native_menu = false,
+				-- ghost_text = true,
 			},
 		})
 
