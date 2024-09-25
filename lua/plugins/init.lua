@@ -9,7 +9,6 @@ return {
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired" },
 	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
-	{ "mg979/vim-visual-multi" },
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },
 	{
 		"sindrets/diffview.nvim",
