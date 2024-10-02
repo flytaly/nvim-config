@@ -3,7 +3,6 @@ return {
 	{ "vim-scripts/restore_view.vim" },
 	{ "nvim-lua/plenary.nvim" }, -- useful lua functions
 	{ "unblevable/quick-scope" }, -- highlight unique chars
-	{ "nvim-lua/popup.nvim" },
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
 	{ "tpope/vim-fugitive", event = "VeryLazy", keys = { { "<leader>gg", "<cmd>Git<cr>", desc = "Open Git" } } },
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
