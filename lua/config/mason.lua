@@ -30,6 +30,7 @@ local servers = {
 	"pyright",
 	-- "typescript-language-server",
 	"vtsls",
+	"astro-language-server",
 	"yaml-language-server",
 	"marksman",
 	"texlab",
