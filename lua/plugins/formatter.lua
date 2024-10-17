@@ -21,6 +21,7 @@ return {
 				javascriptreact = { prettier },
 				typescript = { prettier },
 				typescriptreact = { prettier },
+				astro = { prettier }, -- prettier-plugin-astro
 				vue = { prettier },
 				css = { prettier },
 				scss = { prettier },

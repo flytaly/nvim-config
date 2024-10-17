@@ -10,7 +10,8 @@
                     "typescriptreact",
                     "vue",
                     "svelte",
-                    "html"
+                    "html",
+                    "astro"
                 ],
                 "path": "./snippets/js_common.json"
             },

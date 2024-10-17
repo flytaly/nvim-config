@@ -7,16 +7,21 @@ return {
 		"nvim-telescope/telescope-dap.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		"folke/trouble.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"natecraddock/workspaces.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ "nvim-telescope/telescope-fzy-native.nvim" },
+		{
+			"danielfalk/smart-open.nvim",
+			branch = "0.2.x",
+			dependencies = {
+				"kkharji/sqlite.lua",
+			},
+		},
 	},
 	init = function()
-		vim.keymap.set("n", "<leader><space>", function()
-			local ok = pcall(vim.cmd, [[:Telescope git_files]])
-			if not ok then
-				vim.cmd([[:Telescope find_files]])
-			end
-		end)
+		vim.keymap.set("n", "<leader><leader>", function()
+			require("telescope").extensions.smart_open.smart_open()
+		end, { noremap = true, silent = true })
 		--[[ vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>") ]]
 		vim.keymap.set(
 			"n",
@@ -148,5 +153,6 @@ return {
 		telescope.load_extension("workspaces")
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("git_worktree")
+		telescope.load_extension("smart_open")
 	end,
 }
