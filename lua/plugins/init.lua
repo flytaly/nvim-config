@@ -4,16 +4,11 @@ return {
 	{ "nvim-lua/plenary.nvim" }, -- useful lua functions
 	{ "unblevable/quick-scope" }, -- highlight unique chars
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
-	{ "tpope/vim-fugitive", event = "VeryLazy", keys = { { "<leader>gg", "<cmd>Git<cr>", desc = "Open Git" } } },
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired" },
 	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },
-	{
-		"sindrets/diffview.nvim",
-		event = "VeryLazy",
-		opts = { file_panel = { win_config = { position = "left" } } },
-	},
+	{ "LunarVim/bigfile.nvim" },
 	{
 		"szw/vim-maximizer",
 		event = "VeryLazy",
