@@ -12,6 +12,7 @@ return {
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = "all",
+		    ignore_install = { "hlsplaylist", "muttrc", "zathurarc" },
 
 			highlight = {
 				enable = true,
