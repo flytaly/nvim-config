@@ -40,7 +40,7 @@ local servers = {
 
 	-- DAP
 	"delve",
-	"node-debug2-adapter",
+	-- "node-debug2-adapter",
 	"firefox-debug-adapter",
 	"chrome-debug-adapter",
 

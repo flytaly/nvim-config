@@ -3,7 +3,7 @@ if not vim.g.neovide then
 end
 
 vim.g.neovide_cursor_animation_length = 0.07
-vim.g.neovide_transparency = 0.96
+vim.g.neovide_transparency = 1.0
 
 vim.g.gui_font_default_size = 11
 vim.g.gui_font_size = vim.g.gui_font_default_size
