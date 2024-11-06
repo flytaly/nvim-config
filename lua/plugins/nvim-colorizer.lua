@@ -3,7 +3,7 @@ return {
 	config = function()
 		local colorizer = require("colorizer")
 
-		local langs = { "svelte", "html", "css", "conf", "lua", "scss" }
+		local langs = { "svelte", "html", "css", "conf", "lua", "scss", "astro" }
 
 		local conf = {
 			RGB = true, -- #RGB hex codes
