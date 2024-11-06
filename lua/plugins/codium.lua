@@ -26,6 +26,7 @@ return {
 			local neocodeium = require("neocodeium")
 			neocodeium.setup({
 				filetypes = {
+					DressingInput = false,
 					TelescopePrompt = false,
 					["dap-repl"] = false,
 				},
