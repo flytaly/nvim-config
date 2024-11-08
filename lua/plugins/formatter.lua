@@ -34,6 +34,7 @@ return {
 				graphql = { prettier },
 				handlebars = { prettier },
 				svg = { prettier },
+				toml = { prettier },
 
 				["*"] = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
