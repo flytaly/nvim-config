@@ -12,5 +12,5 @@ else
 	require("autocmd")
 	require("neovide")
 	require("commands")
-	require("hypr-switcher")
+	-- require("hypr-switcher")
 end
