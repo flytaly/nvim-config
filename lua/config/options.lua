@@ -56,6 +56,18 @@ opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the 
 opt.hlsearch = true -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Enable spellcheck in some files
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		local ft = vim.bo.filetype
+		if ft ~= "markdown" and ft ~= "text" then
+			return
+		end
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "en_us,ru"
+	end,
+})
+
 -- I don't know what the reason but in some files
 -- folds don't work correctly, because some plugins can reset foldlevel.
 -- So this is a temporary fix.

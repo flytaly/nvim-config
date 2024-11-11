@@ -47,7 +47,7 @@ local servers = {
 	-- linters
 	"eslint_d",
 	"shellcheck",
-	"cspell",
+	-- "cspell",
 
 	-- formatters
 	"prettier",
