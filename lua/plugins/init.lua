@@ -1,6 +1,5 @@
 return {
 	{ "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } }, -- select entire buffer
-	{ "vim-scripts/restore_view.vim" },
 	{ "nvim-lua/plenary.nvim" }, -- useful lua functions
 	{ "unblevable/quick-scope" }, -- highlight unique chars
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically

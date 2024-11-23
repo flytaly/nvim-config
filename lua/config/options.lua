@@ -32,11 +32,10 @@ opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
-opt.foldmethod = "expr"
+opt.foldmethod = "manual"
+-- opt.foldtext = "foldtext()"
 -- https://reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
 opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldtext = "foldtext()"
-opt.foldmethod = "expr"
 
 opt.shell = "fish"
 opt.termguicolors = true
@@ -73,8 +72,23 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- So this is a temporary fix.
 -- https://github.com/kevinhwang91/nvim-ufo/issues/57
 vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("reset_folds", { clear = true }),
 	callback = function()
 		-- vim.cmd([[setlocal foldlevel=99]])
 		vim.cmd([[set foldlevelstart=99]])
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("restore_folds", { clear = true }),
+	callback = function()
+		vim.cmd([[silent! loadview]])
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	group = vim.api.nvim_create_augroup("save_folds", { clear = true }),
+	callback = function()
+		vim.cmd([[silent! mkview]])
 	end,
 })
