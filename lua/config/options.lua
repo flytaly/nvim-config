@@ -71,17 +71,21 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- folds don't work correctly, because some plugins can reset foldlevel.
 -- So this is a temporary fix.
 -- https://github.com/kevinhwang91/nvim-ufo/issues/57
-vim.api.nvim_create_autocmd("BufEnter", {
-	group = vim.api.nvim_create_augroup("reset_folds", { clear = true }),
-	callback = function()
-		-- vim.cmd([[setlocal foldlevel=99]])
-		vim.cmd([[set foldlevelstart=99]])
-	end,
-})
-
+-- vim.api.nvim_create_autocmd("BufEnter", {
+-- 	group = vim.api.nvim_create_augroup("reset_folds", { clear = true }),
+-- 	callback = function()
+-- 		-- vim.cmd([[setlocal foldlevel=99]])
+-- 		vim.cmd([[set foldlevelstart=99]])
+-- 	end,
+-- })
+--
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = vim.api.nvim_create_augroup("restore_folds", { clear = true }),
 	callback = function()
+		if vim.b.was_loaded then
+			return
+		end
+		vim.b.was_loaded = true
 		vim.cmd([[silent! loadview]])
 	end,
 })
