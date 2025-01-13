@@ -70,6 +70,7 @@ return {
 		)
 		vim.keymap.set("n", "<leader>fc", ":Telescope git_bcommits<CR>", { desc = "Telescope: git buffer commits" })
 		vim.keymap.set("n", "<leader>fC", ":Telescope git_commits<CR>", { desc = "Telescope: git commits" })
+		vim.keymap.set("n", "<leader>fl", ":Telescope git_status<CR>", { desc = "Telescope: git status" })
 		vim.keymap.set("n", "<leader>fw", ":Telescope workspaces<CR>", { desc = "Telescope: workspaces" })
 	end,
 
