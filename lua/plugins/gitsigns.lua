@@ -21,6 +21,8 @@ return {
 				map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>", { desc = "Gitsigns: Reset buffer" })
 				map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "Gitsigns: Preview hunk" })
 				map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "Gitsigns: Diff this" })
+				map("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "Gitsigns: Blame" })
+				map("n", "<leader>gB", "<cmd>Gitsigns blame_line<CR>", { desc = "Gitsigns: Blame line" })
 				map(
 					"n",
 					"<leader>gD",
