@@ -3,6 +3,16 @@ local filterDTS = require("config.mapping.filter-dts")
 
 local M = {}
 
+-- Sometimes, lsp returns multiple entries.
+-- Use C-] instead. It will call vim.lsp.tagfun which will jump to the first entry.
+-- https://github.com/neovim/neovim/issues/28476#issuecomment-2074248691
+local function go_to_definition()
+	if vim.o.tagfunc ~= "" or #vim.fn.tagfiles() > 0 then
+		return "<C-]>"
+	end
+	vim.lsp.buf.definition({ on_list = filterDTS.on_list })
+end
+
 M.set_keymaps = function(bufnr)
 	-- Mappings
 	local function set(mode, lhs, rhs, opts)
@@ -16,13 +26,15 @@ M.set_keymaps = function(bufnr)
 		vim.lsp.buf.code_action({ context = { only = { "source", "refactor", "quickfix" } } })
 	end, { desc = "Code Actions" })
 
-	set("n", "gd", function()
-		vim.lsp.buf.definition({ on_list = filterDTS.on_list })
-	end, { desc = "Go to definition" })
+	-- swap gd with <C-]>
+	set("n", "<C-]>", function()
+		vim.lsp.buf.definition()
+	end, { expr = true, desc = "Go to definition" })
+	set("n", "gd", go_to_definition, { expr = true, desc = "Go to definition (tagfunc)" })
 
 	set("n", "<C-t>gd", function()
 		vim.api.nvim_command("tab split")
-		vim.lsp.buf.definition({ on_list = filterDTS.on_list })
+		go_to_definition()
 	end, { desc = "Go to definition in new tab" })
 
 	set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Go to implementation" })
