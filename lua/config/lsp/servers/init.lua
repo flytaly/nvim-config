@@ -2,7 +2,24 @@ local lspconfig = require("lspconfig")
 local M = {}
 M.get_configs = function()
 	return {
-		cssls = { settings = { css = { validate = false } } },
+		cssls = {
+			-- https://github.com/tailwindlabs/tailwindcss/discussions/5258
+			-- disable tailwindcss @apply warning
+			settings = {
+				css = {
+					validate = true,
+					lint = {
+						unknownAtRules = "ignore",
+					},
+				},
+				scss = {
+					validate = true,
+					lint = {
+						unknownAtRules = "ignore",
+					},
+				},
+			},
+		},
 		jsonls = require("config.lsp.servers.jsonls"),
 		gopls = {
 			settings = { gopls = { env = { GOFLAGS = "-tags=windows,linux,unittest" } } },
@@ -47,6 +64,7 @@ M.get_configs = function()
 				end
 			end,
 		},
+
 		vtsls = {
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json", "jsonc" },
 			settings = {
