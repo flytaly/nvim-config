@@ -5,6 +5,7 @@ local M = {}
 local default_vars = {
 	format_on_save = true,
 	formatter = "",
+	cwd = "",
 }
 
 local function updateVariables(update)
@@ -25,6 +26,7 @@ local function getVariables()
 	return {
 		format_on_save = vim.g.format_on_save,
 		formatter = vim.g.formatter,
+		cwd = vim.loop.cwd(),
 	}
 end
 
