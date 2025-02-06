@@ -54,7 +54,7 @@ return {
 		build = "npm install --legacy-peer-deps && npm run compile",
 		event = "VeryLazy",
 	},
-	{ "Jay-Madden/auto-fix-return.nvim", ft = "go", config = true },
+	-- { "Jay-Madden/auto-fix-return.nvim", ft = "go", config = true },
 	{ "sophacles/vim-processing" },
 	{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 4 } },
 }
