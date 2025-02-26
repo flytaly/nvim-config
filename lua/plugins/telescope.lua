@@ -52,7 +52,7 @@ return {
 		vim.keymap.set(
 			"n",
 			"<leader>fo",
-			"<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
+			":Telescope file_browser path=%:p:h select_buffer=true<CR>",
 			{ desc = "Telescope: file browser" }
 		)
 		vim.keymap.set("n", "<leader>ft", ":Telescope builtin<CR>", { desc = "Telescope: builtin" })

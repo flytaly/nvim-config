@@ -1,8 +1,8 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	event = "VeryLazy",
 	config = function()
 		require("gitsigns").setup({
+			attach_to_untracked = true,
 			on_attach = function(bufnr)
 				local function map(mode, lhs, rhs, opts)
 					opts = vim.tbl_extend("force", { noremap = true, silent = true, buffer = bufnr }, opts or {})

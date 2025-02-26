@@ -33,7 +33,6 @@ return {
 				markdown = { prettier },
 				graphql = { prettier },
 				handlebars = { prettier },
-				svg = { prettier },
 				toml = { prettier },
 
 				["*"] = {
