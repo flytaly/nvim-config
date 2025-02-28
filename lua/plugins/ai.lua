@@ -1,30 +1,12 @@
 return {
-	-- {
-	-- 	"Exafunction/codeium.vim",
-	--
-	-- 	init = function()
-	-- 		vim.g.codeium_log_file = "~/.codeium/codeium.log"
-	-- 		vim.g.codeium_disable_bindings = 1
-	-- 		vim.keymap.set("i", "<a-.>", function()
-	-- 			return vim.fn["codeium#CycleCompletions"](1)
-	-- 		end, { expr = true, desc = "Codeium: Go to next completion" })
-	-- 		vim.keymap.set("i", "<a-,>", function()
-	-- 			return vim.fn["codeium#CycleCompletions"](-1)
-	-- 		end, { expr = true, desc = "Codeium: Go to previous completion" })
-	-- 		vim.keymap.set("i", "<a-c>", function()
-	-- 			return vim.fn["codeium#Clear"]()
-	-- 		end, { expr = true, desc = "Codeium: Clear current completion" })
-	-- 		vim.keymap.set("i", "<a-cr>", function()
-	-- 			return vim.fn["codeium#Accept"]()
-	-- 		end, { expr = true, desc = "Codeium: Accept current completion" })
-	-- 	end,
-	-- },
 	{
 		"monkoose/neocodeium",
 		event = "VeryLazy",
+		-- enabled = false,
 		config = function()
 			local neocodeium = require("neocodeium")
 			neocodeium.setup({
+				manual = true,
 				filetypes = {
 					DressingInput = false,
 					TelescopePrompt = false,
@@ -53,6 +35,13 @@ return {
 			vim.keymap.set("i", "<a-C>", function()
 				require("neocodeium").clear()
 			end)
+		end,
+	},
+	{
+		"augmentcode/augment.vim",
+		init = function()
+			local ok, folders = pcall(require, "workspace-folders")
+			vim.g.augment_workspace_folders = ok and folders or {}
 		end,
 	},
 }
