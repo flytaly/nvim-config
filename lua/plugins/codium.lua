@@ -38,6 +38,11 @@ return {
 			vim.keymap.set("i", "<a-f>", function()
 				require("neocodeium").accept()
 			end)
+			-- add tab
+			vim.keymap.set("i", "<tab>", function()
+				require("neocodeium").accept()
+			end)
+
 			vim.keymap.set("i", "<A-w>", function()
 				require("neocodeium").accept_word()
 			end)
