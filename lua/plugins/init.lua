@@ -57,4 +57,25 @@ return {
 	-- { "Jay-Madden/auto-fix-return.nvim", ft = "go", config = true },
 	{ "sophacles/vim-processing" },
 	{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 4 } },
+	{
+		"gaelph/logsitter.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		keys = {
+			{
+				"<leader>lg",
+				function()
+					require("logsitter").log()
+				end,
+				mode = { "n" },
+				desc = "Logsitter: log current",
+			},
+		},
+		config = function()
+			require("logsitter").setup({
+				path_format = "fileonly",
+				prefix = "[LS]",
+				separator = ">",
+			})
+		end,
+	},
 }
