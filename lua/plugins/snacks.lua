@@ -9,7 +9,16 @@ return {
 			indent = { enabled = false },
 			input = { enabled = true },
 			picker = { enabled = true },
-			notifier = { enabled = true },
+			notifier = {
+				enabled = true,
+				filter = function(notif)
+					-- filter our unwanted notifications from lsp
+					if notif.level ~= "info" then
+						return true
+					end
+					return notif.msg ~= "No information available"
+				end,
+			},
 			quickfile = { enabled = true },
 			scope = { enabled = true },
 			statuscolumn = { enabled = true },
