@@ -12,9 +12,16 @@ return {
 		{ "nvim-telescope/telescope-fzy-native.nvim" },
 		{
 			"danielfalk/smart-open.nvim",
-			branch = "0.2.x",
+			branch = "0.3.x",
 			dependencies = {
-				"kkharji/sqlite.lua",
+				{
+					"kkharji/sqlite.lua",
+					init = function()
+						if vim.loop.os_uname().sysname == "Windows_NT" then
+							vim.g.sqlite_clib_path = "c:/Programs/Sqlite/sqlite3.dll"
+						end
+					end,
+				},
 			},
 		},
 	},

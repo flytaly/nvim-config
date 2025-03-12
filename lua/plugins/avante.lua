@@ -1,3 +1,12 @@
+local build = "make BUILD_FROM_SOURCE=true"
+
+-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+build = "make BUILD_FROM_SOURCE=true"
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
+	build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+end
+
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
@@ -7,9 +16,7 @@ return {
 		provider = "copilot",
 		-- file_selector = { provider = "snacks" },
 	},
-	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-	build = "make BUILD_FROM_SOURCE=true",
-	-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+	build = build,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 		"stevearc/dressing.nvim",

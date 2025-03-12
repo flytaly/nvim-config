@@ -36,7 +36,8 @@ return {
 				toml = { prettier },
 
 				["*"] = {
-					require("formatter.filetypes.any").remove_trailing_whitespace,
+					-- require("formatter.filetypes.any").remove_trailing_whitespace,
+					require("formatter.filetypes.any").substitute_trailing_whitespace,
 				},
 			},
 		})

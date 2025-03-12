@@ -37,7 +37,10 @@ opt.foldmethod = "manual"
 -- https://reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-opt.shell = "fish"
+if vim.loop.os_uname().sysname == "Linux" then
+	opt.shell = "fish"
+end
+
 opt.termguicolors = true
 opt.listchars = { eol = "↲", tab = "» ", trail = "~", extends = ">", precedes = "«", nbsp = "␣" }
 opt.laststatus = 3
