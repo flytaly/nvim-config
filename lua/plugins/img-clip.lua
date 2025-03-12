@@ -1,5 +1,6 @@
 return {
 	"HakonHarnes/img-clip.nvim",
+	event = "VeryLazy",
 	cmd = "PasteImage",
 	opts = {
 		dir_path = "assets", -- directory path to save images to, can be relative (cwd or current file) or absolute

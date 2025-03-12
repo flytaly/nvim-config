@@ -7,7 +7,6 @@ return {
 	{ "tpope/vim-unimpaired" },
 	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },
-	{ "LunarVim/bigfile.nvim" },
 	{
 		"szw/vim-maximizer",
 		event = "VeryLazy",
@@ -30,9 +29,7 @@ return {
 			},
 		},
 	},
-	{ "lukas-reineke/indent-blankline.nvim" }, -- indentation guides
 	{ "nanotee/sqls.nvim", ft = "sql" },
-	{ "ThePrimeagen/refactoring.nvim", config = true },
 	{ "m4xshen/autoclose.nvim", opts = { options = { disable_command_mode = true } } },
 	{
 		"simrat39/symbols-outline.nvim",
@@ -43,18 +40,47 @@ return {
 		},
 		keys = { { "<leader>xo", "<cmd>SymbolsOutline<CR>", desc = "Symbols Outline" } },
 	},
-	{ "mfussenegger/nvim-dap", event = "VeryLazy" },
-	{ "rcarriga/nvim-dap-ui", event = "VeryLazy", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-	{ "theHamsta/nvim-dap-virtual-text", event = "VeryLazy", config = true },
-	{ "leoluz/nvim-dap-go", event = "VeryLazy" },
-	{ "mxsdev/nvim-dap-vscode-js", event = "VeryLazy", dependencies = { "mfussenegger/nvim-dap" } },
-	{
-		"microsoft/vscode-js-debug",
-		opt = true,
-		build = "npm install --legacy-peer-deps && npm run compile",
-		event = "VeryLazy",
-	},
 	-- { "Jay-Madden/auto-fix-return.nvim", ft = "go", config = true },
-	{ "sophacles/vim-processing" },
 	{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 4 } },
+	{
+		"gaelph/logsitter.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		keys = {
+			{
+				"<leader>lg",
+				function()
+					require("logsitter").log()
+				end,
+				mode = { "n" },
+				desc = "Logsitter: log current",
+			},
+		},
+		config = function()
+			require("logsitter").setup({
+				path_format = "fileonly",
+				prefix = "[LS]",
+				separator = ">",
+			})
+		end,
+	},
+	{
+		"f-person/auto-dark-mode.nvim",
+		config = function()
+			local auto_dark_mode = require("auto-dark-mode")
+			auto_dark_mode.setup({
+				set_dark_mode = function()
+					vim.api.nvim_set_option_value("background", "dark", {})
+					require("config.theme").apply("dark")
+				end,
+				set_light_mode = function()
+					vim.api.nvim_set_option_value("background", "light", {})
+					require("config.theme").apply("light")
+				end,
+				update_interval = 3000,
+				fallback = "dark",
+			})
+			-- don't listen for changes
+			auto_dark_mode.disable()
+		end,
+	},
 }
