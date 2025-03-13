@@ -66,7 +66,7 @@ M.get_configs = function()
 		},
 
 		vtsls = {
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json", "jsonc" },
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 			settings = {
 				vtsls = {
 					tsserver = {
