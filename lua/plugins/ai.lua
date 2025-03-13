@@ -6,7 +6,7 @@ return {
 		config = function()
 			local neocodeium = require("neocodeium")
 			neocodeium.setup({
-				manual = true,
+				-- manual = true,
 				filetypes = {
 					DressingInput = false,
 					TelescopePrompt = false,
