@@ -42,11 +42,11 @@ return {
 			end)
 		end,
 	},
-	{
-		"augmentcode/augment.vim",
-		init = function()
-			local ok, folders = pcall(require, "workspace-folders")
-			vim.g.augment_workspace_folders = ok and folders or {}
-		end,
-	},
+	-- {
+	-- 	"augmentcode/augment.vim",
+	-- 	init = function()
+	-- 		local ok, folders = pcall(require, "workspace-folders")
+	-- 		vim.g.augment_workspace_folders = ok and folders or {}
+	-- 	end,
+	-- },
 }
