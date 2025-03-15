@@ -32,13 +32,9 @@ return {
 	{ "nanotee/sqls.nvim", ft = "sql" },
 	{ "m4xshen/autoclose.nvim", opts = { options = { disable_command_mode = true } } },
 	{
-		"simrat39/symbols-outline.nvim",
-		opts = {
-			highlight_hovered_item = true,
-			--[[ symbol_blacklist = { "Variable", "Constant", "Key", "Property" }, ]]
-			autofold_depth = 3,
-		},
-		keys = { { "<leader>xo", "<cmd>SymbolsOutline<CR>", desc = "Symbols Outline" } },
+		"hedyhli/outline.nvim",
+		opts = {},
+		keys = { { "<leader>xo", "<cmd>Outline<CR>", desc = "Symbols Outline" } },
 	},
 	-- { "Jay-Madden/auto-fix-return.nvim", ft = "go", config = true },
 	{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 4 } },
