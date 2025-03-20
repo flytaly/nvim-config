@@ -106,6 +106,9 @@ end, {
 	nargs = "?",
 	complete = function(arg_lead)
 		local matches = {}
+		if M.formatter_list[vim.bo.filetype] == nil then
+			return
+		end
 		for _, formatter in ipairs(M.formatter_list[vim.bo.filetype]) do
 			if formatter:find("^" .. arg_lead) then
 				table.insert(matches, formatter)
