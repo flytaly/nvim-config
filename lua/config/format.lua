@@ -4,8 +4,37 @@ local M = {}
 
 local default_vars = {
 	format_on_save = true,
-	formatter_js = "default",
+	formatters_override = {},
 	cwd = "",
+}
+
+-- mhartington/formatter.nvim  formatters
+local js = { "biome", "prettier", "eslint_d" }
+M.formatter_list = {
+	javascript = js,
+	javascriptreact = js,
+	typescript = js,
+	typescriptreact = js,
+	svelte = js,
+	astro = js,
+	vue = js,
+	glsl = { "clangformat", "prettier" }, -- to work install prettier-plugin-glsl and add it to the prettier config: `plugins: ["prettier-plugin-glsl"]`
+	css = { "biome", "prettier" },
+	scss = { "biome", "prettier" },
+	less = { "biome", "prettier" },
+	html = { "prettier", "biome" },
+	json = { "biome", "prettier" },
+	jsonc = { "biome", "prettier" },
+	yaml = { "prettier" },
+	markdown = { "prettier" },
+	graphql = { "biome", "prettier" },
+	handlebars = { "prettier" },
+	toml = { "prettier" },
+	lua = { "stylua" },
+	sql = { "pgformat" },
+	sh = { "shfmt" },
+	fish = { "fishindent" },
+	python = { "black" },
 }
 
 local function updateVariables(update)
@@ -17,18 +46,25 @@ local function updateVariables(update)
 		vim.g.format_on_save = update["format_on_save"]
 	end
 
-	if update["formatter_js"] ~= nil then
-		vim.g.formatter_js = update["formatter_js"]
+	if update["formatters_override"] ~= nil then
+		vim.g.formatters_override =
+			vim.tbl_extend("force", vim.g.formatters_override or {}, update["formatters_override"])
 	end
 end
 
 local function getVariables()
 	return {
 		format_on_save = vim.g.format_on_save,
-		formatter_js = vim.g.formatter_js,
+		formatters_override = vim.g.formatters_override,
 		cwd = vim.loop.cwd(),
 	}
 end
+
+M.getFormatterName = function()
+	return (getVariables().formatters_override or {})[vim.bo.filetype]
+end
+
+M.getVariables = getVariables
 
 updateVariables(default_vars)
 
@@ -52,22 +88,25 @@ vim.api.nvim_create_autocmd("DirChanged", {
 vim.keymap.set("n", "yof", function()
 	updateVariables({ format_on_save = not vim.g.format_on_save })
 	saveData.save(getVariables())
-	print("format on save", (vim.g.format_on_save and "enabled" or "disabled"))
+	if vim.g.format_on_save then
+		vim.notify("✅ format on save enabled")
+	else
+		vim.notify("❌ format on save disabled")
+	end
 end, { desc = "Toggle format on save" })
 
-local js_formatters = { "default", "eslint", "biome", "prettier" }
-
-vim.api.nvim_create_user_command("FormatterJSSet", function(opts)
-	local formatter_js = opts.args or ""
-	updateVariables({ formatter_js = formatter_js })
+vim.api.nvim_create_user_command("FormatterSet", function(opts)
+	local formatter = opts.args or ""
+	local filetype = vim.bo.filetype
+	updateVariables({ formatters_override = { [filetype] = formatter } })
 	saveData.save(getVariables())
+	vim.notify("set formatter: [" .. filetype .. "] -> " .. formatter)
 end, {
-	desc = "Set formatter for the project",
+	desc = "Set filetype formatter for the working directory",
 	nargs = "?",
-	complete = function(arg_lead, cmd_line, cursor_pos)
-		-- Filter formatters that match the current input
+	complete = function(arg_lead)
 		local matches = {}
-		for _, formatter in ipairs(js_formatters) do
+		for _, formatter in ipairs(M.formatter_list[vim.bo.filetype]) do
 			if formatter:find("^" .. arg_lead) then
 				table.insert(matches, formatter)
 			end
@@ -76,44 +115,12 @@ end, {
 	end,
 })
 
-local function eslintfix(withMessage)
-	if vim.fn.exists(":EslintFixAll") > 0 then
-		vim.cmd([[EslintFixAll]])
-		if withMessage then
-			print("ESLint Fix")
-		end
-	else
-		print("EslintFixAll command from Eslint LSP not found")
-	end
-end
-
-local function FormatterFormat(formatter, withMessage)
-	if formatter == "" or formatter == nil or formatter == "default" then
-		vim.cmd([[FormatWrite]])
-		return
-	end
-	vim.cmd("FormatWrite " .. formatter)
-	if withMessage then
-		print("formatted")
-	end
-end
-
 M.format = function(params)
 	params = params or { withMessage = true }
-
-	local js_types = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" }
-	local filetype = vim.bo.filetype
-
-	if vim.tbl_contains(js_types, filetype) then
-		if vim.g.formatter_js == "eslint" then
-			eslintfix(params.withMessage)
-		else
-			FormatterFormat(vim.g.formatter_js, params.withMessage)
-		end
-		return
+	vim.cmd([[FormatWrite]])
+	if params.withMessage then
+		print("formatted", M.getFormatterName())
 	end
-
-	FormatterFormat("", params.withMessage)
 end
 
 M.onSave = function(initial)
