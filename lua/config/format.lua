@@ -4,7 +4,7 @@ local M = {}
 
 local default_vars = {
 	format_on_save = true,
-	formatter = "",
+	formatter_js = "default",
 	cwd = "",
 }
 
@@ -17,27 +17,36 @@ local function updateVariables(update)
 		vim.g.format_on_save = update["format_on_save"]
 	end
 
-	if update["formatter"] ~= nil then
-		vim.g.formatter = update["formatter"]
+	if update["formatter_js"] ~= nil then
+		vim.g.formatter_js = update["formatter_js"]
 	end
 end
 
 local function getVariables()
 	return {
 		format_on_save = vim.g.format_on_save,
-		formatter = vim.g.formatter,
+		formatter_js = vim.g.formatter_js,
 		cwd = vim.loop.cwd(),
 	}
 end
 
 updateVariables(default_vars)
 
+local load_variables_group = vim.api.nvim_create_augroup("load_variables", {})
+
+local function load_and_update_variables()
+	local restoredData = saveData.load()
+	updateVariables(restoredData)
+end
+
 vim.api.nvim_create_autocmd("VimEnter", {
-	group = vim.api.nvim_create_augroup("load_variables", {}),
-	callback = function()
-		local restoredData = saveData.load()
-		updateVariables(restoredData)
-	end,
+	group = load_variables_group,
+	callback = load_and_update_variables,
+})
+
+vim.api.nvim_create_autocmd("DirChanged", {
+	group = load_variables_group,
+	callback = load_and_update_variables,
 })
 
 vim.keymap.set("n", "yof", function()
@@ -46,20 +55,46 @@ vim.keymap.set("n", "yof", function()
 	print("format on save", (vim.g.format_on_save and "enabled" or "disabled"))
 end, { desc = "Toggle format on save" })
 
-vim.api.nvim_create_user_command("FormatterSet", function(opts)
-	local formatter = opts.args or ""
-	updateVariables({ formatter = formatter })
+local formattersJS = { "eslint", "default" }
+
+vim.api.nvim_create_user_command("FormatterJSSet", function(opts)
+	local formatter_js = opts.args or ""
+	updateVariables({ formatter_js = formatter_js })
 	saveData.save(getVariables())
-end, { desc = "Set formatter for the project", nargs = "?" })
+end, {
+	desc = "Set formatter for the project",
+	nargs = "?",
+	complete = function(arg_lead, cmd_line, cursor_pos)
+		-- Filter formatters that match the current input
+		local matches = {}
+		for _, formatter in ipairs(formattersJS) do
+			if formatter:find("^" .. arg_lead) then
+				table.insert(matches, formatter)
+			end
+		end
+		return matches
+	end,
+})
+
+local function eslintfix(withMessage)
+	if vim.fn.exists(":EslintFixAll") > 0 then
+		vim.cmd([[EslintFixAll]])
+		if withMessage then
+			print("ESLint Fix")
+		end
+	else
+		print("EslintFixAll command from Eslint LSP not found")
+	end
+end
 
 M.format = function(params)
 	params = params or { withMessage = true }
 
-	if vim.g.formatter == "eslint" and vim.fn.exists(":EslintFixAll") > 0 then
-		vim.cmd([[EslintFixAll]])
-		if params.withMessage then
-			print("ESLint Fix")
-		end
+	local js_types = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" }
+	local filetype = vim.bo.filetype
+
+	if vim.g.formatter_js == "eslint" and vim.tbl_contains(js_types, filetype) then
+		eslintfix(params.withMessage)
 		return
 	end
 
