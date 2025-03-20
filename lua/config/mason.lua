@@ -56,6 +56,7 @@ local servers = {
 	"black",
 	"gci",
 	"stylua",
+	"clang-format",
 }
 
 for _, server_name in pairs(servers) do
