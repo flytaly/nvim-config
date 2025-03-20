@@ -26,13 +26,18 @@ M.get_configs = function()
 		},
 		eslint = {
 			root_dir = lspconfig.util.root_pattern(
-				"package.json",
 				".eslintrc",
 				".eslintrc.js",
 				".eslintrc.cjs",
 				".eslintrc.yaml",
 				".eslintrc.yml",
-				".eslintrc.json"
+				".eslintrc.json",
+				"eslint.config.js",
+				"eslint.config.mjs",
+				"eslint.config.cjs",
+				"eslint.config.ts",
+				"eslint.config.mts",
+				"eslint.config.cts"
 			),
 			filetypes = {
 				"javascript",
@@ -41,14 +46,6 @@ M.get_configs = function()
 				"typescriptreact",
 				"vue",
 				"svelte",
-				"html",
-				"markdown",
-				"json",
-				"jsonc",
-				"yaml",
-				"toml",
-				"gql",
-				"graphql",
 			},
 			settings = {
 				format = { enable = true },
