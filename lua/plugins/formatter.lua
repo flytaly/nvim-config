@@ -1,7 +1,9 @@
 return {
 	"mhartington/formatter.nvim",
 	config = function()
-		local prettier = require("formatter.defaults").prettier
+		local formatters = require("formatter.defaults")
+		local prettier = formatters.prettier
+		local biome = formatters.biome
 		require("formatter").setup({
 			-- Enable or disable logging
 			logging = true,
@@ -15,24 +17,23 @@ return {
 				fish = { require("formatter.filetypes.fish").fishindent },
 				python = { require("formatter.filetypes.python").black },
 
-				glsl = { require("formatter.defaults.clangformat") },
-				-- glsl = { prettier }, -- to work install prettier-plugin-glsl and add it to the prettier config: `plugins: ["prettier-plugin-glsl"]`
+				glsl = { formatters.clangformat, prettier }, -- to work install prettier-plugin-glsl and add it to the prettier config: `plugins: ["prettier-plugin-glsl"]`
+				javascript = { prettier, biome },
+				javascriptreact = { prettier, biome },
+				typescript = { prettier, biome },
+				typescriptreact = { prettier, biome },
 				svelte = { prettier },
-				javascript = { prettier },
-				javascriptreact = { prettier },
-				typescript = { prettier },
-				typescriptreact = { prettier },
 				astro = { prettier }, -- prettier-plugin-astro
 				vue = { prettier },
-				css = { prettier },
+				css = { biome, prettier },
 				scss = { prettier },
 				less = { prettier },
-				html = { prettier },
-				json = { prettier },
-				jsonc = { prettier },
+				html = { prettier, biome },
+				json = { biome, prettier },
+				jsonc = { biome, prettier },
 				yaml = { prettier },
 				markdown = { prettier },
-				graphql = { prettier },
+				graphql = { prettier, biome },
 				handlebars = { prettier },
 				toml = { prettier },
 

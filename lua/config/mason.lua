@@ -50,6 +50,7 @@ local servers = {
 	-- "cspell",
 
 	-- formatters
+	"biome",
 	"prettier",
 	"prettierd",
 	"shfmt",
