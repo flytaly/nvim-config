@@ -55,7 +55,7 @@ vim.keymap.set("n", "yof", function()
 	print("format on save", (vim.g.format_on_save and "enabled" or "disabled"))
 end, { desc = "Toggle format on save" })
 
-local formattersJS = { "eslint", "default" }
+local js_formatters = { "default", "eslint", "biome", "prettier" }
 
 vim.api.nvim_create_user_command("FormatterJSSet", function(opts)
 	local formatter_js = opts.args or ""
@@ -67,7 +67,7 @@ end, {
 	complete = function(arg_lead, cmd_line, cursor_pos)
 		-- Filter formatters that match the current input
 		local matches = {}
-		for _, formatter in ipairs(formattersJS) do
+		for _, formatter in ipairs(js_formatters) do
 			if formatter:find("^" .. arg_lead) then
 				table.insert(matches, formatter)
 			end
@@ -87,21 +87,33 @@ local function eslintfix(withMessage)
 	end
 end
 
+local function FormatterFormat(formatter, withMessage)
+	if formatter == "" or formatter == nil or formatter == "default" then
+		vim.cmd([[FormatWrite]])
+		return
+	end
+	vim.cmd("FormatWrite " .. formatter)
+	if withMessage then
+		print("formatted")
+	end
+end
+
 M.format = function(params)
 	params = params or { withMessage = true }
 
 	local js_types = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" }
 	local filetype = vim.bo.filetype
 
-	if vim.g.formatter_js == "eslint" and vim.tbl_contains(js_types, filetype) then
-		eslintfix(params.withMessage)
+	if vim.tbl_contains(js_types, filetype) then
+		if vim.g.formatter_js == "eslint" then
+			eslintfix(params.withMessage)
+		else
+			FormatterFormat(vim.g.formatter_js, params.withMessage)
+		end
 		return
 	end
 
-	vim.cmd([[FormatWrite]])
-	if params.withMessage then
-		print("formatted")
-	end
+	FormatterFormat("", params.withMessage)
 end
 
 M.onSave = function(initial)
