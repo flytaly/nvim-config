@@ -1,4 +1,4 @@
-local saveData = require("config.save-data")
+local save_data = require("config.save-data")
 
 local M = {}
 
@@ -37,7 +37,7 @@ M.formatter_list = {
 	python = { "black" },
 }
 
-local function updateVariables(update)
+local function update_variables(update)
 	if update == nil then
 		return
 	end
@@ -52,7 +52,7 @@ local function updateVariables(update)
 	end
 end
 
-local function getVariables()
+local function get_variables()
 	return {
 		format_on_save = vim.g.format_on_save,
 		formatters_override = vim.g.formatters_override,
@@ -60,19 +60,19 @@ local function getVariables()
 	}
 end
 
-M.getFormatterName = function()
-	return (getVariables().formatters_override or {})[vim.bo.filetype]
+M.get_overridden_formatter = function()
+	return (get_variables().formatters_override or {})[vim.bo.filetype]
 end
 
-M.getVariables = getVariables
+M.getVariables = get_variables
 
-updateVariables(default_vars)
+update_variables(default_vars)
 
 local load_variables_group = vim.api.nvim_create_augroup("load_variables", {})
 
 local function load_and_update_variables()
-	local restoredData = saveData.load()
-	updateVariables(restoredData)
+	local restoredData = save_data.load()
+	update_variables(restoredData)
 end
 
 vim.api.nvim_create_autocmd("VimEnter", {
@@ -86,8 +86,8 @@ vim.api.nvim_create_autocmd("DirChanged", {
 })
 
 vim.keymap.set("n", "yof", function()
-	updateVariables({ format_on_save = not vim.g.format_on_save })
-	saveData.save(getVariables())
+	update_variables({ format_on_save = not vim.g.format_on_save })
+	save_data.save(get_variables())
 	if vim.g.format_on_save then
 		vim.notify("✅ format on save enabled")
 	else
@@ -98,8 +98,8 @@ end, { desc = "Toggle format on save" })
 vim.api.nvim_create_user_command("FormatterSet", function(opts)
 	local formatter = opts.args or ""
 	local filetype = vim.bo.filetype
-	updateVariables({ formatters_override = { [filetype] = formatter } })
-	saveData.save(getVariables())
+	update_variables({ formatters_override = { [filetype] = formatter } })
+	save_data.save(get_variables())
 	vim.notify("set formatter: [" .. filetype .. "] -> " .. formatter)
 end, {
 	desc = "Set filetype formatter for the working directory",
@@ -122,11 +122,11 @@ M.format = function(params)
 	params = params or { withMessage = true }
 	vim.cmd([[FormatWrite]])
 	if params.withMessage then
-		print("formatted", M.getFormatterName())
+		print("formatted", M.get_overridden_formatter())
 	end
 end
 
-M.onSave = function(initial)
+M.on_save = function(initial)
 	vim.g.format_on_save = initial
 	local groupId = vim.api.nvim_create_augroup("__formatter__", { clear = true })
 	vim.api.nvim_create_autocmd("BufWritePost", {

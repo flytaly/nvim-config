@@ -8,7 +8,7 @@ else
 	require("config.theme")
 	require("config.lsp")
 	require("config.debug")
-	require("config.format").onSave(true)
+	require("config.format").on_save(true)
 	require("autocmd")
 	require("neovide")
 	require("commands")
