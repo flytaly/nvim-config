@@ -20,7 +20,7 @@ M.get_configs = function()
 				},
 			},
 		},
-		jsonls = require("config.lsp.servers.jsonls"),
+		jsonls = require("config.lsp.handlers.jsonls"),
 		gopls = {
 			settings = { gopls = { env = { GOFLAGS = "-tags=windows,linux,unittest" } } },
 		},

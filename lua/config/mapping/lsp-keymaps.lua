@@ -1,7 +1,5 @@
-local format = require("config.format")
 local filterDTS = require("config.mapping.filter-dts")
-
-local M = {}
+local format = require("config.format")
 
 -- Sometimes, lsp returns multiple entries.
 -- Use C-] instead. It will call vim.lsp.tagfun which will jump to the first entry.
@@ -13,7 +11,7 @@ local function go_to_definition()
 	vim.lsp.buf.definition({ on_list = filterDTS.on_list })
 end
 
-M.set_keymaps = function(bufnr)
+local function set_keymaps(bufnr)
 	-- Mappings
 	local function set(mode, lhs, rhs, opts)
 		local optsDefault = { noremap = true, silent = true, buffer = bufnr }
@@ -59,4 +57,11 @@ M.set_keymaps = function(bufnr)
 	set({ "i", "n" }, "<C-'>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Signature help" })
 end
 
-return M
+
+-- add mappings after lsp attach
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("LspAttach", {}),
+	callback = function(args)
+		set_keymaps(args.buf)
+	end,
+})

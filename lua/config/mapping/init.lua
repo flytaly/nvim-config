@@ -13,6 +13,20 @@ vim.keymap.set("v", "<leader>P", '"+P"`"`"')
 -- delete to OS clipboard
 vim.keymap.set("v", "<leader>d", '"+d', { desc = "Delete to OS clipboard" })
 
+-- https://strdr4605.com/clean-paste-in-neovim-paste-text-without-newlines-and-leading-whitespace
+vim.keymap.set("n", "yp", function()
+  -- Get content from register 0 (most recent yank)
+  local yanked_text = vim.fn.getreg("0")
+  -- Remove trailing newline if present
+  yanked_text = yanked_text:gsub("\n$", "")
+  -- Remove leading whitespace
+  yanked_text = yanked_text:gsub("^%s+", "")
+  -- Store in register p
+  vim.fn.setreg("p", yanked_text)
+  -- Paste from register p
+  return '"pp'
+end, { expr = true, desc = "Paste without trailing newline and leading whitespace" })
+
 vim.keymap.set("v", "p", '"_dP"') -- don't yank replaced text
 
 vim.keymap.set("n", "<C-e>", ":x<CR>", { desc = "Save and close" })
