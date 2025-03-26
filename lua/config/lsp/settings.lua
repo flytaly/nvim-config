@@ -12,7 +12,7 @@ M.setup = function()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 
-	local config = {
+	vim.diagnostic.config({
 		-- virtual_text = false,
 		virtual_text = { severity = 1 },
 		signs = {
@@ -24,13 +24,11 @@ M.setup = function()
 		float = {
 			focusable = true,
 			border = "rounded",
-			source = "always",
+			source = true,
 			header = "",
 			prefix = "",
 		},
-	}
-
-	vim.diagnostic.config(config)
+	})
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
