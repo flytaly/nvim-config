@@ -1,5 +1,4 @@
 local filterDTS = require("config.mapping.filter-dts")
-local format = require("config.format")
 
 -- Sometimes, lsp returns multiple entries.
 -- Use C-] instead. It will call vim.lsp.tagfun which will jump to the first entry.
@@ -48,7 +47,7 @@ local function set_keymaps(bufnr)
 		if vim.bo.filetype == "go" then
 			vim.cmd([[GoFmt]])
 		else
-			format.format()
+			require("config.format").format()
 		end
 	end, { desc = "Format file", buffer = bufnr })
 
@@ -56,7 +55,6 @@ local function set_keymaps(bufnr)
 	set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
 	set({ "i", "n" }, "<C-'>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Signature help" })
 end
-
 
 -- add mappings after lsp attach
 vim.api.nvim_create_autocmd("LspAttach", {

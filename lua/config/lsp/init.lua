@@ -16,3 +16,4 @@ if presentMasonLsp then
 end
 
 require("config.lsp.settings").setup()
+require("config.mapping.lsp-keymaps")

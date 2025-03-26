@@ -2,6 +2,7 @@ local present, Path = pcall(require, "plenary.path")
 local M = {}
 
 if not present then
+	vim.notify("plenary not found", vim.log.levels.WARN)
 	return {
 		load = function() end,
 		save = function() end,

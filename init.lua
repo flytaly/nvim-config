@@ -1,7 +1,6 @@
 if vim.g.vscode then
 else
 	require("config.mapping")
-	require("config.mapping.lsp-keymaps")
 	require("config.options")
 	require("config.lazy-nvim")
 	require("config.mason")
