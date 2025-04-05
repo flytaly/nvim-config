@@ -15,6 +15,7 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
+				markdown = { "snippets" },
 				sql = { "snippets", "dadbod", "buffer" },
 			},
 			providers = {
@@ -54,7 +55,9 @@ return {
 		completion = {
 			list = { selection = { preselect = true, auto_insert = true } },
 			menu = {
-				auto_show = true,
+				auto_show = function()
+					return not vim.tbl_contains({ "text" }, vim.bo.filetype)
+				end,
 				border = "rounded",
 				draw = {
 					align_to = "label", -- or 'none' to disable, or 'cursor' to align to the cursor
