@@ -17,9 +17,7 @@ vim.g.neovide_padding_bottom = 0
 vim.g.neovide_padding_right = 10
 vim.g.neovide_padding_left = 10
 
-RefreshGuiFont = function()
-	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
-end
+RefreshGuiFont = function() vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size) end
 
 ResizeGuiFont = function(delta)
 	vim.g.gui_font_size = vim.g.gui_font_size + delta
@@ -36,12 +34,6 @@ ResetGuiFont()
 
 -- Keymaps
 
-vim.keymap.set({ "n", "i" }, "<C-=>", function()
-	ResizeGuiFont(1)
-end, { desc = "Increase font size" })
-vim.keymap.set({ "n", "i" }, "<C-->", function()
-	ResizeGuiFont(-1)
-end, { desc = "Decrease font size" })
-vim.keymap.set({ "n", "i" }, "<C-BS>", function()
-	ResetGuiFont()
-end, { desc = "Reset font size" })
+vim.keymap.set({ "n", "i" }, "<C-=>", function() ResizeGuiFont(1) end, { desc = "Increase font size" })
+vim.keymap.set({ "n", "i" }, "<C-->", function() ResizeGuiFont(-1) end, { desc = "Decrease font size" })
+vim.keymap.set({ "n", "i" }, "<C-BS>", function() ResetGuiFont() end, { desc = "Reset font size" })

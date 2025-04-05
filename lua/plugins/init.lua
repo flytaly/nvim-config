@@ -44,9 +44,7 @@ return {
 		keys = {
 			{
 				"<leader>lg",
-				function()
-					require("logsitter").log()
-				end,
+				function() require("logsitter").log() end,
 				mode = { "n" },
 				desc = "Logsitter: log current",
 			},

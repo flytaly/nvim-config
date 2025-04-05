@@ -60,9 +60,7 @@ local function get_variables()
 	}
 end
 
-M.get_overridden_formatter = function()
-	return (get_variables().formatters_override or {})[vim.bo.filetype]
-end
+M.get_overridden_formatter = function() return (get_variables().formatters_override or {})[vim.bo.filetype] end
 
 M.getVariables = get_variables
 

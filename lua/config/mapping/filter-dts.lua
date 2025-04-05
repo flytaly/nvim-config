@@ -17,9 +17,7 @@ M.filter = function(arr, fn)
 	return filtered
 end
 
-local function filterReactDTS(value)
-	return string.match(value.filename, "%.d.ts") == nil
-end
+local function filterReactDTS(value) return string.match(value.filename, "%.d.ts") == nil end
 
 M.on_list = function(options)
 	local items = options.items

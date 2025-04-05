@@ -55,9 +55,7 @@ return {
 		completion = {
 			list = { selection = { preselect = true, auto_insert = true } },
 			menu = {
-				auto_show = function()
-					return not vim.tbl_contains({ "text" }, vim.bo.filetype)
-				end,
+				auto_show = function() return not vim.tbl_contains({ "text" }, vim.bo.filetype) end,
 				border = "rounded",
 				draw = {
 					align_to = "label", -- or 'none' to disable, or 'cursor' to align to the cursor

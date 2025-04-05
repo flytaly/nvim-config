@@ -26,9 +26,12 @@ return {
 		},
 	},
 	init = function()
-		vim.keymap.set("n", "<leader><leader>", function()
-			require("telescope").extensions.smart_open.smart_open()
-		end, { noremap = true, silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader><leader>",
+			function() require("telescope").extensions.smart_open.smart_open() end,
+			{ noremap = true, silent = true }
+		)
 		--[[ vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>") ]]
 		vim.keymap.set(
 			"n",
@@ -46,9 +49,14 @@ return {
 		vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
 		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Telescope: find files" })
 		vim.keymap.set("n", "<leader>fh", ":Telescope command_history<CR>", { desc = "Telescope: command history" })
-		vim.keymap.set("n", "<leader>fg", function()
-			require("telescope").extensions.live_grep_args.live_grep_args({ search_dirs = { vim.fn.getcwd() } })
-		end, { desc = "Telescope: live grep args in cwd" })
+		vim.keymap.set(
+			"n",
+			"<leader>fg",
+			function()
+				require("telescope").extensions.live_grep_args.live_grep_args({ search_dirs = { vim.fn.getcwd() } })
+			end,
+			{ desc = "Telescope: live grep args in cwd" }
+		)
 		vim.keymap.set("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Telescope: resume" })
 		vim.keymap.set(
 			"n",

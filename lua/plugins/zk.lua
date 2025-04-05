@@ -4,9 +4,7 @@ return {
 	config = function()
 		require("zk").setup({ picker = "telescope" })
 
-		local function map(...)
-			vim.api.nvim_buf_set_keymap(0, ...)
-		end
+		local function map(...) vim.api.nvim_buf_set_keymap(0, ...) end
 
 		local opts = { noremap = true, silent = false }
 
