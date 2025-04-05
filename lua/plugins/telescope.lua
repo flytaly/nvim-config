@@ -2,68 +2,14 @@ return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-ui-select.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-dap.nvim",
-		"nvim-telescope/telescope-live-grep-args.nvim",
 		"folke/trouble.nvim",
 		"natecraddock/workspaces.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "nvim-telescope/telescope-fzy-native.nvim" },
-		{
-			"danielfalk/smart-open.nvim",
-			branch = "0.3.x",
-			dependencies = {
-				{
-					"kkharji/sqlite.lua",
-					init = function()
-						if vim.loop.os_uname().sysname == "Windows_NT" then
-							vim.g.sqlite_clib_path = "c:/Programs/Sqlite/sqlite3.dll"
-						end
-					end,
-				},
-			},
-		},
 	},
 	init = function()
-		vim.keymap.set(
-			"n",
-			"<leader><leader>",
-			function() require("telescope").extensions.smart_open.smart_open() end,
-			{ noremap = true, silent = true }
-		)
-		--[[ vim.keymap.set("n", "<leader><space>", ":Telescope git_files<CR>") ]]
-		vim.keymap.set(
-			"n",
-			"<leader>f/",
-			":Telescope current_buffer_fuzzy_find<CR>",
-			{ desc = "Telescope: current_buffer_fuzzy_find" }
-		)
-		vim.keymap.set(
-			"n",
-			"<leader>/",
-			":Telescope current_buffer_fuzzy_find<CR>",
-			{ desc = "Telescope: current_buffer_fuzzy_find" }
-		)
-		vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
-		vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", { desc = "Telescope: buffers" })
-		vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Telescope: find files" })
-		vim.keymap.set("n", "<leader>fh", ":Telescope command_history<CR>", { desc = "Telescope: command history" })
-		vim.keymap.set(
-			"n",
-			"<leader>fg",
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_args({ search_dirs = { vim.fn.getcwd() } })
-			end,
-			{ desc = "Telescope: live grep args in cwd" }
-		)
-		vim.keymap.set("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Telescope: resume" })
-		vim.keymap.set(
-			"n",
-			"<leader>fG",
-			":Telescope grep_string<CR>",
-			{ desc = "Telescope: grep a word under cursor" }
-		)
 		vim.keymap.set(
 			"n",
 			"<leader>fo",
@@ -127,20 +73,6 @@ return {
 				file_browser = {
 					theme = "ivy",
 				},
-				["ui-select"] = {
-					require("telescope.themes").get_dropdown(),
-				},
-				live_grep_args = {
-					auto_quoting = true, -- enable/disable auto-quoting
-					mappings = {
-						i = {
-							["<A-i>"] = require("telescope-live-grep-args.actions").quote_prompt({
-								postfix = " --iglob ",
-							}),
-							["<C-space>"] = require("telescope.actions").to_fuzzy_refine,
-						},
-					},
-				},
 			},
 			pickers = {
 				colorscheme = {
@@ -166,10 +98,7 @@ return {
 		})
 
 		telescope.load_extension("file_browser")
-		telescope.load_extension("ui-select")
 		telescope.load_extension("workspaces")
-		telescope.load_extension("live_grep_args")
 		telescope.load_extension("git_worktree")
-		telescope.load_extension("smart_open")
 	end,
 }
