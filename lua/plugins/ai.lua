@@ -10,7 +10,10 @@ return {
 				filetypes = {
 					DressingInput = false,
 					TelescopePrompt = false,
+					["snacks_picker_input"] = false,
 					["dap-repl"] = false,
+					["markdown"] = false,
+					["text"] = false,
 				},
 			})
 
