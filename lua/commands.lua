@@ -20,12 +20,16 @@ local function eslint(dir)
 	vim.cmd([[Trouble quickfix]])
 end
 
-vim.api.nvim_create_user_command("Lint", function(opts)
-	eslint(opts.args)
-end, { nargs = "?", desc = "Use Eslint in the given directory and launch quickfix in Trouble" })
+vim.api.nvim_create_user_command(
+	"Lint",
+	function(opts) eslint(opts.args) end,
+	{ nargs = "?", desc = "Use Eslint in the given directory and launch quickfix in Trouble" }
+)
 
 -------------------------------------------
 -- Toggle diagnostics
-vim.api.nvim_create_user_command("DiagnosticToggle", function()
-	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end, { desc = "Toggle diagnostics" })
+vim.api.nvim_create_user_command(
+	"DiagnosticToggle",
+	function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end,
+	{ desc = "Toggle diagnostics" }
+)

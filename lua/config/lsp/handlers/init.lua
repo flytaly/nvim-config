@@ -118,9 +118,7 @@ M.get_configs = function()
 			end,
 		},
 		graphql = {
-			on_attach = function(client)
-				client.server_capabilities.workspaceSymbolProvider = false
-			end,
+			on_attach = function(client) client.server_capabilities.workspaceSymbolProvider = false end,
 		},
 	}
 end

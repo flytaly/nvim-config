@@ -27,13 +27,9 @@ local function ensure_data_path()
 	ensured_data_path = true
 end
 
-local function hash(path)
-	return vim.fn.sha256(path)
-end
+local function hash(path) return vim.fn.sha256(path) end
 
-local function get_root_dir()
-	return vim.loop.cwd()
-end
+local function get_root_dir() return vim.loop.cwd() end
 
 local function get_fullpath()
 	local h = hash(get_root_dir())
@@ -63,12 +59,8 @@ local function read_data()
 	return data
 end
 
-M.save = function(data)
-	write_data(data)
-end
+M.save = function(data) write_data(data) end
 
-M.load = function()
-	return read_data()
-end
+M.load = function() return read_data() end
 
 return M

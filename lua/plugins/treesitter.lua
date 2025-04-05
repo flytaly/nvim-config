@@ -6,9 +6,7 @@ return {
 		"RRethy/nvim-treesitter-textsubjects",
 		"andymass/vim-matchup",
 	},
-	build = function()
-		vim.cmd([[TSUpdate]])
-	end,
+	build = function() vim.cmd([[TSUpdate]]) end,
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = "all",

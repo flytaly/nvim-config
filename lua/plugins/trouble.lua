@@ -7,7 +7,5 @@ return {
 		vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { desc = "Trouble: loclist" })
 		vim.keymap.set("n", "gR", "<cmd>Trouble lsp_references<cr>", { desc = "Trouble: lsp_references" })
 	end,
-	config = function()
-		require("trouble").setup({})
-	end,
+	config = function() require("trouble").setup({}) end,
 }

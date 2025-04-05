@@ -28,66 +28,48 @@ return {
 		keys = {
 			{
 				"<leader>:",
-				function()
-					Snacks.picker.command_history()
-				end,
+				function() Snacks.picker.command_history() end,
 				desc = "Command History",
 			},
 			{
 				"<leader>nn",
-				function()
-					Snacks.picker.notifications()
-				end,
+				function() Snacks.picker.notifications() end,
 				desc = "Notification History",
 			},
 			{
 				"<leader>si",
-				function()
-					Snacks.picker.icons()
-				end,
+				function() Snacks.picker.icons() end,
 				desc = "Icons",
 			},
 			-- Other
 			{
 				"<leader>.",
-				function()
-					Snacks.scratch()
-				end,
+				function() Snacks.scratch() end,
 				desc = "Toggle Scratch Buffer",
 			},
 			{
 				"<leader>>",
-				function()
-					Snacks.scratch.select()
-				end,
+				function() Snacks.scratch.select() end,
 				desc = "Select Scratch Buffer",
 			},
 			{
 				"<leader>nn",
-				function()
-					Snacks.notifier.show_history()
-				end,
+				function() Snacks.notifier.show_history() end,
 				desc = "Notification History",
 			},
 			{
 				"<leader>bd",
-				function()
-					Snacks.bufdelete()
-				end,
+				function() Snacks.bufdelete() end,
 				desc = "Delete Buffer",
 			},
 			{
 				"<leader>gl",
-				function()
-					Snacks.lazygit()
-				end,
+				function() Snacks.lazygit() end,
 				desc = "Lazygit",
 			},
 			{
 				"<leader>nh",
-				function()
-					Snacks.notifier.hide()
-				end,
+				function() Snacks.notifier.hide() end,
 				desc = "Dismiss All Notifications",
 			},
 		},

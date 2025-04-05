@@ -42,12 +42,8 @@ return {
 		end
 
 		local js = {
-			["true"] = function()
-				return "false"
-			end,
-			["false"] = function()
-				return "true"
-			end,
+			["true"] = function() return "false" end,
+			["false"] = function() return "true" end,
 			["array"] = toggle_multiline,
 			["object"] = toggle_multiline,
 			["object_pattern"] = toggle_multiline,

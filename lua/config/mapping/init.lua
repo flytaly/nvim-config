@@ -15,16 +15,16 @@ vim.keymap.set("v", "<leader>d", '"+d', { desc = "Delete to OS clipboard" })
 
 -- https://strdr4605.com/clean-paste-in-neovim-paste-text-without-newlines-and-leading-whitespace
 vim.keymap.set("n", "yp", function()
-  -- Get content from register 0 (most recent yank)
-  local yanked_text = vim.fn.getreg("0")
-  -- Remove trailing newline if present
-  yanked_text = yanked_text:gsub("\n$", "")
-  -- Remove leading whitespace
-  yanked_text = yanked_text:gsub("^%s+", "")
-  -- Store in register p
-  vim.fn.setreg("p", yanked_text)
-  -- Paste from register p
-  return '"pp'
+	-- Get content from register 0 (most recent yank)
+	local yanked_text = vim.fn.getreg("0")
+	-- Remove trailing newline if present
+	yanked_text = yanked_text:gsub("\n$", "")
+	-- Remove leading whitespace
+	yanked_text = yanked_text:gsub("^%s+", "")
+	-- Store in register p
+	vim.fn.setreg("p", yanked_text)
+	-- Paste from register p
+	return '"pp'
 end, { expr = true, desc = "Paste without trailing newline and leading whitespace" })
 
 vim.keymap.set("v", "p", '"_dP"') -- don't yank replaced text
@@ -76,7 +76,5 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "fugitive" },
-	callback = function()
-		vim.keymap.set("n", "q", "<cmd>close!<CR>", { silent = true, buffer = true, desc = "Close" })
-	end,
+	callback = function() vim.keymap.set("n", "q", "<cmd>close!<CR>", { silent = true, buffer = true, desc = "Close" }) end,
 })

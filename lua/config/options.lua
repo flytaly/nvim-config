@@ -95,7 +95,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.api.nvim_create_autocmd("BufWinLeave", {
 	group = vim.api.nvim_create_augroup("save_folds", { clear = true }),
-	callback = function()
-		vim.cmd([[silent! mkview]])
-	end,
+	callback = function() vim.cmd([[silent! mkview]]) end,
 })

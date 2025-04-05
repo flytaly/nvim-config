@@ -4,17 +4,11 @@ local M = {}
 
 dap.set_log_level("TRACE")
 
-dap.adapters.node2 = function(cb)
-	cb({ type = "executable", command = "node-debug2-adapter" })
-end
+dap.adapters.node2 = function(cb) cb({ type = "executable", command = "node-debug2-adapter" }) end
 
-dap.adapters.firefox = function(cb)
-	cb({ type = "executable", command = "firefox-debug-adapter" })
-end
+dap.adapters.firefox = function(cb) cb({ type = "executable", command = "firefox-debug-adapter" }) end
 
-dap.adapters.chrome = function(cb)
-	cb({ type = "executable", command = "chrome-debug-adapter" })
-end
+dap.adapters.chrome = function(cb) cb({ type = "executable", command = "chrome-debug-adapter" }) end
 
 local pick_node_attach = {
 	-- For this to work you need to make sure the node process is started with the `--inspect` flag.

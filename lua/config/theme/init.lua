@@ -32,8 +32,6 @@ end
 
 M.apply()
 
-vim.keymap.set("n", "<leader>\\t", function()
-	M.toggle()
-end, { desc = "Toggle dark/light colorschemes" })
+vim.keymap.set("n", "<leader>\\t", function() M.toggle() end, { desc = "Toggle dark/light colorschemes" })
 
 return M

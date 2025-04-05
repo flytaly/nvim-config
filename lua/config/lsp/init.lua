@@ -9,9 +9,7 @@ if presentMasonLsp then
 	local configs = require("config.lsp.handlers").get_configs()
 
 	masonLsp.setup_handlers({
-		function(server_name)
-			lspconfig[server_name].setup(configs[server_name] or {})
-		end,
+		function(server_name) lspconfig[server_name].setup(configs[server_name] or {}) end,
 	})
 end
 

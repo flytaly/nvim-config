@@ -19,14 +19,15 @@ local function set_keymaps(bufnr)
 	end
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	set({ "n", "v" }, "<space>ca", function()
-		vim.lsp.buf.code_action({ context = { only = { "source", "refactor", "quickfix" } } })
-	end, { desc = "Code Actions" })
+	set(
+		{ "n", "v" },
+		"<space>ca",
+		function() vim.lsp.buf.code_action({ context = { only = { "source", "refactor", "quickfix" } } }) end,
+		{ desc = "Code Actions" }
+	)
 
 	-- swap gd with <C-]>
-	set("n", "<C-]>", function()
-		vim.lsp.buf.definition()
-	end, { expr = true, desc = "Go to definition" })
+	set("n", "<C-]>", function() vim.lsp.buf.definition() end, { expr = true, desc = "Go to definition" })
 	set("n", "gd", go_to_definition, { expr = true, desc = "Go to definition (tagfunc)" })
 
 	set("n", "<C-t>gd", function()
@@ -59,7 +60,5 @@ end
 -- add mappings after lsp attach
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspAttach", {}),
-	callback = function(args)
-		set_keymaps(args.buf)
-	end,
+	callback = function(args) set_keymaps(args.buf) end,
 })
