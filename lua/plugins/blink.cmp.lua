@@ -36,9 +36,12 @@ return {
 			["<C-j>"] = {
 				"snippet_forward",
 				function(cmp)
+					-- https://github.com/L3MON4D3/LuaSnip/issues/1297#issuecomment-2676137384
 					local ls = require("luasnip")
-					if ls.expand_or_jumpable() then
-						ls.expand_or_jump()
+					if ls.expandable() then
+						cmp.cancel() -- or cmp.hide()
+						vim.schedule(function() ls.expand() end) -- wait for blink to close
+						return true -- don't execute next command
 					end
 				end,
 			},
