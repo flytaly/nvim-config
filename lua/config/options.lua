@@ -1,7 +1,8 @@
 --- Default Neovim Options
 local opt = vim.opt
 
-opt.completeopt = { "menu", "menuone", "noselect" } -- better autocomplete options
+vim.o.winborder = "rounded" -- default border style of floating windows
+-- opt.completeopt = { "menu", "menuone", "noselect" } -- better autocomplete options
 opt.cmdheight = 1 -- only one line for commands
 opt.encoding = "UTF-8"
 opt.ignorecase = true -- case insensitive search. Use \C to enable case sensitive.
