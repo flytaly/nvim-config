@@ -5,7 +5,7 @@ return {
 	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired" },
-	{ "nvim-pack/nvim-spectre", event = "VeryLazy" },
+	{ "MagicDuck/grug-far.nvim", opts = {} }, -- search and replace
 	{ "lambdalisue/suda.vim", event = "VeryLazy" },
 	{
 		"szw/vim-maximizer",
