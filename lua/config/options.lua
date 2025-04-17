@@ -1,7 +1,10 @@
 --- Default Neovim Options
 local opt = vim.opt
 
-vim.o.winborder = "rounded" -- default border style of floating windows
+if vim.fn.has("nvim-0.11") == 1 then
+	vim.o.winborder = "rounded" -- default border style of floating windows
+end
+
 -- opt.completeopt = { "menu", "menuone", "noselect" } -- better autocomplete options
 opt.cmdheight = 1 -- only one line for commands
 opt.encoding = "UTF-8"
