@@ -111,6 +111,8 @@ return {
 			{ "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
 			{ "<leader>>", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 			{ "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+			{ "<leader>q", function() Snacks.bufdelete.delete() end, desc = "Delete Buffer" },
+			{ "<leader>Q", function() Snacks.bufdelete.other() end, desc = "Delete Other Buffers" },
 			{ "<leader>gl", function() Snacks.lazygit() end, desc = "Lazygit" },
 			{ "<leader>nh", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 			{ "<c-\\>", function() Snacks.terminal() end, mode = { "n", "t", "i" }, desc = "Toggle Terminal" },
