@@ -16,17 +16,27 @@ return {
 		provider = "copilot",
 		-- file_selector = { provider = "snacks" },
 	},
+	hints = { enabled = false },
 	build = build,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
-		"stevearc/dressing.nvim",
+		-- "stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 		--- The below dependencies are optional,
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
 		{
 			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			opts = {},
+			cmd = "Copilot",
+			event = "InsertEnter",
+			config = function()
+				require("copilot").setup({
+					suggestion = {
+						enabled = false,
+					},
+				})
+				vim.cmd([[Copilot disable]])
+			end,
 		},
 		{
 			-- Make sure to set this up properly if you have lazy=true
