@@ -2,6 +2,14 @@ local save_data = require("config.save-data")
 
 local M = {}
 
+vim.keymap.set("n", "<leader>cf", function()
+	if vim.bo.filetype == "go" then
+		vim.cmd([[GoFmt]])
+	else
+		M.format()
+	end
+end, { desc = "Format file" })
+
 local default_vars = {
 	format_on_save = true,
 	formatters_override = {},

@@ -5,7 +5,7 @@ return {
 		vim.keymap.set("n", "<leader>xw", "<cmd>Trouble diagnostics<cr>", { desc = "Trouble: diagnostics" })
 		vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { desc = "Trouble: quickfix" })
 		vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { desc = "Trouble: loclist" })
-		vim.keymap.set("n", "gR", "<cmd>Trouble lsp_references<cr>", { desc = "Trouble: lsp_references" })
+		vim.keymap.set("n", "grr", "<cmd>Trouble lsp_references<cr>", { desc = "Trouble: lsp_references" })
 	end,
 	config = function() require("trouble").setup({}) end,
 }
