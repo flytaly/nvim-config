@@ -1,10 +1,6 @@
 --- Default Neovim Options
 local opt = vim.opt
 
-if vim.fn.has("nvim-0.11") == 1 then
-	vim.o.winborder = "rounded" -- default border style of floating windows
-end
-
 -- opt.completeopt = { "menu", "menuone", "noselect" } -- better autocomplete options
 opt.cmdheight = 1 -- only one line for commands
 opt.encoding = "UTF-8"
@@ -62,6 +58,7 @@ opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the 
 opt.hlsearch = true -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+opt.spelllang = "en_us,ru"
 -- Enable spellcheck in some files
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
@@ -70,7 +67,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			return
 		end
 		vim.opt_local.spell = true
-		vim.opt_local.spelllang = "en_us,ru"
 	end,
 })
 

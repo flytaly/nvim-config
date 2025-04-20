@@ -29,7 +29,8 @@ local function set_keymaps(bufnr)
 	set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
 	set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
 	set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Diagnostic float" })
-	set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
+	set("n", "gh", function() vim.lsp.buf.hover({ border = "rounded" }) end, { desc = "Hover" })
+	set("n", "K", function() vim.lsp.buf.hover({ border = "rounded" }) end, { desc = "Hover" })
 	set({ "i", "n" }, "<C-'>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Signature help" })
 end
 
