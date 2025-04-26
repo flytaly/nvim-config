@@ -43,7 +43,7 @@ return {
 	{
 		-- refactor on file rename/move with some LSP
 		"antosha417/nvim-lsp-file-operations",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-neo-tree/neo-tree.nvim",
 		},
@@ -75,7 +75,7 @@ return {
 				desc = "NeoTree: git explorer",
 			},
 		},
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
