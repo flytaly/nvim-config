@@ -1,6 +1,6 @@
 return {
 	"jake-stewart/multicursor.nvim",
-	branch = "1.0",
+	commit = "7d3b16fbd86d0de77f7dc25bf2b923796eb37537",
 	config = function()
 		local mc = require("multicursor-nvim")
 
@@ -49,9 +49,13 @@ return {
 		)
 
 		-- Customize how cursors look.
-		vim.api.nvim_set_hl(0, "MultiCursorCursor", { link = "Cursor" })
-		vim.api.nvim_set_hl(0, "MultiCursorVisual", { link = "Visual" })
-		vim.api.nvim_set_hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
-		vim.api.nvim_set_hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+		local hl = vim.api.nvim_set_hl
+		hl(0, "MultiCursorCursor", { reverse = true })
+		hl(0, "MultiCursorVisual", { link = "Visual" })
+		hl(0, "MultiCursorSign", { link = "SignColumn" })
+		hl(0, "MultiCursorMatchPreview", { link = "Search" })
+		hl(0, "MultiCursorDisabledCursor", { reverse = true })
+		hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+		hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
 	end,
 }
