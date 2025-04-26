@@ -22,7 +22,6 @@ M.apply = function(mode)
 	if not ok then
 		vim.notify("colorscheme " .. scheme .. " not found!")
 	end
-	require("config.theme.cmp").setupColors(is_dark)
 end
 
 M.toggle = function()

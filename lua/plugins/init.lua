@@ -57,24 +57,4 @@ return {
 			})
 		end,
 	},
-	{
-		"f-person/auto-dark-mode.nvim",
-		config = function()
-			local auto_dark_mode = require("auto-dark-mode")
-			auto_dark_mode.setup({
-				set_dark_mode = function()
-					vim.api.nvim_set_option_value("background", "dark", {})
-					require("config.theme").apply("dark")
-				end,
-				set_light_mode = function()
-					vim.api.nvim_set_option_value("background", "light", {})
-					require("config.theme").apply("light")
-				end,
-				update_interval = 3000,
-				fallback = "dark",
-			})
-			-- don't listen for changes
-			auto_dark_mode.disable()
-		end,
-	},
 }
