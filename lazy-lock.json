@@ -34,7 +34,7 @@
   "mason.nvim": { "branch": "main", "commit": "fc98833b6da5de5a9c5b1446ac541577059555be" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "9b5d67119c46e3262ffe1508fe6d8540b79ad75d" },
   "neocodeium": { "branch": "main", "commit": "1404685e72030d974f13d932fe4830ecc8a43f04" },
-  "multicursor.nvim": { "branch": "main", "commit": "3b6acd270965a1b37d11f626953ee8317b9c13f5" },
+  "multicursor.nvim": { "branch": "main", "commit": "f17106be1202a2f9fa31c01f686931ffa97924f2" },
   "neogit": { "branch": "master", "commit": "9bb1e73c534f767607e0a888f3de4c942825c501" },
   "nui.nvim": { "branch": "main", "commit": "8d3bce9764e627b62b07424e0df77f680d47ffdb" },
   "nvim-dap": { "branch": "master", "commit": "7aade9e99bef5f0735cf966e715b3ce45515d786" },

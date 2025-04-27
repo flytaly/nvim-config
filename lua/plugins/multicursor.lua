@@ -47,26 +47,5 @@ return {
 			mc.matchCursors,
 			{ desc = "Multicursor: match cursors within visual selection by regex" }
 		)
-
-		-- make sure highlights are re-applied when the color scheme changes, otherwise they will be removed
-		local function update_hl()
-			-- Customize how cursors look.
-			local hl = vim.api.nvim_set_hl
-			hl(0, "MultiCursorCursor", { reverse = true })
-			hl(0, "MultiCursorVisual", { link = "Visual" })
-			hl(0, "MultiCursorSign", { link = "SignColumn" })
-			hl(0, "MultiCursorMatchPreview", { link = "Search" })
-			hl(0, "MultiCursorDisabledCursor", { reverse = true })
-			hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
-			hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
-		end
-
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			group = vim.api.nvim_create_augroup("MultiCursorHighlights", { clear = true }),
-			pattern = "*",
-			callback = function() update_hl() end,
-		})
-
-		update_hl()
 	end,
 }
