@@ -5,7 +5,6 @@ vim.g.maplocalleader = "\\"
 -- copy to OS clipboard
 vim.keymap.set("n", "<leader>y", '"+y', { desc = "Copy selected to OS clipboard" })
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy selected to OS clipboard" })
-vim.keymap.set("n", "<leader>y", '"+yy', { desc = "Copy selected to OS clipboard" })
 -- paste from OS clipboard
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from OS clipboard" })
 vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from OS clipboard" })
