@@ -67,19 +67,21 @@ end, { desc = "dap.ui.widgets: scopes" })
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "Dap Go",
 	pattern = "go",
+	once = true,
 	group = vim.api.nvim_create_augroup("go-test", {}),
 	callback = function(opts)
 		local present_dap_go, dap_go = pcall(require, "dap-go")
 		if present_dap_go then
 			vim.keymap.set("n", "<leader>dt", function() dap_go.debug_test() end, { desc = "Dap Go: debug test" })
+			local PORT = "38697"
 			dap_go.setup({
 				delve = {
-					port = "38697",
+					port = PORT,
 				},
 				dap_configurations = {
 					{
 						type = "go",
-						name = "Attach remote",
+						name = "Attach remote [:" .. PORT .. "]",
 						mode = "remote",
 						request = "attach",
 					},
