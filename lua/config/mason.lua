@@ -65,3 +65,5 @@ for _, server_name in pairs(servers) do
 		vim.cmd("MasonInstall " .. server_name)
 	end
 end
+
+require("mason-lspconfig").setup()
