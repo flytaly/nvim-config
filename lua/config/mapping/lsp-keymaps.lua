@@ -37,5 +37,10 @@ end
 -- add mappings after lsp attach
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspAttach", {}),
-	callback = function(args) set_keymaps(args.buf) end,
+	callback = function(args) 
+		if vim.bo.filetype == "copilot-chat" then
+			return
+		end
+		set_keymaps(args.buf) 
+	end,
 })

@@ -14,6 +14,7 @@ return {
 					["dap-repl"] = false,
 					["markdown"] = false,
 					["text"] = false,
+					["copilot-chat"] = false,
 				},
 			})
 
@@ -34,11 +35,13 @@ return {
 			end, { desc = "Start neocodeium and enable for current buffer" })
 		end,
 	},
-	-- {
-	-- 	"augmentcode/augment.vim",
-	-- 	init = function()
-	-- 		local ok, folders = pcall(require, "workspace-folders")
-	-- 		vim.g.augment_workspace_folders = ok and folders or {}
-	-- 	end,
-	-- },
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		dependencies = {
+			-- { "zbirenbaum/copilot.lua" },
+			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+		},
+		build = "make tiktoken", -- Only on MacOS or Linux
+		opts = {},
+	},
 }
