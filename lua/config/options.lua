@@ -21,13 +21,6 @@ opt.relativenumber = true
 opt.exrc = true
 
 -- Folding
-opt.fillchars = {
-	foldopen = "",
-	foldclose = "",
-	fold = " ",
-	foldsep = " ",
-	eob = " ",
-}
 opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
@@ -35,7 +28,7 @@ opt.foldenable = true
 opt.foldmethod = "manual"
 -- opt.foldtext = "foldtext()"
 -- https://reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 if vim.loop.os_uname().sysname == "Linux" then
 	opt.shell = "fish"
