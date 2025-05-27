@@ -65,7 +65,7 @@ return {
 			{ "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-			{ "<leader>nn", function() Snacks.picker.notifications() end, desc = "Notification History" },
+			{ "<leader>nn", function() Snacks.notifier.show_history() end, desc = "Show Notification History" },
 			{ "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 			-- find
 			{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
