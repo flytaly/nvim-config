@@ -6,6 +6,7 @@ return {
 		"typescript",
 		"typescriptreact",
 		"typescript.tsx",
+		"svelte",
 		"vue",
 	},
 	settings = {

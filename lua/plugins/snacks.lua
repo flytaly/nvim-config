@@ -13,10 +13,15 @@ return {
 				enabled = true,
 				filter = function(notif)
 					-- filter our unwanted notifications from lsp
-					if notif.level ~= "info" then
-						return true
+					if
+						notif.msg == "No information available"
+						-- NOTE: remove after the issue is closed: https://github.com/yioneko/vtsls/issues/159#issuecomment-2159349677
+						or string.match(notif.msg, "(vtsls: %-32603)")
+					then
+						return false
 					end
-					return notif.msg ~= "No information available"
+					return true
+					-- return notif.level ~= "info"
 				end,
 			},
 			quickfile = { enabled = true },
