@@ -11,6 +11,17 @@ return {
 	-- 	end,
 	-- },
 	{
+		"ribru17/bamboo.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("bamboo").setup({
+				-- optional configuration here
+			})
+			require("bamboo").load()
+		end,
+	},
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme

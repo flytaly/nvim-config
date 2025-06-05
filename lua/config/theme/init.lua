@@ -1,8 +1,6 @@
 local M = {}
--- local colorscheme = "kanagawa-wave"
--- local colorscheme = "everforest"
--- local scheme_dark = "gruvbox-material"
-local scheme_dark = "catppuccin-mocha"
+-- local scheme_dark = "catppuccin-mocha"
+local scheme_dark = "bamboo"
 
 local scheme_light = "deepwhite"
 
