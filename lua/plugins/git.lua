@@ -14,6 +14,7 @@ return {
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
 		opts = { file_panel = { win_config = { position = "left" } } },
+		keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview: Open" } },
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -37,7 +38,7 @@ return {
 					map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Gitsigns: Undo stage hunk" })
 					map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>", { desc = "Gitsigns: Reset buffer" })
 					map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "Gitsigns: Preview hunk" })
-					map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "Gitsigns: Diff this" })
+					-- map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "Gitsigns: Diff this" })
 					map("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "Gitsigns: Blame" })
 					map("n", "<leader>gB", "<cmd>Gitsigns blame_line<CR>", { desc = "Gitsigns: Blame line" })
 					map(
