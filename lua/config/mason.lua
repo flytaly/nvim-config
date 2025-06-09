@@ -37,6 +37,7 @@ local servers = {
 	-- "phpactor",
 	--[[ "ltex-ls", ]]
 	"emmet-language-server",
+	"glsl_analyzer",
 
 	-- DAP
 	"delve",
