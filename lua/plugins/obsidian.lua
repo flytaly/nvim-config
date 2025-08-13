@@ -14,7 +14,7 @@ return {
 	keys = {
 		{
 			"<leader>mo",
-			":ObsidianQuickSwitch<CR>",
+			":Obsidian quick_switch<CR>",
 			desc = "Obsidian: Quick switch to notes",
 		},
 		{
@@ -23,7 +23,7 @@ return {
 				local current_file = vim.fn.expand("%:p")
 				local current_dir = vim.fn.fnamemodify(current_file, ":h")
 				local img_name = vim.fn.input("Image name: ", string.format("%s-", os.time()))
-				vim.cmd("ObsidianPasteImg " .. current_dir .. "/assets/" .. img_name)
+				vim.cmd("Obsidian paste_img " .. current_dir .. "/assets/" .. img_name)
 			end,
 			desc = "Obsidian: Paste Image",
 		},
@@ -35,6 +35,7 @@ return {
 		-- see below for full list of optional dependencies 👇
 	},
 	opts = {
+		legacy_commands = false,
 		workspaces = {
 			{
 				name = "personal",
