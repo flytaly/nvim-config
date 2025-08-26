@@ -29,6 +29,12 @@ return {
 			":Telescope lsp_dynamic_workspace_symbols<CR>",
 			{ desc = "Telescope: lsp dynamic workspace symbols" }
 		)
+		vim.keymap.set(
+			"n",
+			"<leader>f/",
+			":Telescope current_buffer_fuzzy_find<CR>",
+			{ desc = "Telescope: current buffer fuzzy find" }
+		)
 		vim.keymap.set("n", "<leader>fc", ":Telescope git_bcommits<CR>", { desc = "Telescope: git buffer commits" })
 		vim.keymap.set("n", "<leader>fC", ":Telescope git_commits<CR>", { desc = "Telescope: git commits" })
 		vim.keymap.set("n", "<leader>fl", ":Telescope git_status<CR>", { desc = "Telescope: git status" })
