@@ -43,7 +43,7 @@ local servers = {
 	"delve",
 	-- "node-debug2-adapter",
 	"firefox-debug-adapter",
-	"chrome-debug-adapter",
+	"js-debug-adapter",
 
 	-- linters
 	"eslint_d",
