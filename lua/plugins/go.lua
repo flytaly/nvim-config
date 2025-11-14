@@ -15,15 +15,12 @@ return {
 			group = format_sync_grp,
 		})
 
-		local present, lspconfig = pcall(require, "lspconfig")
-		if present then
-			lspconfig.gopls.setup({
-				gopls_cmd = { "gopls" },
-				fillstruct = "gopls",
-				dap_debug = true,
-				dap_debug_gui = true,
-			})
-		end
+		vim.lsp.config.gopls = {
+			gopls_cmd = { "gopls" },
+			fillstruct = "gopls",
+			dap_debug = true,
+			dap_debug_gui = true,
+		}
 	end,
 	config = function() require("go").setup() end,
 }
