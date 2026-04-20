@@ -13,4 +13,5 @@ else
 	require("neovide")
 	require("commands")
 	require("hypr-switcher")
+	require("pack")
 end
