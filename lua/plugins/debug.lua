@@ -5,12 +5,6 @@ return {
 	{ "leoluz/nvim-dap-go", event = "VeryLazy" },
 	{ "mxsdev/nvim-dap-vscode-js", event = "VeryLazy", dependencies = { "mfussenegger/nvim-dap" } },
 	{
-		"microsoft/vscode-js-debug",
-		opt = true,
-		build = "npm install --legacy-peer-deps && npm run compile",
-		event = "VeryLazy",
-	},
-	{
 		"https://github.com/mfussenegger/nvim-dap-python",
 		dependencies = { "mfussenegger/nvim-dap" },
 		ft = "python",
