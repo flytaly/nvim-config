@@ -40,7 +40,6 @@ return {
 	{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 4 } },
 	{
 		"gaelph/logsitter.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		keys = {
 			{
 				"<leader>lg",

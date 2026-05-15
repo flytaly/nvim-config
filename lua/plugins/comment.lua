@@ -1,6 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
-	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring", "nvim-treesitter/nvim-treesitter" },
+	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	config = function()
 		vim.g.skip_ts_context_commentstring_module = true
 		-- Setup numToStr/Comment.nvim to work with treesitter and "nvim-ts-context-commentstring"

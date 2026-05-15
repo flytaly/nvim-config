@@ -12,7 +12,6 @@ return {
 	--[[ {
 		"MeanderingProgrammer/markdown.nvim",
 		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("render-markdown").setup({})
 		end,
@@ -23,7 +22,6 @@ return {
 		ft = "markdown",
 		keys = { { "<leader>zm", ft = "markdown", "<cmd>Markview toggle<cr>", desc = "Markview: toggle" } },
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
